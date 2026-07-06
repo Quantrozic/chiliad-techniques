@@ -1,6 +1,6 @@
 # Chiliad Techniques Encyclopedia - static mirror (lite edition, no comment sections)
 
-**v1.1.1**, built Jul 06, 2026. A fully self-contained, offline mirror of the
+**v1.1.2**, built Jul 06, 2026. A fully self-contained, offline mirror of the
 Chiliad Compendium **/techniques** page. Live at https://quantrozic.github.io/chiliad-techniques/
 
 - `index.html` - the techniques browser (search, category filters, sorting),

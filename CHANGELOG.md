@@ -1,6 +1,11 @@
 # Changelog
 
-All notable changes to the Chiliad Techniques Encyclopedia static site. Current version: v1.1.1.
+All notable changes to the Chiliad Techniques Encyclopedia static site. Current version: v1.1.2.
+
+## v1.1.2 - 2026-07-06
+
+- Fixed: four audit-failed ("Unverified") entries still displayed an archived-cases count next to their Unverified badge (Developer-Credit Linkage Analysis, Modular-Arithmetic Coordinate Reduction, Eye-Tracking Attention Mapping, Steganography Detection in Textures). Audit-failed entries now render like zero-case entries everywhere: no count badge, no case dates, zero in the "most used" sort and post tally. Their case lists remain on the technique page, labeled as vocabulary coincidences. Reported by pre-launch reputability review.
+- Added a no-JavaScript fallback to the index: instead of an empty shell, non-JS visitors now get a notice plus the full default view (all community-evidenced methods, grouped by category) as a plain link list. A fully pre-rendered default grid is planned for v1.2. Reported by pre-launch reputability review.
 
 ## v1.1.1 - 2026-07-06
 
