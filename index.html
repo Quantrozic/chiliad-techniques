@@ -87,7 +87,10 @@
 
   function searchFiltered() {
     var base = ITEMS.filter(function (e) {
-      return (showAI || !e.ai) && (showUnv || !e.unv);
+      // Unverified entries are governed by their own toggle alone (they are
+      // all AI-generated, so requiring both toggles would make the Unverified
+      // switch a no-op while AI-generated is off).
+      return e.unv ? showUnv : (e.ai ? showAI : true);
     });
     var terms = q.toLowerCase().split(/\s+/).filter(Boolean);
     if (!terms.length) return base;
