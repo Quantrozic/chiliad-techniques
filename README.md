@@ -1,7 +1,7 @@
 # Techniques encyclopedia - static mirror (lite edition, no comment sections)
 
 A fully self-contained, offline mirror of the Chiliad Compendium **/techniques**
-page, generated Jul 05, 2026.
+page, generated Jul 06, 2026.
 
 - `index.html` - the techniques browser (search, category filters, sorting),
   mirroring the in-app page.
