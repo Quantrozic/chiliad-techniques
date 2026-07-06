@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Update From The Files: Solomon, Interiors, Possible Coordinates &amp; More! [As A Seperate Post By Request] · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game Files</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Update From The Files: Solomon, Interiors, Possible Coordinates &amp; More! [As A Seperate Post By Request]</h1>
+    <div class="post-meta"><span class="score">▲ 66 pts</span><span>u/DC_Millions</span><span>Aug 31, 2014</span><span>169 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/2f45wz/update_from_the_files_solomon_interiors_possible/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x1-026.html" title="Weak match: this post may not actually demonstrate this method.">Coordinate Pair Extraction and Geocoding ?</a><a class="badge" href="../techniques/tq-x1-021.html">Loop-Point Seam Forensics</a><a class="badge weak-chip" href="../techniques/tq-x5-028.html" title="Weak match: this post may not actually demonstrate this method.">Modular-Arithmetic Coordinate Reduction ?</a><a class="badge weak-chip" href="../techniques/tq-x4-028.html" title="Weak match: this post may not actually demonstrate this method.">Player-Coordinate Telemetry Clustering ?</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>EDIT: Okay guys <strong>HUGE UPDATE</strong> you came through like champions working out those coordinates!!</p><p>So it turns out the interior that loads shortly after the MC UFO spawns (in coding terms) has coordinates that place it right over the Maze Bank Arena!</p><p><strong>Maps</strong> compliments of:</p><ul><li><a href="https://www.reddit.com/u/moistboyz" target="_blank" rel="noreferrer">/u/moistboyz</a> <a href="http://i.imgur.com/sMq1BeV.jpg" target="_blank" rel="noreferrer">here</a></li><li><a href="https://www.reddit.com/u/serenity404" target="_blank" rel="noreferrer">/u/serenity404</a> [here] (http://img5.picload.org/image/cgcrgaw/coordinates.jpg) -Satellite-</li><li><a href="https://www.reddit.com/u/dschazam" target="_blank" rel="noreferrer">/u/dschazam</a> <a href="http://www.gtafivemap.com/s/JwUUPvE/" target="_blank" rel="noreferrer">here</a></li><li>Me <a href="http://imgur.com/gtSLybZ" target="_blank" rel="noreferrer">here</a> -UV-</li><li>Me <a href="http://imgur.com/hzFMAZ1" target="_blank" rel="noreferrer">here</a> -Road Map-  </li></ul><p><strong>Full Code:</strong></p><ul><li><a href="https://www.dropbox.com/sh/zarahdz9r2jynjq/AABFphtGf4RW9PzAhE5VLTYOa/ufo.txt?dl=0" target="_blank" rel="noreferrer">ufo.txt</a></li><li><a href="https://www.dropbox.com/sh/zarahdz9r2jynjq/AAC975bmQHO4nyUUMehAlI32a/ambient_ufos.txt?dl=0" target="_blank" rel="noreferrer">ambient_ufo.txt</a></li><li><a href="https://www.dropbox.com/sh/zarahdz9r2jynjq/AADWdOxlRJ74umDhyfvcsVe1a/epsrobes.txt?dl=0" target="_blank" rel="noreferrer">epsrobes.txt</a></li><li><a href="https://www.dropbox.com/sh/zarahdz9r2jynjq/AABM9RAabPNQXfFtwjfQmYZsa/ambient_solomon.txt?dl=0" target="_blank" rel="noreferrer">ambient_solomon</a>  </li></ul><p>From the road map the and the Z value of coordinates it appears to be at the entrance to Maze Bank Arena? Also, this location is right next to &quot;backyard davis &amp; grove street&quot; with red circle on the UV map.. wiki says it&#x27;s just weaps/letter scrap but this makes me think maybe there&#x27;s more...</p><p>Alright so I&#x27;m continuing to dig through more files because It helps me be able to read it better and so this time I<br>decided to take a look at some UFO coding. Results below as always:</p><p><strong>TL;DR</strong></p><p>A bunch more code suggesting there is hidden stuff and 4 things I consider to be more important breakthroughs:</p><ul><li>You can switch to Michael and be saying goodbye to Solomon in what appears to be ambient circumstances. It seems most likely to me that events in the game at certain point play a big role and that this is not easily triggered, and even if it has been discovered by some there&#x27;s a lot things that could affect the situation and this is probably the closest thing we have to lead on Solomon&#x27;s Ambient Mission</li><li>Many things load after the MC UFO spawns including interiors, and the FIRST interior loaded after the UFO spawns appears to have the coordinates: -248.4916f, -2010.509f, 34.5743f (If you can reverse-lookup coordinates please help!!)</li><li>RockStar uses a sytem of fake_interior / real_interior and some key local places are specifically tagged: BoatPO1SH2A, FakeWarehousePO103, FakeKortzCenter, FakePrison, FakeMilitaryBase</li><li>Thunder = confirmed completely different condition than rain and the MC UFO checks for both aka Thunder satisfies a different condition!!</li></ul><p>RANDOM: Also guys, I think it&#x27;s <strong>really</strong> weird I can&#x27;t find ANYTHING on the satellites or the scientists/agents that show up there.<br>Literally not 1 line of identifiable code. So I&#x27;m still searching for that just though I&#x27;d share in case anyone else has seen code for them! Kifflom!</p><ul><li><strong>Not New But Here Is the Famous Code For the MC UFO To Appear At 3am</strong></li></ul><p>if (BRAIN::IS_WORLD_POINT_WITHIN_BRAIN_ACTIVATION_RANGE() == 0)</p><pre><code>    {
+        sub_4256();
+    }
+    switch (l_14)
+    {
+        case 0:
+        {
+            bool flag1 = TIME::GET_CLOCK_HOURS() == 3;
+            if (flag1 &amp; sub_4214())
+            {
+                l_14 = 1;
+            }
+            break;
+        }</code></pre><p>Just putting this here because as nerd it&#x27;s cool to see the famous 3am condition for the UFO (weather is trickier in the code)<br>and also because something a lot of other file hunters didn&#x27;t mention really bothers me so I&#x27;m going to use caps.<br>LOTS OF STUFF LOADS AND HAPPENS AND CHANGES ALL BASED ON THE CONDITION THAT THE MC UFO APPEARS. I don&#x27;t why that wasn&#x27;t mentioned some file hunters.<br>Lot&#x27;s of it is deeply encrypted but you can tell by the funtions called that interiors as well as &quot;ambient_zones&quot; and such are loaded. Pretty important.<br>Like the code I have below loads pretty much right after the MC UFO appears.</p><ul><li><strong>Static Emitter Enables After MC UFO Appears</strong></li></ul><p>else if ((num3 == 35) &amp;&amp; (A_1 == 1))</p><pre><code>{
+    AUDIO::SET_STATIC_EMITTER_ENABLED(&quot;TREVOR1_TRAILER_PARK_MAIN_STAGE_RADIO&quot;, 0);
+    AUDIO::SET_STATIC_EMITTER_ENABLED(&quot;TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_01&quot;, 0);
+    AUDIO::SET_STATIC_EMITTER_ENABLED(&quot;TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_02&quot;, 0);
+    AUDIO::SET_STATIC_EMITTER_ENABLED(&quot;TREVOR1_TRAILER_PARK_MAIN_TRAILER_RADIO_03&quot;, 0);
+}</code></pre><p>I have no idea what this is or means, but I plan on doing some snooping around. This comes very soon after the MC UFO spawn code<br>and is something I&#x27;ll be looking into. I want to note also that the game doesn&#x27;t mention PLAYER_ID when enabling the STATIC_EMITTER<br>so I&#x27;m not sure if <em>who</em> sees the UFO matters or not</p><ul><li><strong>Confirmed: Thunder Is Different From Rain &amp; MC UFO Checks For Both (WE STILL NEED THUNDER FOR WEATHER FOR SOMETHING IT APPEARS)</strong></li></ul><p>var sub_4214()<br>{</p><pre><code>var num1 = GAMEPLAY::IS_NEXT_WEATHER_TYPE(&quot;RAIN&quot;);
+var num6 = num1 | GAMEPLAY::IS_NEXT_WEATHER_TYPE(&quot;THUNDER&quot;);
+var num7 = num6 | GAMEPLAY::IS_PREV_WEATHER_TYPE(&quot;RAIN&quot;);
+if ((num7 | GAMEPLAY::IS_PREV_WEATHER_TYPE(&quot;THUNDER&quot;)) != 0)
+{
+    return 1;
+}</code></pre><ul><li><strong>Code For Fake &amp; Real Interior that runs shortly after the MC UFO Spawns</strong></li></ul><p>case 97:</p><pre><code>        wPtr(1, (A_0) + 12);
+        strcpy(&quot;SP1_10_fake_interior&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;SP1_10_real_interior&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        setStruct(-248.4916f, -2010.509f, 34.5743f, 3, A_0);</code></pre><p>I am not sure what this code is doing completely but I do know it runs very shortly after the MC UFO appears<br>and also, I belive -248.4916f, -2010.509f, 34.5743f is coordinates and I am working out how to check that now<br>if anyone has more experience with reverse-lookup of GTA coordinates please help!</p><ul><li><strong>Switching to Michael &amp; He&#x27;s Saying Goodbye To Solomon</strong></li></ul><p>case 154:</p><pre><code>        strcpy(&quot;SWITCH@MICHAEL@GOODBYE_TO_SOLOMAN&quot;, A_1, 64);
+        strcpy(&quot;LOOP_Michael&quot;, A_2, 64);
+        strcpy(&quot;EXIT_Michael&quot;, A_3, 64);
+        return 1;</code></pre><p>Now this is interesting because I have followed the Movie Set / Solomon theories since they surfaced but I never heard this mentioned or had it<br>happen to me in game. Apparently it&#x27;s possible to switch to Michael and be in the presence of Solomon. Now I don&#x27;t know where/when but this is<br>one of those things where maybe you can only see this at certain times and it is most likely affected by other things you&#x27;ve done. This in my opinion<br>is really big. This is something we can search for and maybe unravel the ambient solomon mission finally!</p><ul><li><strong>Some Code For Loading Fake Interiors For Suspicious Places</strong></li></ul><p>switch (A_0)</p><pre><code>{
+    case 0:
+        return &quot;V_FakeBoatPO1SH2A&quot;;
+    case 1:
+        return &quot;V_FakeWarehousePO103&quot;;
+    case 2:
+        return &quot;V_FakeKortzCenter&quot;;
+    case 3:
+        return &quot;V_FakePrison&quot;;
+    case 4:
+        return &quot;V_FakeMilitaryBase&quot;;
+}</code></pre><p>This caught my eye and I wish I could dig a little deeper and see exactly what R* means by &quot;fake&quot;. My only conjecture is that it is a version<br>of the places that <em>loads when you haven&#x27;t met certain requirements so you don&#x27;t get to &quot;see&quot; the real fully interactive model until you&#x27;re supposed to</em></p><ul><li><strong>Zancudo Heist Refernce (And Why I Don&#x27;t It&#x27;s MP Or A &quot;Heist&quot;)</strong></li></ul><p>case 0:</p><pre><code>        if ((PLAYER::GET_PLAYER_WANTED_LEVEL(PLAYER::PLAYER_ID()) &gt; 0) &amp;&amp; (AUDIO::PREPARE_ALARM(&quot;PORT_OF_LS_HEIST_FORT_ZANCUDO_ALARMS&quot;) != 0))</code></pre><p>AI::TASK_PLANE_MISSION(l_284, l_278, l_279, PLAYER::PLAYER_PED_ID(), rPtrOfs(_s, 0), rPtrOfs(_s, 4), rPtrOfs(_s, 8), 8, 70f, -1f, 30f, 500, 50);</p><p>This Zancudo code looks tasty especially the AI part where some random NPC starts off on some mission of who knows what. Reminds me of all the times<br>people have seen titans doing mysterious things or dropping thing after being shot. Anyways I can&#x27;t tell if this code is for MP or not but I do know<br>the file I found it in is called ambient_ufo.xsc and it supposed to be SP only last time I checked. Anyways I don&#x27;t think there is heist, I think there is stuff to do there still but there are cases where R* uses a word for something and the meaning changes as they develop. Like MerryWeather is called &quot;Homeland_Security&quot; in all the coding. Take this code with a grain of salt guys</p><p>Like always,</p><p>Cheers guys and thanks for being awesome!</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 169 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/2f45wz/update_from_the_files_solomon_interiors_possible/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chiliad UFO Script - Mystery Interiors...Why was this let go and if not what was ever found? · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Backtracking</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Chiliad UFO Script - Mystery Interiors...Why was this let go and if not what was ever found?</h1>
+    <div class="post-meta"><span class="score">▲ 75 pts</span><span>u/k-i-ll</span><span>Oct 7, 2015</span><span>73 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/3nvdfk/chiliad_ufo_script_mystery_interiorswhy_was_this/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x1-038.html" title="Weak match: this post may not actually demonstrate this method.">Script Decompilation and String Mining ?</a><a class="badge weak-chip" href="../techniques/tq-x3-037.html" title="Weak match: this post may not actually demonstrate this method.">Script Decompilation Trigger Tracing ?</a><a class="badge weak-chip" href="../techniques/tq-x4-017.html" title="Weak match: this post may not actually demonstrate this method.">Script-Decompilation Conditional Tracing ?</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p><strong>EDIT: please see pax&#x27;s post about taking apart the scripts. His post is what this post should have been!!</strong><a href="https://www.reddit.com/r/chiliadmystery/comments/3nw3zh/the_official_global_variable_research_roundup/" target="_blank" rel="noreferrer">https://www.reddit.com/r/chiliadmystery/comments/3nw3zh/the_official_global_variable_research_roundup/</a></p><p>OK, so yea the idiot who went maniacally egotistical and got banned is the one who brought this up, so credit does go to him(and anyone else I&#x27;m forgetting that was before him). And I&#x27;m really hoping that Reoze or Tadd or SOMEONE can jump in here and tell me wtmf happened to our search for these mystery interiors from the Chiliad UFO script????</p><p>OK so the hardcore hunters here should remember that there were interior loading code listed in the chiliad UFO script. I will paste it at the end of this post. Let me remind everyone that the whole peyote find was discovered by going through scripts, so all you peeps who think looking at the code is cheating, this isn&#x27;t for you and don&#x27;t even bother posting comments, just ignore this please. The point I&#x27;m trying to make here is that we can BLATANTLY SEE INTERIORS BEING REFERENCED IN THE UFO SCRIPTS!!! <em>WHAT</em> ARE THESE INTERIORS? <em>WHERE</em> ARE THEY LOCATED ON THE MAP? <em>WHY</em> has the only actual physical proof and evidence of there being something more to the chiliad UFO been quietly swept under the rug?? If this has already been explored and debunked then please enlighten me and the rest of us who have been searching for this answer for months now and disregard this message. But if these mystery interiors have not been found, loaded, or debunked then this is a call to arms for all hunters to finally figure this shit out. We know the squatch peyote required the following variables: 100%, Tuesday, Specific Time, Specific Place, Specific Weather(snow/smog), Did not kill squatch in &quot;the last one&quot; mission, collection of all other peyotes.</p><p>Thats 7 unique variables my brother/sister-hunters. In my honest opinion, and call me whack if you want, but every single clue rockstar has given us is telling us that we need to figure out these variables, see the chiliad UFO, and hopefully trigger these secret mystery interiors somewhere, and physically get to them BEFORE the UFO script makes them unload. Why do you think no-one has found this mystery yet? you not only need at least 7 variables to see the chiliad UFO, but you also have to goto more than one location maybe? Like I stated before, this in the only actual evidence for a lead we have, and the peyote basically spelled out the formula for the rest of the mystery, it&#x27;s up to us to figure out the variables. I have a feeling though that it&#x27;s going to help us drastically to figure out what these mystery interiors are and why they trigger only when you trigger the UFO.</p><p>The word interior is mentioned 26 times in the chiliad UFO script. so wtf guys, who here has figured out what these interiors actually do?</p><pre><code>case 2:
+            v_6A = INTERIOR::_05B7A89BD78797FC(v_9, &amp;v_9._f2A);
+            if (v_6A != 0) {
+                if (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f32) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) {
+                    if (INTERIOR::_35F7DD45E8C0A16D(v_6A, &amp;v_9._f32)) {
+                        INTERIOR::_420BD37289EEE162(v_6A, &amp;v_9._f32);
+                    }
+                } else { }
+                if (v_7 == 0) {
+                    if (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[1/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) {
+                        if (INTERIOR::_35F7DD45E8C0A16D(v_6A, &amp;v_9._f8[1/*8*/])) {
+                            INTERIOR::_420BD37289EEE162(v_6A, &amp;v_9._f8[1/*8*/]);
+                        }
+                    } else { }
+                    if (((GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[2/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) &amp;&amp; (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[2/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;REMOVE_ALL_STATES&quot;))) &amp;&amp; (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[2/*8*/]) != GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[v_7/*8*/]))) {
+                        if (INTERIOR::_35F7DD45E8C0A16D(v_6A, &amp;v_9._f8[2/*8*/])) {
+                            INTERIOR::_420BD37289EEE162(v_6A, &amp;v_9._f8[2/*8*/]);
+                        }
+                    } else { }
+                    if (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[0/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) {
+                        if (!INTERIOR::_35F7DD45E8C0A16D(v_6A, &amp;v_9._f8[0/*8*/])) {
+                            INTERIOR::_55E86AF2712B36A1(v_6A, &amp;v_9._f8[0/*8*/]);
+                        }
+                    } else { }
+                } else if (v_7 == 1) {
+                    if (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[0/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) {
+                        if (INTERIOR::_35F7DD45E8C0A16D(v_6A, &amp;v_9._f8[0/*8*/])) {
+                            INTERIOR::_420BD37289EEE162(v_6A, &amp;v_9._f8[0/*8*/]);
+                        }
+                    } else { }
+                    if (((GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[2/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) &amp;&amp; (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[2/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;REMOVE_ALL_STATES&quot;))) &amp;&amp; (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[2/*8*/]) != GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[v_7/*8*/]))) {
+                        if (INTERIOR::_35F7DD45E8C0A16D(v_6A, &amp;v_9._f8[2/*8*/])) {
+                            INTERIOR::_420BD37289EEE162(v_6A, &amp;v_9._f8[2/*8*/]);
+                        }
+                    } else { }
+                    if (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[1/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) {
+                        if (!INTERIOR::_35F7DD45E8C0A16D(v_6A, &amp;v_9._f8[1/*8*/])) {
+                            INTERIOR::_55E86AF2712B36A1(v_6A, &amp;v_9._f8[1/*8*/]);
+                        }
+                    } else { }
+                } else if (v_7 == 2) {
+                    if (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[0/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) {
+                        if (INTERIOR::_35F7DD45E8C0A16D(v_6A, &amp;v_9._f8[0/*8*/])) {
+                            INTERIOR::_420BD37289EEE162(v_6A, &amp;v_9._f8[0/*8*/]);
+                        }
+                    } else { }
+                    if (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[1/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) {
+                        if (INTERIOR::_35F7DD45E8C0A16D(v_6A, &amp;v_9._f8[1/*8*/])) {
+                            INTERIOR::_420BD37289EEE162(v_6A, &amp;v_9._f8[1/*8*/]);
+                        }
+                    } else { }
+                    if ((GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[2/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) &amp;&amp; (GAMEPLAY::GET_HASH_KEY(&amp;v_9._f8[2/*8*/]) != GAMEPLAY::GET_HASH_KEY(&quot;REMOVE_ALL_STATES&quot;))) {
+                        if (!INTERIOR::_35F7DD45E8C0A16D(v_6A, &amp;v_9._f8[2/*8*/])) {
+                            INTERIOR::_55E86AF2712B36A1(v_6A, &amp;v_9._f8[2/*8*/]);
+                        }
+                    }
+                } else { }
+                if (a_1) {
+                    INTERIOR::REFRESH_INTERIOR(v_6A);
+                }
+            } else { }
+            g_8314[a_0/*1*/] = 1;
+            g_824D[a_0/*1*/] = 1;
+            v_6 = 1;
+            break;
+
+
+
+case 76:
+    a_0._f3 = 1;
+    a_0._f8[0/*8*/]/*&quot;32&quot;*/ = &quot;RC12B_HospitalInterior&quot;;
+    a_0._f8[1/*8*/]/*&quot;32&quot;*/ = &quot;&quot;;
+    a_0._f21 = 0;
+    a_0/*{3}*/ = {330.4595947265625, -584.81958, 42.31740188598633 };
+    break;
+
+
+
+case 100:
+    a_0._f3 = 1;
+    a_0._f8[0/*8*/]/*&quot;32&quot;*/ = &quot;SP1_10_fake_interior&quot;;
+    a_0._f8[1/*8*/]/*&quot;32&quot;*/ = &quot;SP1_10_real_interior&quot;;
+    a_0/*{3}*/ = {-248.49159240722656, -2010.509033203125, 34.57429885864258 };
+    break;</code></pre><p>ALSO, has anyone exhaustively searched every single coordinate in the Chiliad UFO script? It obviously lists a ton of shit just to mind fuck us into making it a lot of work to do this, but thats the easiest way to get people to not do something, give them work. I mean shit lawyers do it all the time, it&#x27;s called burying someone in paperwork. They ask for something specific and you literally give them a conference room full of documents and somewhere hidden in there is what they want, but it&#x27;s their job to find it. Another piece of code that struck me as odd in this script:</p><pre><code>case 61:
+    a_0._f3 = 1;
+    a_0._f8[0/*8*/]/*&quot;32&quot;*/ = &quot;CanyonRvrShallow&quot;;
+    a_0._f8[1/*8*/]/*&quot;32&quot;*/ = &quot;CanyonRvrDeep&quot;;
+    a_0/*{3}*/ = {-1600.619384765625, 4443.45654296875, 0.725 };
+    break;</code></pre><p>Has anyone ever seen this happen? and if so when in the game does it happen? Also I&#x27;ve been told that in these scripts these case statements are not a multiple choice kinda thing, they basically progress through them one at a time. What if this script is trying to tell us to literally progress through each case step to trigger the break in each case to move onto the next one? I mean it makes it plausible as to why no one has figured this out yet, you gotta run through 100+ locations on the map doing specific things to trigger the case switch to move to the one we want.</p><p>Another thing. I&#x27;m going to lay this out for you guys, look up code coverage testing. We need to basically figure out exactly what each part of each script is doing and once we know they are being used for something specific we mark it off as being used for normal in game stuff. THEN, we look at whats left in the scripts that wasn&#x27;t touched by the game during an exhaustive hard 100% play through. Some bits of script will obviously be error handling, but this is going to be the ONLY exhaustive way to fully know for a fact if there is something left to trigger. If we are not already doing this, I would like to try getting together a group of hunters with coding/programming experience to help with this effort. yes it&#x27;s going to be brutal but I mean if we started this shit from the beginning 2+ years ago we would have already been done and this shit would have been solved. Stop being so f&#x27;ing lazy, if you want to call yourself a hunter, SYSTEMATICALLY HUNT THIS MYSTERY DOWN IN A LOGICAL MANNER. No off the wall theories or dumb ass shots in the dark anymore. We follow the actual physical leads that are TANGIBLE and have been given to us repeatedly by R*, and figure this damn thing out already. /End Rant and sorry if I pissed anyone off, but seriously now guys, these batshit crazy theories are just that, bat shit crazy. How do you crack something you can&#x27;t just guess at? You BRUTE FUCKING FORCE IT until it works!!! We have the people, we have the intelligence, why is this not being done after 2+ years when you are all smart as all hell?</p><p><strong>EDIT1: OK so the code that I referenced does seem to be generic object loading code, and the rest seems to be very easily verified. Nothing to see folks please move along lol. BUT this doesn&#x27;t rule out that there are certain calls littered throughout the scripts that are individually pieced together to call something totally different than what the individual pieces meant. So I&#x27;m still going to keep digging. The one conversion that SirFrithIV did is very very interesting, but we have to rule out if the hex codes we see were generated by the decompile process or were the actual function call names used in the script itself. I mean either way thats some pretty damn coincidental jesus toast to create markers on the map that look like a blatant arrow that exactly points to a single coordinate. That and I was able to follow his conversion process so it&#x27;s not a blatant troll. One thing he didn&#x27;t mention in his post is the first conversion he does is from hex to Binary, then to Ascii, then back to hex. gotta give him credit for thinking of that, if it wasn&#x27;t a hex value generated by the decompiler this could be a clue hiding in plain damn sight that we all missed.</strong></p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 73 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/3nvdfk/chiliad_ufo_script_mystery_interiorswhy_was_this/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

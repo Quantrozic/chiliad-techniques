@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Points of interest in the Fort found in the scripts · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Points of interest in the Fort found in the scripts</h1>
+    <div class="post-meta"><span class="score">▲ 13 pts</span><span>u/KuztomX</span><span>May 6, 2015</span><span>50 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/350m7o/points_of_interest_in_the_fort_found_in_the/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x1-038.html" title="Weak match: this post may not actually demonstrate this method.">Script Decompilation and String Mining ?</a><a class="badge weak-chip" href="../techniques/tq-x3-037.html" title="Weak match: this post may not actually demonstrate this method.">Script Decompilation Trigger Tracing ?</a><a class="badge" href="../techniques/tq-x4-017.html">Script-Decompilation Conditional Tracing</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>Hi all,</p><p>Been combing over the script files some more and decided to check out am_armybase, since it obviously is tied to the fort.  Interesting enough, <a href="http://i.imgur.com/72R0tdC.jpg" target="_blank" rel="noreferrer">I see that there are some coordinates entered at the beginning of the script</a>, along with what appears to be a conditional check if the player is close to them, which then sets off the player wanted level:</p><pre><code>if ((num8 | sub_38E(rPtrOfs(_s, 0), rPtrOfs(_s, 4), rPtrOfs(_s, 8), 0)) != 0)
+{
+    if (PLAYER::GET_PLAYER_WANTED_LEVEL(PLAYER::PLAYER_ID()) &lt; 4)
+    {
+            PLAYER::REPORT_CRIME(PLAYER::PLAYER_ID(), 36, PLAYER::GET_WANTED_LEVEL_THRESHOLD(4) - PLAYER::GET_WANTED_LEVEL_THRESHOLD(PLAYER::GET_PLAYER_WANTED_LEVEL(PLAYER::PLAYER_ID())));
+     }
+     else
+     {
+            PLAYER::0xD15C4B1C(PLAYER::PLAYER_ID());
+     }
+ }</code></pre><p>sub_38E is the method that creates the points of interest:</p><pre><code>var sub_38E(var A_0, var A_1, var A_2, var A_3)
+{
+    var num3;
+    var num49;
+    var num95;
+    initArray(&amp;num3, 15);
+    initArray(&amp;num49, 15);
+    initArray(&amp;num95, 15);
+    var num113 = 0;
+   setStruct(-1877.436f, 2783.151f, 31.80618f, 3, getElemPtr(0, &amp;num3, 12));
+   setStruct(-1797.873f, 2924.37f, (307.1106f) + itof(A_3), 3, getElemPtr(0, &amp;num49, 12));
+   setElem(88f, 0, &amp;num95, 4);
+   setStruct(-1761.116f, 2834.651f, 31.80622f, 3, getElemPtr(1, &amp;num3, 12));
+   setStruct(-1720.887f, 2906.419f, (281.8062f) + itof(A_3), 3, getElemPtr(1, &amp;num49, 12));
+   setElem(88f, 1, &amp;num95, 4);
+   setStruct(-1761.493f, 2817.68f, 32.37125f, 3, getElemPtr(2, &amp;num3, 12));
+   setStruct(-1769.704f, 2913.734f, (281.8066f) + itof(A_3), 3, getElemPtr(2, &amp;num49, 12));
+   setElem(88f, 2, &amp;num95, 4);
+   setStruct(-1879.297f, 2772.653f, 29.57795f, 3, getElemPtr(3, &amp;num3, 12));
+   setStruct(-1864.521f, 2825.472f, (281.8062f) + itof(A_3), 3, getElemPtr(3, &amp;num49, 12));
+   setElem(88f, 3, &amp;num95, 4);
+   setStruct(-2676.74f, 3366.988f, 29.92394f, 3, getElemPtr(4, &amp;num3, 12));
+   setStruct(-2744.79f, 3340.347f, (37.80379f) + itof(A_3), 3, getElemPtr(4, &amp;num49, 12));
+   setElem(9f, 4, &amp;num95, 4);
+   ..... /// A BUNCH OF OTHER COORDINATES THAT I TOOK OUT 
+   var num111 = 13;
+   for (var i = 0; i &lt; num111; i++)
+   {
+       struct _s = &amp;A_0;
+       struct _s = getElemPtr(i, &amp;num3, 12);
+       struct _s = getElemPtr(i, &amp;num49, 12);
+       if (OBJECT::IS_POINT_IN_ANGLED_AREA(rPtrOfs(_s, 0), rPtrOfs(_s, 4), rPtrOfs(_s, 8), rPtrOfs(_s, 0), rPtrOfs(_s, 4), rPtrOfs(_s, 8), rPtrOfs(_s, 0), rPtrOfs(_s, 4), rPtrOfs(_s, 8), getElem(i, &amp;num95, 4), num113, 1) != 0)
+       {
+           return 1;
+       }
+    }
+   return 0;
+}</code></pre><p>At the very bottom, it looks to check to see if the player (or some object) is within an &quot;Angled Area&quot; of 13 of those structures, which I imagine is some sort of visibility check.</p><p>Also interestingly enough, the points come in pairs, where the first object seems to be at base level (a Z value of 29-31) yet the second object seems to be in the sky.  Here are some examples:</p><pre><code>setStruct(-2807.397f, 3264.226f, 29.92764f, 3, getElemPtr(6, &amp;num3, 12));
+setStruct(-2879.805f, 3309.01f, (37.57864f) + itof(A_3), 3, getElemPtr(6, &amp;num49, 12));
+
+setStruct(-2808.236f, 3264.634f, 29.92764f, 3, getElemPtr(7, &amp;num3, 12));
+setStruct(-2747.55f, 3187.8f, (37.45682f) + itof(A_3), 3, getElemPtr(7, &amp;num49, 12));</code></pre><p>The first two parameters are the x and y values of the object and the third parameter is the z position.  You can see that these objects have a starting Z position of around 37, but another value is added, which at this point I haven&#x27;t yet deconstructed.  So I wonder if the first object of the pair is a camera / soldier, and the second object is that objects &quot;eye&quot;, meaning the object that does the check to see if the player (or some other object) is in range.</p><p>If you have a look at these points, does anything stand out to you guys?  Are these camera locations? Or soldiers?  If so, do we have to take them out so the conditional range check progresses to unlock something?</p><p>Just thought I would throw this your way.</p><p><strong>Edit:</strong>  One of the reasons I am interesting in this is that it seems that instead of covering an entire range, they have points which watch for the player to give a 4 star wanted level.  That means, theoretically, that we <em>should</em> be able to find weak spots.  In looking at today&#x27;s posts about the Maze Bank being an egg, it get&#x27;s me thinking:  Do we have to solve a maze somewhere?  Maybe there is a maze in the fort...meaning a certain path that you need to traverse which DOESN&#x27;T trigger the wanted level.  If we look back to GTA: San Andreas, <a href="https://www.youtube.com/watch?v=3PMQ0MwL36M" target="_blank" rel="noreferrer">you really had to go through hoops of not being detected, as well as pave through a maze like path, just to unlock the jetpack</a>, so maybe the same applies to this game.</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 50 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/350m7o/points_of_interest_in_the_fort_found_in_the/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

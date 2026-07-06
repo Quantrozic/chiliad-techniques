@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karma in the Scripts PT. 2 - Epsilon Payments · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game File Analysis</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Karma in the Scripts PT. 2 - Epsilon Payments</h1>
+    <div class="post-meta"><span class="score">▲ 50 pts</span><span>u/trainwreck42o</span><span>May 12, 2015</span><span>30 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/35qojx/karma_in_the_scripts_pt_2_epsilon_payments/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x1-038.html" title="Weak match: this post may not actually demonstrate this method.">Script Decompilation and String Mining ?</a><a class="badge weak-chip" href="../techniques/tq-x3-037.html" title="Weak match: this post may not actually demonstrate this method.">Script Decompilation Trigger Tracing ?</a><a class="badge weak-chip" href="../techniques/tq-x4-017.html" title="Weak match: this post may not actually demonstrate this method.">Script-Decompilation Conditional Tracing ?</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p><a href="https://www.reddit.com/r/chiliadmystery/comments/35q6wl/karma_in_the_scripts_pt_1_stealing_epsilon_cash/" target="_blank" rel="noreferrer">A continuation of PT. 1</a></p><p><em>End summary/TLDR;</em></p><blockquote><p>g_iCurrentEpsilonPayment tracks your total donated amount, but resets after epsilon missions 1, 2, and 4.  The only checks are for 500, 5000, and 10000.  You can donate $1bn and it will not trigger any more if() checks. There is no other usage in the scripts of the global variable 381 - g_iCurrentEpsilonPayment.</p></blockquote><blockquote><p>g_bFinalEpsilonPayment is exactly as its name describes, and its only use in all the scripts is to ensure you don&#x27;t have to pay 50000 multiple times if you repeat the epsilon8 mission - and to allow you to replay that mission if you don&#x27;t have 50000 in the bank, but you have already paid the money. There is no other usage in the scripts of the global variable 387 - g_bFinalEpsilonPayment.</p></blockquote><p><strong>Takeaway: You can donate $1bn and nothing will happen</strong></p><p>In this post I am going to analyze what cause and effect the two Epsilon Payment variables have.</p><p>First I will analyze <strong>g_iCurrentEpsilonPayment</strong>:</p><p><strong>ALL CAUSES OF g_iCurrentEpsilonPayment:</strong>  (5 scripts)</p><pre><code>appinternet.txt:54792:         wPtr(rPtr(((&amp;g_86931) + 15438) + 381) + A_0, ((&amp;g_86931) + 15438) + 381);
+appinternet.txt:54792:         wPtr(rPtr(((&amp;g_86931) + 15438) + 381) + A_0, ((&amp;g_86931) + 15438) + 381);
+epsilon1.txt:186:     wPtr(0, ((&amp;g_86931) + 15438) + 381);
+epsilon2.txt:30782:     wPtr(0, ((&amp;g_86931) + 15438) + 381);
+epsilon4.txt:332:     wPtr(0, ((&amp;g_86931) + 15438) + 381);
+mission_repeat_controller.txt:83747:     wPtr(0, ((&amp;g_86931) + 15438) + 381);</code></pre><p>In appinternet, it adds your donation amount to the total.  This file also contains the &quot;effect&quot;.</p><p>In epsilon1, 2, and 4, it resets the value to 0, so you can donate again via appinternet, and the 500, 5000, 10000 checks (see below in &quot;effects&quot;) will all function properly.  Otherwise it would have to check for 500, 5500, 15500, and that wouldn&#x27;t guarantee that you made the donations at the right time (after the missions where it tells you ok now donate this amount).</p><p>Same for mission_repeat_controller.  This makes it so when you repeat a mission, all the variables used in that mission and others are reset to their proper values.</p><p><strong>ALL EFFECTS OF g_iCurrentEpsilonPayment:</strong>  (1 script)</p><pre><code>appinternet.txt:54796:         if ((sub_2B51E(88) == 0) &amp;&amp; (rPtr(((&amp;g_86931) + 15438) + 381) &gt;= **10000**))
+appinternet.txt:54805:         if ((sub_2B51E(87) == 0) &amp;&amp; (rPtr(((&amp;g_86931) + 15438) + 381) &gt;= **5000**))
+appinternet.txt:54812:     else if (((sub_4A4D1(9) != 0) &amp;&amp; (sub_2B51E(86) == 0)) &amp;&amp; (rPtr(((&amp;g_86931) + 15438) + 381) &gt;= **500**))</code></pre><p>These lines of appinternet are triggered after donating, and they check to see if you have met the required donation levels of <strong>500</strong>, followed by <strong>5,000</strong>, and finally <strong>10,000</strong>.</p><p><strong>You can donate $1bn and it will not trigger any more if() checks.</strong></p><p><strong>There is no other usage in the scripts of the global variable 381 - g_iCurrentEpsilonPayment.</strong></p><p>This usage is the only effect of this Karma variable in all the scripts.</p><p>Next up is <strong>g_bFinalEpsilonPayment</strong>:</p><p><strong>ALL CAUSES OF g_bFinalEpsilonPayment:</strong>  (1 script)</p><pre><code>epsilon8.txt:32512:             if (rPtr(((&amp;g_86931) + 15438) + 387) == 0)
+epsilon8.txt:32515:                 wPtr(1, ((&amp;g_86931) + 15438) + 387);</code></pre><p>This is the startup of epsilon 8, where you give 50000 to Cris as your sign of final upwards generosity before taking on the task of transporting the Cayman Island Epsilon Funds.</p><p>Here is the code:</p><pre><code>            AUDIO::SET_STATIC_EMITTER_ENABLED(&quot;SE_LOS_SANTOS_EPSILONISM_BUILDING_01&quot;, 0);
+            AUDIO::TRIGGER_MUSIC_EVENT(&quot;EPS8_START&quot;);
+        }
+        if (rPtr(((&amp;g_86931) + 15438) + 387) == 0)  (if you have not yet given final payment)
+        {
+            sub_2D1CC(0, 29, 50000);   (give final payment, subtract 50000 from bank)
+            wPtr(1, ((&amp;g_86931) + 15438) + 387);   (write value, gave final payment)
+        }</code></pre><p>So if you have already given the final payment, it will not take your money a 2nd time.</p><p><strong>ALL EFFECTS OF g_bFinalEpsilonPayment:</strong>  (1 script)</p><pre><code>launcher_epsilon.txt:5482:             if (flag1 | (rPtr(((&amp;g_86931) + 15438) + 387) == 1);</code></pre><p>Here is some code to clarify what launcher_epsilon is for:</p><pre><code>            sub_2E3C9(&quot;Need robes and $ to launch Epsilon 8...&quot;);
+            sub_8C76(&quot;NOCASH_HELP&quot;, &quot;OUTFIT_P0_11&quot;, 50000, -1);
+            wPtr(0, A_1);
+            return;</code></pre><p>It is the controller which tells you whether you have met the requirements to launch an epsilon mission (and does the launching).</p><p>So when its using this check: if (flag1 | (rPtr(((&amp;g_86931) + 15438) + 387) == 1);</p><p>flag1 is &quot;is player bank account above 50000&quot;.  If flag1 OR bFinalEpsilonPayment == 1, it will allow you to load the mission.  The reason for this OR is mission replays - if you already did the mission but you don&#x27;t have 50000 in bank account, it doesn&#x27;t require you to have the money again, just checks to see you already paid it.</p><p><strong>g_bFinalEpsilonPayment is exactly as its name describes, and its only use in all the scripts is to ensure you don&#x27;t have to pay 50000 multiple times if you repeat the epsilon8 mission - and to allow you to replay that mission if you don&#x27;t have 50000 in the bank, but you have already paid the money.</strong></p><p><strong>There is no other usage in the scripts of the global variable 387 - g_bFinalEpsilonPayment.</strong></p><p>Other instances of Karma in the scripts:</p><ul><li><a href="https://www.reddit.com/r/chiliadmystery/comments/35q6wl/karma_in_the_scripts_pt_1_stealing_epsilon_cash/" target="_blank" rel="noreferrer">Stealing Epsilon Cash</a></li><li><a href="https://www.reddit.com/r/chiliadmystery/comments/362kks/karma_in_the_scripts_pt_3_the_psych_report/" target="_blank" rel="noreferrer">The Psych Report</a></li></ul><p>Thanks for reading.  Kifflom!</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 30 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/35qojx/karma_in_the_scripts_pt_2_epsilon_payments/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA V Zombie Mode Exposed | Missions Revealed · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Developing</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">GTA V Zombie Mode Exposed | Missions Revealed</h1>
+    <div class="post-meta"><span class="score">▲ 28 pts</span><span>u/Extreme-Many-3573</span><span>Nov 27, 2025</span><span>3 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/1p7vi2n/gta_v_zombie_mode_exposed_missions_revealed/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-director-mode.html" title="Weak match: this post may not actually demonstrate this method.">Director Mode Scene &amp; Spawn Testing ?</a><a class="badge" href="../techniques/tq-mission-order.html">Mission Order / Narrative Flow Analysis</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><pre><code>##### Norman Mode Missions (spNorman) – Complete Analysis
+
+
+**DLC:** `spNorman`  
+**Feature Flag:** `USE_NRM_DLC`  
+**Type:** Post‑apocalyptic survival DLC  
+**Main flow file:** `script/dev_ng/singleplayer/include/private/Mission_Flow/TriggerScenes/flow_mission_trigger_scenes.sch`
+
+
+Norman Mode introduces a set of survival missions organized into several **strands** (story threads).  
+This document summarizes **everything that can be extracted from the available source code** about those missions: names, strands, trigger scenes, flow flags and completion percentage.
+
+
+**Important limitation:**  
+Implementations of `TS_NRM_*_CREATE` functions and the mission `.sc` scripts **are not present** in this version of the code, so:
+- There are **NO** exact coordinates (`VECTOR &lt;&lt;x, y, z&gt;&gt;`) in the accessible code  
+- There is **NO** programmatic description of step‑by‑step objectives  
+- There *is* flow structure, names and trigger scene bindings
+
+
+---
+
+
+##### Norman Strands
+
+
+Norman strands are obtained with:
+- `GET_STORY_MISSION_STRAND_NRM(SP_MISSIONS paramMissionID)` in  
+  `script/dev_ng/singleplayer/include/public/Flow_Mission_Data_Public.sch`
+
+
+**Known Norman strands:**
+
+
+- `STRAND_NRM_SURVIVE`
+- `STRAND_NRM_RESCUE_ENG`
+- `STRAND_NRM_RESCUE_MED`
+- `STRAND_NRM_RESCUE_GUN`
+- `STRAND_NRM_SUPPLY_FUEL`
+- `STRAND_NRM_SUPPLY_AMMO`
+- `STRAND_NRM_SUPPLY_MED`
+- `STRAND_NRM_SUPPLY_FOOD`
+- `STRAND_NRM_RADIO`
+
+
+Each one groups one or more `SP_MISSION_NRM_*`.
+
+
+---
+
+
+##### List of Norman Missions and Completion Percentage
+
+
+Defined in `Flow_Mission_Data_Public.sch` and `CompletionPercentage_public.sch`:
+
+
+- `SP_MISSION_NRM_SUR_START`   → `CP_ZSTRT`
+- `SP_MISSION_NRM_SUR_AMANDA`  → `CP_ZAMA`
+- `SP_MISSION_NRM_SUR_TRACEY`  → `CP_ZTRA`
+- `SP_MISSION_NRM_SUR_MICHAEL` → `CP_ZMIKE`
+- `SP_MISSION_NRM_SUR_HOME`    → `CP_ZHOME`
+- `SP_MISSION_NRM_SUR_JIMMY`   → `CP_ZJIM`
+- `SP_MISSION_NRM_SUR_PARTY`   → `CP_ZPAR`
+- `SP_MISSION_NRM_SUR_CURE`    → `CP_ZCURE`
+- `SP_MISSION_NRM_RESCUE_ENG`  → `CP_ZRENG`
+- `SP_MISSION_NRM_RESCUE_MED`  → `CP_ZRMED`
+- `SP_MISSION_NRM_RESCUE_GUN`  → `CP_ZRGUN`
+- `SP_MISSION_NRM_SUP_FUEL`    → `CP_ZFUEL`
+- `SP_MISSION_NRM_SUP_AMMO`    → `CP_ZAMMO`
+- `SP_MISSION_NRM_SUP_MEDS`    → `CP_ZMEDS`
+- `SP_MISSION_NRM_SUP_FOOD`    → `CP_ZFOOD`
+- `SP_MISSION_NRM_RADIO_A`     → (CP_NRM group, mnemonic `M_ZRADIO_A`)
+- `SP_MISSION_NRM_RADIO_B`     → (CP_NRM group, mnemonic `M_ZRADIO_B`)
+- `SP_MISSION_NRM_RADIO_C`     → (CP_NRM group, mnemonic `M_ZRADIO_C`)
+
+
+---
+
+
+##### 1. STRAND_NRM_SURVIVE – Main Survival Strand
+
+
+Strand: `STRAND_NRM_SURVIVE`  
+Initializer (referenced in `MISTERIOS_OCULTOS_GTAV.md`):  
+`Strand_NRM_survive_Initialiser.sch`
+
+
+**Missions in the strand:**
+
+
+- `SP_MISSION_NRM_SUR_START`   – Start of survival  
+- `SP_MISSION_NRM_SUR_AMANDA`  – Survival with Amanda  
+- `SP_MISSION_NRM_SUR_TRACEY`  – Survival with Tracey  
+- `SP_MISSION_NRM_SUR_MICHAEL` – Survival with Michael  
+- `SP_MISSION_NRM_SUR_HOME`    – Survival at home  
+- `SP_MISSION_NRM_SUR_JIMMY`   – Survival with Jimmy  
+- `SP_MISSION_NRM_SUR_PARTY`   – Survival at party  
+- `SP_MISSION_NRM_SUR_CURE`    – “Cure” / resolution mission
+
+
+All these missions have dedicated Norman trigger scenes, configured in  
+`flow_mission_trigger_scenes.sch` inside the `#if USE_NRM_DLC` block.
+
+
+Example binding (SUR_START):
+
+
+```88:104:script/dev_ng/singleplayer/include/private/Mission_Flow/TriggerScenes/flow_mission_trigger_scenes.sch
+CASE SP_MISSION_NRM_SUR_START
+    SETUP_TRIGGER_SCENE(paramTrigScene, 
+                        paramMissionID, 
+                        TS_NRM_SUR_START_STREAM_IN_DIST, 
+                        TS_NRM_SUR_START_STREAM_OUT_DIST,
+                        TS_NRM_SUR_START_FRIEND_REJECT_DIST,
+                        TS_NRM_SUR_START_FRIEND_ACCEPT_BITS)
+    paramScenePointers.RESET_TRIGGER_SCENE              = &amp;TS_NRM_SUR_START_RESET
+    paramScenePointers.REQUEST_TRIGGER_SCENE_ASSETS     = &amp;TS_NRM_SUR_START_REQUEST_ASSETS
+    paramScenePointers.RELEASE_TRIGGER_SCENE_ASSETS     = &amp;TS_NRM_SUR_START_RELEASE_ASSETS
+    paramScenePointers.HAVE_TRIGGER_SCENE_ASSETS_LOADED = &amp;TS_NRM_SUR_START_HAVE_ASSETS_LOADED
+    paramScenePointers.CREATE_TRIGGER_SCENE             = &amp;TS_NRM_SUR_START_CREATE
+    ...
+    paramScenePointers.AMBIENT_UPDATE_TRIGGER_SCENE     = &amp;TS_NRM_SUR_START_AMBIENT_UPDATE
+BREAK
+```
+
+
+**What we can say with certainty for each SUR_* mission**  
+(common to all 8, from the trigger scene structure):
+
+
+- They have:
+  - Streaming IN/OUT distances (`TS_NRM_SUR_*_STREAM_IN_DIST/OUT_DIST`)
+  - Friend distances and bits (`FRIEND_REJECT_DIST` / `FRIEND_ACCEPT_BITS`)
+  - Standard procs:
+    - `*_RESET`
+    - `*_REQUEST_ASSETS` / `*_RELEASE_ASSETS`
+    - `*_HAVE_ASSETS_LOADED`
+    - `*_CREATE` / `*_RELEASE` / `*_DELETE`
+    - `*_HAS_BEEN_TRIGGERED` / `*_HAS_BEEN_DISRUPTED` / `*_IS_BLOCKED`
+    - `*_UPDATE` / `*_AMBIENT_UPDATE`
+- They are integrated into:
+  - Repeat play system (`mission_repeat_public.sch`)
+  - Post‑mission system (`player_scene_post_mission.sch`)
+  - Completion percentage system (`CompletionPercentage_public.sch`)
+
+
+**What is NOT in the available code:**
+
+
+- **Exact coordinates** for:
+  - Start point
+  - Intermediate checkpoints
+  - End point
+- **Concrete step‑by‑step objectives** (e.g. “reach X, defend Y…”)  
+- **Dialogue sequences, enemy waves, scripting, etc.**
+
+
+Those would live in:
+- Norman mission scripts `.sc` (`*NRM*.sc`) – **not present**  
+- Implementations of `TS_NRM_SUR_*_CREATE` – **not present**
+
+
+---
+
+
+##### 2. STRAND_NRM_RESCUE_ENG – Engineer Rescue
+
+
+Strand: `STRAND_NRM_RESCUE_ENG`  
+Initializer (from previous analysis): `Strand_NRM_rescueEng_Initialiser.sch`
+
+
+**Mission:**
+- `SP_MISSION_NRM_RESCUE_ENG`
+
+
+**Associated flow flag:**
+- `FLOWFLAG_NRM_HAVE_ENGINEER`
+
+
+**Trigger scene:**
+
+
+```152:164:script/dev_ng/singleplayer/include/private/Mission_Flow/TriggerScenes/flow_mission_trigger_scenes.sch
+CASE SP_MISSION_NRM_RESCUE_ENG
+    SETUP_TRIGGER_SCENE(paramTrigScene, 
+                        paramMissionID, 
+                        TS_NRM_RESCUE_ENG_STREAM_IN_DIST, 
+                        TS_NRM_RESCUE_ENG_STREAM_OUT_DIST,
+                        TS_NRM_RESCUE_ENG_FRIEND_REJECT_DIST,
+                        TS_NRM_RESCUE_ENG_FRIEND_ACCEPT_BITS)
+    paramScenePointers.RESET_TRIGGER_SCENE              = &amp;TS_NRM_RESCUE_ENG_RESET
+    ...
+    paramScenePointers.AMBIENT_UPDATE_TRIGGER_SCENE     = &amp;TS_NRM_RESCUE_ENG_AMBIENT_UPDATE
+BREAK
+```
+
+
+**High‑level interpretation (from names):**
+
+
+- General objective: rescue a key **engineer** for the camp/survivors.
+- Rescue result: `FLOWFLAG_NRM_HAVE_ENGINEER` is set, which likely:
+  - Allows progression of other missions that require the engineer.
+  - May unlock mechanics (e.g. repairing generators, vehicles, etc.).
+
+
+**Limitations:**
+
+
+- Without `.sc` scripts or `*_CREATE` implementations:
+  - Exact coordinates of the rescue are unknown.
+  - Concrete steps (escort, clear area, dialogue, etc.) are unknown.
+
+
+---
+
+
+##### 3. STRAND_NRM_RESCUE_MED – Medic Rescue
+
+
+Strand: `STRAND_NRM_RESCUE_MED`  
+Initializer: `Strand_NRM_rescueMed_Initialiser.sch`
+
+
+**Mission:**
+- `SP_MISSION_NRM_RESCUE_MED`
+
+
+**Associated flow flag:**
+- `FLOWFLAG_NRM_HAVE_MEDIC`
+
+
+**Trigger scene (analogous to RESCUE_ENG):**
+
+
+```194:205:script/dev_ng/singleplayer/include/private/Mission_Flow/TriggerScenes/flow_mission_trigger_scenes.sch
+CASE SP_MISSION_NRM_RESCUE_MED
+    SETUP_TRIGGER_SCENE(paramTrigScene, 
+                        paramMissionID, 
+                        TS_NRM_RESCUE_MED_STREAM_IN_DIST, 
+                        TS_NRM_RESCUE_MED_STREAM_OUT_DIST,
+                        TS_NRM_RESCUE_MED_FRIEND_REJECT_DIST,
+                        TS_NRM_RESCUE_MED_FRIEND_ACCEPT_BITS)
+    ...
+    paramScenePointers.CREATE_TRIGGER_SCENE = &amp;TS_NRM_RESCUE_MED_CREATE
+    ...
+BREAK
+```
+
+
+**High‑level interpretation:**
+
+
+- Objective: rescue a **medic** for the camp.
+- Effect: enable `FLOWFLAG_NRM_HAVE_MEDIC` → the group now has medical personnel.
+
+
+**No concrete data for:**
+
+
+- Exact position of the medic.
+- Combat/defense sequence.
+
+
+---
+
+
+##### 4. STRAND_NRM_RESCUE_GUN – Gunman Rescue
+
+
+Strand: `STRAND_NRM_RESCUE_GUN`  
+Initializer: `Strand_NRM_rescueGun_Initialiser.sch`
+
+
+**Mission:**
+- `SP_MISSION_NRM_RESCUE_GUN`
+
+
+**Associated flow flag:**
+- `FLOWFLAG_NRM_HAVE_GUNMAN`
+
+
+**Trigger scene:** `TS_NRM_RESCUE_GUN_*` (same structure: STREAM_IN/OUT, CREATE, UPDATE, etc.).
+
+
+**Interpretation:**
+
+
+- A combat specialist (gunman) is rescued.
+- This likely reinforces outpost defense or unlocks certain combat‑heavy missions/events.
+
+
+Again, playable details (path, enemies, dialogue) are not in the accessible code.
+
+
+---
+
+
+##### 5–8. Supply Strands (Fuel, Ammo, Meds, Food)
+
+
+Strands:
+
+
+- `STRAND_NRM_SUPPLY_FUEL`  → `SP_MISSION_NRM_SUP_FUEL`  → `FLOWFLAG_NRM_COLLECTED_FUEL`
+- `STRAND_NRM_SUPPLY_AMMO`  → `SP_MISSION_NRM_SUP_AMMO`  → `FLOWFLAG_NRM_COLLECTED_AMMO`
+- `STRAND_NRM_SUPPLY_MED`   → `SP_MISSION_NRM_SUP_MEDS`  → `FLOWFLAG_NRM_COLLECTED_MEDS`
+- `STRAND_NRM_SUPPLY_FOOD`  → `SP_MISSION_NRM_SUP_FOOD`  → `FLOWFLAG_NRM_COLLECTED_FOOD`
+
+
+All these missions:
+- Have their own `TS_NRM_SUP_*_STREAM_IN_DIST/OUT_DIST` and `*_CREATE`, `*_UPDATE`, etc.
+- Appear in `mission_repeat_public.sch` as part of Norman’s flow.
+
+
+**Global interpretation:**
+
+
+- **SUP_FUEL:** obtain fuel (for vehicles, generators).  
+- **SUP_AMMO:** obtain ammunition.  
+- **SUP_MEDS:** obtain medicines.  
+- **SUP_FOOD:** obtain food.
+
+
+Each mission, when completed, activates the corresponding flag (`COLLECTED_*`), which likely:
+- Allows key survival milestones to advance.
+- Feeds into systems like chaos, zone safety, or unlocks further content.
+
+
+###### Norman resources explained one by one
+
+
+- **Fuel (`SP_MISSION_NRM_SUP_FUEL`)**
+  - **Strand:** `STRAND_NRM_SUPPLY_FUEL`
+  - **Flow flag on completion:** `FLOWFLAG_NRM_COLLECTED_FUEL`
+  - **Design meaning:** the group secures enough fuel for vehicles, generators and basic camp power.
+  - **Effect on flow:** from this point the camp is considered “fuel‑supplied”; this can unlock missions/events that depend on having energy (e.g. more active defenses, lighting, etc.).
+
+
+- **Ammo (`SP_MISSION_NRM_SUP_AMMO`)**
+  - **Strand:** `STRAND_NRM_SUPPLY_AMMO`
+  - **Flow flag on completion:** `FLOWFLAG_NRM_COLLECTED_AMMO`
+  - **Design meaning:** the outpost accumulates enough bullets and weapons to keep fighting and defending the base.
+  - **Effect on flow:** ammo scarcity ceases to be a hard block; the system can safely enable missions with more combat or sieges because the group now has stockpiles.
+
+
+- **Meds (`SP_MISSION_NRM_SUP_MEDS`)**
+  - **Strand:** `STRAND_NRM_SUPPLY_MED`
+  - **Flow flag on completion:** `FLOWFLAG_NRM_COLLECTED_MEDS`
+  - **Design meaning:** the camp obtains medkits, drugs and medical supplies to treat wounded and sick survivors.
+  - **Effect on flow:** signals that a stable medical capacity exists; this ties into the medic rescue (`NRM_RESCUE_MED`) and how the injury/status system can evolve in Norman.
+
+
+- **Food (`SP_MISSION_NRM_SUP_FOOD`)**
+  - **Strand:** `STRAND_NRM_SUPPLY_FOOD`
+  - **Flow flag on completion:** `FLOWFLAG_NRM_COLLECTED_FOOD`
+  - **Design meaning:** the group secures a stable food supply to survive in the medium and long term.
+  - **Effect on flow:** the camp is now considered “fed”; it is very likely a prerequisite for advanced stages of the Norman storyline or for stabilizing the chaos state.
+
+
+**How these resources work in code:**
+
+
+- They are not defined as individual inventory “items” (there are no types like `NRM_FUEL_CAN_01`, etc.).
+- They are handled as **binary global states**:
+  - Before the mission: resource “not collected”.
+  - After completion: resource “collected”, represented by `FLOWFLAG_NRM_COLLECTED_* = TRUE`.
+- Those flags are stored in `g_savedGlobalsnorman.sFlow` and are consulted:
+  - To decide which missions/strands can be activated.
+  - To apply systemic changes (e.g. chaos logic, respawns, gameplay restrictions).
+
+
+**What does NOT appear in the available code:**
+
+
+- No location vectors.
+- No objective lists like “collect X crates”, “defend Y waves”, etc.
+- No dedicated Norman inventory structure, nor an explicit list of “gas/food/etc items”; everything is abstracted into missions + flags.
+
+
+---
+
+
+##### 9. STRAND_NRM_RADIO – Radio Missions
+
+
+Strand: `STRAND_NRM_RADIO`  
+Initializer: `Strand_NRM_radio_Initialiser.sch`
+
+
+**Missions:**
+
+
+- `SP_MISSION_NRM_RADIO_A`
+- `SP_MISSION_NRM_RADIO_B`
+- `SP_MISSION_NRM_RADIO_C`
+
+
+Trigger scene bindings:
+
+
+```321:339:script/dev_ng/singleplayer/include/private/Mission_Flow/TriggerScenes/flow_mission_trigger_scenes.sch
+CASE SP_MISSION_NRM_RADIO_A
+    SETUP_TRIGGER_SCENE(... TS_NRM_RADIO_A_STREAM_IN_DIST, TS_NRM_RADIO_A_STREAM_OUT_DIST, ...)
+    ...
+    paramScenePointers.CREATE_TRIGGER_SCENE = &amp;TS_NRM_RADIO_A_CREATE
+    ...
+BREAK
+
+
+CASE SP_MISSION_NRM_RADIO_B
+    ...
+    paramScenePointers.CREATE_TRIGGER_SCENE = &amp;TS_NRM_RADIO_B_CREATE
+    ...
+BREAK
+
+
+CASE SP_MISSION_NRM_RADIO_C
+    ...
+    paramScenePointers.CREATE_TRIGGER_SCENE = &amp;TS_NRM_RADIO_C_CREATE
+    ...
+BREAK
+```
+
+
+In `flow_processing_missions_GAME.sch` we also see that some “do mission at blip” logic falls back to a Norman radio blip if configuration is missing, which indicates:
+- The Norman radio system is important as a **backbone** of the DLC (coordination, narrative or meta‑progress).
+
+
+**But:**
+
+
+- There are no Norman `.sc` scripts → no explicit story flow in the accessible code.
+
+
+---
+
+
+##### Norman Flags and Progress System
+
+
+In `globals_sp_norman.sch` and `saved_globals_sp_norman.sch` (referenced in the main analysis) the following are defined:
+
+
+- `g_savedGlobalsnorman` structures with:
+  - `sFlow.missionSavedData[...]` → completed, failed, etc.
+  - `strandSavedVars[STRAND_*]` → activation and state bitflags.
+
+
+Usage example:
+
+
+```361:365:script/dev_ng/singleplayer/include/public/player_ped_public.sch
+IF (g_savedGlobalsnorman.sFlow.missionSavedData[SP_MISSION_NRM_SUR_START].completed)
+    // logic that only runs if SUR_START is completed
+ENDIF
+```
+
+
+And in `mission_repeat_public.sch`:
+
+
+```369:373:script/dev_ng/singleplayer/include/public/mission_repeat_public.sch
+IF eSPMission = SP_MISSION_NRM_SUR_CURE
+    // special logic to repeat the cure mission
+ENDIF
+```
+
+
+This shows:
+- Norman missions are fully integrated into:
+  - Repeat‑play system
+  - Norman respawn/savehouse system
+  - Completion system
+
+
+---
+
+
+##### On Coordinates, Checkpoints and Detailed Objectives
+
+
+Despite the analysis:
+
+
+- There are **NO**:
+  - Norman mission scripts: `*.sc` with `NRM` or `Norman` in the name.
+  - Implementations of `TS_NRM_*_CREATE`, where we would normally see:
+    - `VECTOR vStartPos = &lt;&lt;x, y, z&gt;&gt;`
+    - Creation of peds, vehicles, mission blips, physical triggers, etc.
+  - Norman‑specific coordinate constants.
+
+
+**Strict conclusion from the code:**
+
+
+- We can document:
+  - Which missions exist.
+  - Which strand each belongs to.
+  - Which completion percentage each uses.
+  - Which flow flags they affect/produce.
+  - How they plug into trigger scene and repeat systems.
+- We **cannot** (honestly) provide:
+  - Numeric coordinates.
+  - Exact paths.
+  - Step‑by‑step objective lists.
+
+
+To obtain those data one would need:
+
+
+1. Access to a game build with the Norman DLC enabled.
+2. Use debug tools (internal script hook, dev menus, etc.) to:
+   - Read Norman mission blip positions at runtime.
+   - Dump routes and triggers from memory.
+3. Or have access to:
+   - The original Norman `.sc` scripts.
+   - Data files (e.g. `.ymap`, `.ytyp`, `.meta` specific to the DLC).
+
+
+---
+
+
+##### Final Summary
+
+
+- **Norman missions identified:** 18 `SP_MISSION_NRM_*` entries (8 survival, 3 radio, 7 rescue/supply).  
+- **Strands:** 9 Norman strands (`SURVIVE`, `RESCUE_*`, `SUPPLY_*`, `RADIO`).  
+- **Progress system:** fully wired into completion %, flow flags and repeat play.  
+- **Data gaps:** missing `.sc` scripts and `TS_NRM_*_CREATE` functions, so there are **no** coordinates or detailed playable objectives in the available code.
+
+
+This document reflects **everything that can be stated with confidence** purely from the source code you have.
+
+
+
+
+##### Norman Mode Missions (spNorman) – Complete Analysis
+
+
+**DLC:** `spNorman`  
+**Feature Flag:** `USE_NRM_DLC`  
+**Type:** Post‑apocalyptic survival DLC  
+**Main flow file:** `script/dev_ng/singleplayer/include/private/Mission_Flow/TriggerScenes/flow_mission_trigger_scenes.sch`
+
+
+Norman Mode introduces a set of survival missions organized into several **strands** (story threads).  
+This document summarizes **everything that can be extracted from the available source code** about those missions: names, strands, trigger scenes, flow flags and completion percentage.
+
+
+**Important limitation:**  
+Implementations of `TS_NRM_*_CREATE` functions and the mission `.sc` scripts **are not present** in this version of the code, so:
+- There are **NO** exact coordinates (`VECTOR &lt;&lt;x, y, z&gt;&gt;`) in the accessible code  
+- There is **NO** programmatic description of step‑by‑step objectives  
+- There *is* flow structure, names and trigger scene bindings
+
+
+---
+
+
+##### Norman Strands
+
+
+Norman strands are obtained with:
+- `GET_STORY_MISSION_STRAND_NRM(SP_MISSIONS paramMissionID)` in  
+  `script/dev_ng/singleplayer/include/public/Flow_Mission_Data_Public.sch`
+
+
+**Known Norman strands:**
+
+
+- `STRAND_NRM_SURVIVE`
+- `STRAND_NRM_RESCUE_ENG`
+- `STRAND_NRM_RESCUE_MED`
+- `STRAND_NRM_RESCUE_GUN`
+- `STRAND_NRM_SUPPLY_FUEL`
+- `STRAND_NRM_SUPPLY_AMMO`
+- `STRAND_NRM_SUPPLY_MED`
+- `STRAND_NRM_SUPPLY_FOOD`
+- `STRAND_NRM_RADIO`
+
+
+Each one groups one or more `SP_MISSION_NRM_*`.
+
+
+---
+
+
+##### List of Norman Missions and Completion Percentage
+
+
+Defined in `Flow_Mission_Data_Public.sch` and `CompletionPercentage_public.sch`:
+
+
+- `SP_MISSION_NRM_SUR_START`   → `CP_ZSTRT`
+- `SP_MISSION_NRM_SUR_AMANDA`  → `CP_ZAMA`
+- `SP_MISSION_NRM_SUR_TRACEY`  → `CP_ZTRA`
+- `SP_MISSION_NRM_SUR_MICHAEL` → `CP_ZMIKE`
+- `SP_MISSION_NRM_SUR_HOME`    → `CP_ZHOME`
+- `SP_MISSION_NRM_SUR_JIMMY`   → `CP_ZJIM`
+- `SP_MISSION_NRM_SUR_PARTY`   → `CP_ZPAR`
+- `SP_MISSION_NRM_SUR_CURE`    → `CP_ZCURE`
+- `SP_MISSION_NRM_RESCUE_ENG`  → `CP_ZRENG`
+- `SP_MISSION_NRM_RESCUE_MED`  → `CP_ZRMED`
+- `SP_MISSION_NRM_RESCUE_GUN`  → `CP_ZRGUN`
+- `SP_MISSION_NRM_SUP_FUEL`    → `CP_ZFUEL`
+- `SP_MISSION_NRM_SUP_AMMO`    → `CP_ZAMMO`
+- `SP_MISSION_NRM_SUP_MEDS`    → `CP_ZMEDS`
+- `SP_MISSION_NRM_SUP_FOOD`    → `CP_ZFOOD`
+- `SP_MISSION_NRM_RADIO_A`     → (CP_NRM group, mnemonic `M_ZRADIO_A`)
+- `SP_MISSION_NRM_RADIO_B`     → (CP_NRM group, mnemonic `M_ZRADIO_B`)
+- `SP_MISSION_NRM_RADIO_C`     → (CP_NRM group, mnemonic `M_ZRADIO_C`)
+
+
+---
+
+
+##### 1. STRAND_NRM_SURVIVE – Main Survival Strand
+
+
+Strand: `STRAND_NRM_SURVIVE`  
+Initializer (referenced in `MISTERIOS_OCULTOS_GTAV.md`):  
+`Strand_NRM_survive_Initialiser.sch`
+
+
+**Missions in the strand:**
+
+
+- `SP_MISSION_NRM_SUR_START`   – Start of survival  
+- `SP_MISSION_NRM_SUR_AMANDA`  – Survival with Amanda  
+- `SP_MISSION_NRM_SUR_TRACEY`  – Survival with Tracey  
+- `SP_MISSION_NRM_SUR_MICHAEL` – Survival with Michael  
+- `SP_MISSION_NRM_SUR_HOME`    – Survival at home  
+- `SP_MISSION_NRM_SUR_JIMMY`   – Survival with Jimmy  
+- `SP_MISSION_NRM_SUR_PARTY`   – Survival at party  
+- `SP_MISSION_NRM_SUR_CURE`    – “Cure” / resolution mission
+
+
+All these missions have dedicated Norman trigger scenes, configured in  
+`flow_mission_trigger_scenes.sch` inside the `#if USE_NRM_DLC` block.
+
+
+Example binding (SUR_START):
+
+
+```88:104:script/dev_ng/singleplayer/include/private/Mission_Flow/TriggerScenes/flow_mission_trigger_scenes.sch
+CASE SP_MISSION_NRM_SUR_START
+    SETUP_TRIGGER_SCENE(paramTrigScene, 
+                        paramMissionID, 
+                        TS_NRM_SUR_START_STREAM_IN_DIST, 
+                        TS_NRM_SUR_START_STREAM_OUT_DIST,
+                        TS_NRM_SUR_START_FRIEND_REJECT_DIST,
+                        TS_NRM_SUR_START_FRIEND_ACCEPT_BITS)
+    paramScenePointers.RESET_TRIGGER_SCENE              = &amp;TS_NRM_SUR_START_RESET
+    paramScenePointers.REQUEST_TRIGGER_SCENE_ASSETS     = &amp;TS_NRM_SUR_START_REQUEST_ASSETS
+    paramScenePointers.RELEASE_TRIGGER_SCENE_ASSETS     = &amp;TS_NRM_SUR_START_RELEASE_ASSETS
+    paramScenePointers.HAVE_TRIGGER_SCENE_ASSETS_LOADED = &amp;TS_NRM_SUR_START_HAVE_ASSETS_LOADED
+    paramScenePointers.CREATE_TRIGGER_SCENE             = &amp;TS_NRM_SUR_START_CREATE
+    ...
+    paramScenePointers.AMBIENT_UPDATE_TRIGGER_SCENE     = &amp;TS_NRM_SUR_START_AMBIENT_UPDATE
+BREAK
+```
+
+
+**What we can say with certainty for each SUR_* mission**  
+(common to all 8, from the trigger scene structure):
+
+
+- They have:
+  - Streaming IN/OUT distances (`TS_NRM_SUR_*_STREAM_IN_DIST/OUT_DIST`)
+  - Friend distances and bits (`FRIEND_REJECT_DIST` / `FRIEND_ACCEPT_BITS`)
+  - Standard procs:
+    - `*_RESET`
+    - `*_REQUEST_ASSETS` / `*_RELEASE_ASSETS`
+    - `*_HAVE_ASSETS_LOADED`
+    - `*_CREATE` / `*_RELEASE` / `*_DELETE`
+    - `*_HAS_BEEN_TRIGGERED` / `*_HAS_BEEN_DISRUPTED` / `*_IS_BLOCKED`
+    - `*_UPDATE` / `*_AMBIENT_UPDATE`
+- They are integrated into:
+  - Repeat play system (`mission_repeat_public.sch`)
+  - Post‑mission system (`player_scene_post_mission.sch`)
+  - Completion percentage system (`CompletionPercentage_public.sch`)
+
+
+**What is NOT in the available code:**
+
+
+- **Exact coordinates** for:
+  - Start point
+  - Intermediate checkpoints
+  - End point
+- **Concrete step‑by‑step objectives** (e.g. “reach X, defend Y…”)  
+- **Dialogue sequences, enemy waves, scripting, etc.**
+
+
+Those would live in:
+- Norman mission scripts `.sc` (`*NRM*.sc`) – **not present**  
+- Implementations of `TS_NRM_SUR_*_CREATE` – **not present**
+
+
+---
+
+
+##### 2. STRAND_NRM_RESCUE_ENG – Engineer Rescue
+
+
+Strand: `STRAND_NRM_RESCUE_ENG`  
+Initializer (from previous analysis): `Strand_NRM_rescueEng_Initialiser.sch`
+
+
+**Mission:**
+- `SP_MISSION_NRM_RESCUE_ENG`
+
+
+**Associated flow flag:**
+- `FLOWFLAG_NRM_HAVE_ENGINEER`
+
+
+**Trigger scene:**
+
+
+```152:164:script/dev_ng/singleplayer/include/private/Mission_Flow/TriggerScenes/flow_mission_trigger_scenes.sch
+CASE SP_MISSION_NRM_RESCUE_ENG
+    SETUP_TRIGGER_SCENE(paramTrigScene, 
+                        paramMissionID, 
+                        TS_NRM_RESCUE_ENG_STREAM_IN_DIST, 
+                        TS_NRM_RESCUE_ENG_STREAM_OUT_DIST,
+                        TS_NRM_RESCUE_ENG_FRIEND_REJECT_DIST,
+                        TS_NRM_RESCUE_ENG_FRIEND_ACCEPT_BITS)
+    paramScenePointers.RESET_TRIGGER_SCENE              = &amp;TS_NRM_RESCUE_ENG_RESET
+    ...
+    paramScenePointers.AMBIENT_UPDATE_TRIGGER_SCENE     = &amp;TS_NRM_RESCUE_ENG_AMBIENT_UPDATE
+BREAK
+```
+
+
+**High‑level interpretation (from names):**
+
+
+- General objective: rescue a key **engineer** for the camp/survivors.
+- Rescue result: `FLOWFLAG_NRM_HAVE_ENGINEER` is set, which likely:
+  - Allows progression of other missions that require the engineer.
+  - May unlock mechanics (e.g. repairing generators, vehicles, etc.).
+
+
+**Limitations:**
+
+
+- Without `.sc` scripts or `*_CREATE` implementations:
+  - Exact coordinates of the rescue are unknown.
+  - Concrete steps (escort, clear area, dialogue, etc.) are unknown.
+
+
+---
+
+
+##### 3. STRAND_NRM_RESCUE_MED – Medic Rescue
+
+
+Strand: `STRAND_NRM_RESCUE_MED`  
+Initializer: `Strand_NRM_rescueMed_Initialiser.sch`
+
+
+**Mission:**
+- `SP_MISSION_NRM_RESCUE_MED`
+
+
+**Associated flow flag:**
+- `FLOWFLAG_NRM_HAVE_MEDIC`
+
+
+**Trigger scene (analogous to RESCUE_ENG):**
+
+
+```194:205:script/dev_ng/singleplayer/include/private/Mission_Flow/TriggerScenes/flow_mission_trigger_scenes.sch
+CASE SP_MISSION_NRM_RESCUE_MED
+    SETUP_TRIGGER_SCENE(paramTrigScene, 
+                        paramMissionID, 
+                        TS_NRM_RESCUE_MED_STREAM_IN_DIST, 
+                        TS_NRM_RESCUE_MED_STREAM_OUT_DIST,
+                        TS_NRM_RESCUE_MED_FRIEND_REJECT_DIST,
+                        TS_NRM_RESCUE_MED_FRIEND_ACCEPT_BITS)
+    ...
+    paramScenePointers.CREATE_TRIGGER_SCENE = &amp;TS_NRM_RESCUE_MED_CREATE
+    ...
+BREAK
+```
+
+
+**High‑level interpretation:**
+
+
+- Objective: rescue a **medic** for the camp.
+- Effect: enable `FLOWFLAG_NRM_HAVE_MEDIC` → the group now has medical personnel.
+
+
+**No concrete data for:**
+
+
+- Exact position of the medic.
+- Combat/defense sequence.
+
+
+---
+
+
+##### 4. STRAND_NRM_RESCUE_GUN – Gunman Rescue
+
+
+Strand: `STRAND_NRM_RESCUE_GUN`  
+Initializer: `Strand_NRM_rescueGun_Initialiser.sch`
+
+
+**Mission:**
+- `SP_MISSION_NRM_RESCUE_GUN`
+
+
+**Associated flow flag:**
+- `FLOWFLAG_NRM_HAVE_GUNMAN`
+
+
+**Trigger scene:** `TS_NRM_RESCUE_GUN_*` (same structure: STREAM_IN/OUT, CREATE, UPDATE, etc.).
+
+
+**Interpretation:**
+
+
+- A combat specialist (gunman) is rescued.
+- This likely reinforces outpost defense or unlocks certain combat‑heavy missions/events.
+
+
+Again, playable details (path, enemies, dialogue) are not in the accessible code.
+
+
+---
+
+
+##### 5–8. Supply Strands (Fuel, Ammo, Meds, Food)
+
+
+Strands:
+
+
+- `STRAND_NRM_SUPPLY_FUEL`  → `SP_MISSION_NRM_SUP_FUEL`  → `FLOWFLAG_NRM_COLLECTED_FUEL`
+- `STRAND_NRM_SUPPLY_AMMO`  → `SP_MISSION_NRM_SUP_AMMO`  → `FLOWFLAG_NRM_COLLECTED_AMMO`
+- `STRAND_NRM_SUPPLY_MED`   → `SP_MISSION_NRM_SUP_MEDS`  → `FLOWFLAG_NRM_COLLECTED_MEDS`
+- `STRAND_NRM_SUPPLY_FOOD`  → `SP_MISSION_NRM_SUP_FOOD`  → `FLOWFLAG_NRM_COLLECTED_FOOD`
+
+
+All these missions:
+- Have their own `TS_NRM_SUP_*_STREAM_IN_DIST/OUT_DIST` and `*_CREATE`, `*_UPDATE`, etc.
+- Appear in `mission_repeat_public.sch` as part of Norman’s flow.
+
+
+**Global interpretation:**
+
+
+- **SUP_FUEL:** obtain fuel (for vehicles, generators).  
+- **SUP_AMMO:** obtain ammunition.  
+- **SUP_MEDS:** obtain medicines.  
+- **SUP_FOOD:** obtain food.
+
+
+Each mission, when completed, activates the corresponding flag (`COLLECTED_*`), which likely:
+- Allows key survival milestones to advance.
+- Feeds into systems like chaos, zone safety, or unlocks further content.
+
+
+###### Norman resources explained one by one
+
+
+- **Fuel (`SP_MISSION_NRM_SUP_FUEL`)**
+  - **Strand:** `STRAND_NRM_SUPPLY_FUEL`
+  - **Flow flag on completion:** `FLOWFLAG_NRM_COLLECTED_FUEL`
+  - **Design meaning:** the group secures enough fuel for vehicles, generators and basic camp power.
+  - **Effect on flow:** from this point the camp is considered “fuel‑supplied”; this can unlock missions/events that depend on having energy (e.g. more active defenses, lighting, etc.).
+
+
+- **Ammo (`SP_MISSION_NRM_SUP_AMMO`)**
+  - **Strand:** `STRAND_NRM_SUPPLY_AMMO`
+  - **Flow flag on completion:** `FLOWFLAG_NRM_COLLECTED_AMMO`
+  - **Design meaning:** the outpost accumulates enough bullets and weapons to keep fighting and defending the base.
+  - **Effect on flow:** ammo scarcity ceases to be a hard block; the system can safely enable missions with more combat or sieges because the group now has stockpiles.
+
+
+- **Meds (`SP_MISSION_NRM_SUP_MEDS`)**
+  - **Strand:** `STRAND_NRM_SUPPLY_MED`
+  - **Flow flag on completion:** `FLOWFLAG_NRM_COLLECTED_MEDS`
+  - **Design meaning:** the camp obtains medkits, drugs and medical supplies to treat wounded and sick survivors.
+  - **Effect on flow:** signals that a stable medical capacity exists; this ties into the medic rescue (`NRM_RESCUE_MED`) and how the injury/status system can evolve in Norman.
+
+
+- **Food (`SP_MISSION_NRM_SUP_FOOD`)**
+  - **Strand:** `STRAND_NRM_SUPPLY_FOOD`
+  - **Flow flag on completion:** `FLOWFLAG_NRM_COLLECTED_FOOD`
+  - **Design meaning:** the group secures a stable food supply to survive in the medium and long term.
+  - **Effect on flow:** the camp is now considered “fed”; it is very likely a prerequisite for advanced stages of the Norman storyline or for stabilizing the chaos state.
+
+
+**How these resources work in code:**
+
+
+- They are not defined as individual inventory “items” (there are no types like `NRM_FUEL_CAN_01`, etc.).
+- They are handled as **binary global states**:
+  - Before the mission: resource “not collected”.
+  - After completion: resource “collected”, represented by `FLOWFLAG_NRM_COLLECTED_* = TRUE`.
+- Those flags are stored in `g_savedGlobalsnorman.sFlow` and are consulted:
+  - To decide which missions/strands can be activated.
+  - To apply systemic changes (e.g. chaos logic, respawns, gameplay restrictions).
+
+
+**What does NOT appear in the available code:**
+
+
+- No location vectors.
+- No objective lists like “collect X crates”, “defend Y waves”, etc.
+- No dedicated Norman inventory structure, nor an explicit list of “gas/food/etc items”; everything is abstracted into missions + flags.
+
+
+---
+
+
+##### 9. STRAND_NRM_RADIO – Radio Missions
+
+
+Strand: `STRAND_NRM_RADIO`  
+Initializer: `Strand_NRM_radio_Initialiser.sch`
+
+
+**Missions:**
+
+
+- `SP_MISSION_NRM_RADIO_A`
+- `SP_MISSION_NRM_RADIO_B`
+- `SP_MISSION_NRM_RADIO_C`
+
+
+Trigger scene bindings:
+
+
+```321:339:script/dev_ng/singleplayer/include/private/Mission_Flow/TriggerScenes/flow_mission_trigger_scenes.sch
+CASE SP_MISSION_NRM_RADIO_A
+    SETUP_TRIGGER_SCENE(... TS_NRM_RADIO_A_STREAM_IN_DIST, TS_NRM_RADIO_A_STREAM_OUT_DIST, ...)
+    ...
+    paramScenePointers.CREATE_TRIGGER_SCENE = &amp;TS_NRM_RADIO_A_CREATE
+    ...
+BREAK
+
+
+CASE SP_MISSION_NRM_RADIO_B
+    ...
+    paramScenePointers.CREATE_TRIGGER_SCENE = &amp;TS_NRM_RADIO_B_CREATE
+    ...
+BREAK
+
+
+CASE SP_MISSION_NRM_RADIO_C
+    ...
+    paramScenePointers.CREATE_TRIGGER_SCENE = &amp;TS_NRM_RADIO_C_CREATE
+    ...
+BREAK
+```
+
+
+In `flow_processing_missions_GAME.sch` we also see that some “do mission at blip” logic falls back to a Norman radio blip if configuration is missing, which indicates:
+- The Norman radio system is important as a **backbone** of the DLC (coordination, narrative or meta‑progress).
+
+
+**But:**
+
+
+- There are no Norman `.sc` scripts → no explicit story flow in the accessible code.
+
+
+---
+
+
+##### Norman Flags and Progress System
+
+
+In `globals_sp_norman.sch` and `saved_globals_sp_norman.sch` (referenced in the main analysis) the following are defined:
+
+
+- `g_savedGlobalsnorman` structures with:
+  - `sFlow.missionSavedData[...]` → completed, failed, etc.
+  - `strandSavedVars[STRAND_*]` → activation and state bitflags.
+
+
+Usage example:
+
+
+```361:365:script/dev_ng/singleplayer/include/public/player_ped_public.sch
+IF (g_savedGlobalsnorman.sFlow.missionSavedData[SP_MISSION_NRM_SUR_START].completed)
+    // logic that only runs if SUR_START is completed
+ENDIF
+```
+
+
+And in `mission_repeat_public.sch`:
+
+
+```369:373:script/dev_ng/singleplayer/include/public/mission_repeat_public.sch
+IF eSPMission = SP_MISSION_NRM_SUR_CURE
+    // special logic to repeat the cure mission
+ENDIF
+```
+
+
+This shows:
+- Norman missions are fully integrated into:
+  - Repeat‑play system
+  - Norman respawn/savehouse system
+  - Completion system
+
+
+---
+
+
+##### On Coordinates, Checkpoints and Detailed Objectives
+
+
+Despite the analysis:
+
+
+- There are **NO**:
+  - Norman mission scripts: `*.sc` with `NRM` or `Norman` in the name.
+  - Implementations of `TS_NRM_*_CREATE`, where we would normally see:
+    - `VECTOR vStartPos = &lt;&lt;x, y, z&gt;&gt;`
+    - Creation of peds, vehicles, mission blips, physical triggers, etc.
+  - Norman‑specific coordinate constants.
+
+
+**Strict conclusion from the code:**
+
+
+- We can document:
+  - Which missions exist.
+  - Which strand each belongs to.
+  - Which completion percentage each uses.
+  - Which flow flags they affect/produce.
+  - How they plug into trigger scene and repeat systems.
+- We **cannot** (honestly) provide:
+  - Numeric coordinates.
+  - Exact paths.
+  - Step‑by‑step objective lists.
+
+
+To obtain those data one would need:
+
+
+1. Access to a game build with the Norman DLC enabled.
+2. Use debug tools (internal script hook, dev menus, etc.) to:
+   - Read Norman mission blip positions at runtime.
+   - Dump routes and triggers from memory.
+3. Or have access to:
+   - The original Norman `.sc` scripts.
+   - Data files (e.g. `.ymap`, `.ytyp`, `.meta` specific to the DLC).
+
+
+---
+
+
+##### Final Summary
+
+
+- **Norman missions identified:** 18 `SP_MISSION_NRM_*` entries (8 survival, 3 radio, 7 rescue/supply).  
+- **Strands:** 9 Norman strands (`SURVIVE`, `RESCUE_*`, `SUPPLY_*`, `RADIO`).  
+- **Progress system:** fully wired into completion %, flow flags and repeat play.  
+- **Data gaps:** missing `.sc` scripts and `TS_NRM_*_CREATE` functions, so there are **no** coordinates or detailed playable objectives in the available code.
+
+
+This document reflects **everything that can be stated with confidence** purely from the source code you have.</code></pre></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 3 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/1p7vi2n/gta_v_zombie_mode_exposed_missions_revealed/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

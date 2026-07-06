@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA V Jetpack Missions REVEALED | Leaked Source Code (April 2018) · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Developing</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">GTA V Jetpack Missions REVEALED | Leaked Source Code (April 2018)</h1>
+    <div class="post-meta"><span class="score">▲ 45 pts</span><span>u/Extreme-Many-3573</span><span>Nov 27, 2025</span><span>38 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/1p7tn52/gta_v_jetpack_missions_revealed_leaked_source/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge" href="../techniques/tq-barcode.html">Barcode &amp; QR-Code Scanning</a><a class="badge weak-chip" href="../techniques/tq-x4-020.html" title="Weak match: this post may not actually demonstrate this method.">Cross-Platform Build Comparison ?</a><a class="badge" href="../techniques/tq-x6-015.html">Cross-Platform Hash Verification</a><a class="badge" href="../techniques/tq-x4-004.html">Memory-Scanning for Hidden State Flags</a><a class="badge" href="../techniques/tq-mission-order.html">Mission Order / Narrative Flow Analysis</a><a class="badge" href="../techniques/tq-openiv.html">OpenIV Analysis</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><pre><code>For more context: The Leaked GTA V Source Code Is NOT an Early Build: It’s the DEFINITIVE Version Updated Up to April 2018.
+-&gt; https://www.reddit.com/r/chiliadmystery/comments/1p7t60o/the_leaked_gta_v_source_code_is_not_an_early/
+
+-----
+
+#### Jetpack (Jetpack System) - COMPLETE ANALYSIS
+
+
+&gt; 
+**🔴 PART OF THE CHILIAD MYSTERY**
+ - The jetpack is one of the main symbols in the Chiliad mural.
+
+
+**Control File:**
+ `script/dev_ng/singleplayer/include/private/script_launch_control.sch`
+
+
+##### Jetpack Unlock System
+
+
+**Unlock Flag:**
+- 
+**Name:**
+ `FLOWFLAG_JP_UNLOCKED`
+- 
+**Location:**
+ `script/dev_ng/core/game/flow/flow_commands_enums_GAME.sch` (line 957)
+- 
+**Context:**
+ Defined within `#if USE_CLF_DLC`
+- 
+**⚠️ IMPORTANT:**
+ The flag exists in the codebase, but it&#x27;s inside the `USE_CLF_DLC` block, which means it technically requires the Clifford DLC to be accessible
+
+
+**Jetpack Script:**
+- 
+**Name:**
+ `jetpack_controller`
+- 
+**Hash:**
+ `HASH(&quot;jetpack_controller&quot;)`
+- 
+**Verification Function:**
+ `DO_JETPACK_LAUNCH_CHECK()`
+
+
+**Complete Conditions to Activate the Jetpack:**
+```sc
+#IF USE_CLF_DLC
+PROC DO_JETPACK_LAUNCH_CHECK
+    IF (GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(HASH(&quot;jetpack_controller&quot;)) = 0)
+    AND (GET_MISSION_FLOW_FLAG_STATE(FLOWFLAG_JP_UNLOCKED))
+    AND ((NOT IS_CURRENTLY_ON_MISSION_OF_ANY_TYPE()) OR g_sjpData.bJPEnabledOnMission)
+    AND (NOT IS_PED_DEAD_OR_DYING(PLAYER_PED_ID()))
+        REQUEST_AND_LAUNCH_SCRIPT_WITH_NAME_HASH(HASH(&quot;jetpack_controller&quot;))
+    ENDIF
+ENDPROC
+#ENDIF
+```
+
+
+**Jetpack Data Structure:**
+```sc
+STRUCT S_JP_DATA
+    BOOL bJPControllerEnabled = TRUE
+    INT iContextBtnIntent = -1
+    INT iTakeOffTime = 3000
+    INT iTakeoffTimer = 0
+    FLOAT fTakeoffForce = 1000.0
+    BOOL bShowJPHUD = FALSE
+    BOOL bJPEnabledOnMission = FALSE
+ENDSTRUCT
+```
+- 
+**Global Variable:**
+ `g_sJPData` (also referenced as `g_sjpData`)
+- 
+**Location:**
+ `script/dev_ng/singleplayer/include/globals/dlc/globals_sp_clifford.sch` (line 39)
+
+
+##### Jetpack Native Functions
+
+
+**Documentation:**
+ `script/dev_ng/Tools/trac/ScriptCommands/NativeHeaderTracFormat.txt`
+
+
+**Available Functions:**
+1. 
+**`JETPACK_GOTO_POINT(PedIndex, vGoToPoint, eMovementAxis, fTargetRadius)`**
+   - Makes a ped with jetpack go to a specific point
+   - 
+**Parameters:**
+     - `PedIndex`: Ped index
+     - `vGoToPoint`: Destination coordinates vector
+     - `eMovementAxis`: Movement axis (default `MOVE_POSY`)
+     - `fTargetRadius`: Arrival radius (default 3.0)
+   - 
+**Note:**
+ Only the Y axis is fully supported currently
+
+
+2. 
+**`JETPACK_COMBAT(PedIndex, EnemyPedIndex)`**
+   - Makes a ped with jetpack combat another ped
+   - 
+**Parameters:**
+     - `PedIndex`: Jetpack ped index
+     - `EnemyPedIndex`: Enemy index
+
+
+3. 
+**`JETPACK_GOTO_POINT_AND_FACE_ANOTHER_POINT()`**
+   - Goes to a point and faces another point
+
+
+4. 
+**`JETPACK_TURN_TO_POINT()`**
+   - Turns towards a specific point
+
+
+5. 
+**`JETPACK_HAS_PED_REACHED_POSITION()`**
+   - Checks if the ped has reached its target position
+
+
+##### Jetpack Level System
+
+
+**Level Variable:**
+- 
+**Name:**
+ `FLOWINT_CLF_JETPACK_LEVEL`
+- 
+**Type:**
+ Flow Integer (integer value in the flow system)
+
+
+**Code Command:**
+- 
+**ID:**
+ `CID_CLF_INCREASE_JETPACK_LEVEL`
+- 
+**Executor Function:**
+ `Execute_CLF_Increase_Jetpack_Level()`
+- 
+**Location:**
+ `script/dev_ng/singleplayer/include/public/code_control_data_CLF.sch` (lines 33-37)
+
+
+**Implementation:**
+```sc
+// Executed by CID_CLF_INCREASE_JETPACK_LEVEL.
+PROC Execute_CLF_Increase_Jetpack_Level()
+    int level = GET_MISSION_FLOW_INT_VALUE(FLOWINT_CLF_JETPACK_LEVEL) + 1
+    SET_MISSION_FLOW_INT_VALUE(FLOWINT_CLF_JETPACK_LEVEL, level)
+ENDPROC
+```
+
+
+##### DLC Clifford (Agent Trevor) - Complete System
+
+
+**DLC Name:**
+ `dlc_agentTrevor` (also referenced as &quot;Agent Trevor&quot; or &quot;Clifford&quot;)
+
+
+**Main Activation File:**
+ `script/dev_ng/singleplayer/scripts/main/startup.sc`
+
+
+##### Clifford DLC Activation Methods
+
+
+**1. DLC Present in System:**
+```sc
+IF IS_DLC_PRESENT(HASH(&quot;dlc_agentTrevor&quot;))
+    // Activates Clifford mode
+    eGameType = eGameClifford
+    g_bLoadedClifford = TRUE
+ENDIF
+```
+
+
+**2. Command Line Command (Debug Builds Only):**
+```sc
+#IF IS_DEBUG_BUILD
+    IF GET_COMMANDLINE_PARAM_EXISTS(&quot;ForceClifford&quot;)
+        eGameType = eGameClifford
+        g_bLoadedClifford = TRUE
+    ENDIF
+#ENDIF
+```
+
+
+**3. DLC Selection Screen:**
+- 
+**Feature Flag:**
+ `FEATURE_SP_DLC_SELECTION`
+- 
+**Condition:**
+ If `FEATURE_SP_DLC_SELECTION` is active AND the `dlc_agentTrevor` DLC is present
+- 
+**Process:**
+  1. A selection screen is shown when starting the game
+  2. The player can choose between:
+     - 
+**GTA Mode**
+ (normal) - `eGameGTA`
+     - 
+**Clifford Mode**
+ - `eGameClifford`
+     - 
+**Norman Mode**
+ - `eGameNorman` (if `spNorman` is present)
+  3. Controls:
+     - 
+**Left/Right Arrow:**
+ Switch between modes
+     - 
+**Enter/Accept:**
+ Confirm selection
+  4. On-screen texts:
+     - `DBG_GTAV` - Normal GTA V mode
+     - `DBG_CLIF` - Clifford mode
+     - `DBG_NORM` - Norman mode
+
+
+**Global State Variable:**
+- 
+**Name:**
+ `g_bLoadedClifford`
+- 
+**Type:**
+ `BOOL`
+- 
+**Location:**
+ Defined in `startup.sc`
+- 
+**Usage:**
+ Checked in multiple scripts to determine if the DLC is active
+
+
+##### CLF Jetpack Strand - Jetpack Missions
+
+
+**Main Strand:**
+ `STRAND_CLF_JET`
+- 
+**Initializer:**
+ `Strand_CLF_Jetpack_Initialiser.sch`
+- 
+**Initialization Function:**
+ `Initialise_Strand_CLF_Jetpack()`
+- 
+**Location:**
+ `script/dev_ng/singleplayer/include/private/Mission_Flow/Mission_flow_Initialiser.sch` (line 155)
+
+
+##### CLF Jetpack Strand Missions
+
+
+**1. SP_MISSION_CLF_JET_1 - First Jetpack Mission**
+- 
+**Trigger Scene:**
+ `trigger_scene_CLF_JET_1.sch`
+- 
+**Trigger Scene Functions:**
+  - `TS_CLF_JET_1_RESET` - Resets the scene
+  - `TS_CLF_JET_1_REQUEST_ASSETS` - Requests assets
+  - `TS_CLF_JET_1_CREATE` - Creates the scene
+  - `TS_CLF_JET_1_HAS_BEEN_TRIGGERED` - Checks if it was activated
+  - `TS_CLF_JET_1_UPDATE` - Updates the scene
+  - `TS_CLF_JET_1_AMBIENT_UPDATE` - Ambient update
+- 
+**Distances:**
+  - `TS_CLF_JET_1_STREAM_IN_DIST` - Load distance
+  - `TS_CLF_JET_1_STREAM_OUT_DIST` - Unload distance
+  - `TS_CLF_JET_1_FRIEND_REJECT_DIST` - Friend reject distance
+- 
+**Completion Percentage:**
+ `CP_CLFJET1`
+
+
+**2. SP_MISSION_CLF_JET_2 - Second Jetpack Mission**
+- 
+**Trigger Scene:**
+ `trigger_scene_CLF_JET_2.sch`
+- 
+**Similar functions to JET_1**
+- 
+**Completion Percentage:**
+ `CP_CLFJET2`
+
+
+**3. SP_MISSION_CLF_JET_3 - Third Jetpack Mission**
+- 
+**Trigger Scene:**
+ `trigger_scene_CLF_JET_3.sch`
+- **Similar functions to JET_1`
+- 
+**Completion Percentage:**
+ `CP_CLFJET3`
+
+
+**4. SP_MISSION_CLF_JET_REP - Repeatable Jetpack Mission**
+- 
+**Trigger Scene:**
+ `trigger_scene_CLF_JET_Repeat.sch`
+- **Similar functions to JET_1`
+- 
+**Completion Percentage:**
+ `CP_CLFJETREP`
+- 
+**⚠️ NOTE:**
+ This mission is repeatable, suggesting it can be played multiple times
+
+
+##### CLF Missions Related to Jetpack (Other Strands)
+
+
+**IAA Strand (International Agency):**
+- 
+**SP_MISSION_CLF_IAA_JET**
+ - IAA mission with jetpack
+  - 
+**Trigger Scene:**
+ `trigger_scene_CLF_IAA_Jetpack.sch`
+  - 
+**Completion Percentage:**
+ `CP_CLFCJ`
+  - 
+**Location in Trigger Scenes:**
+ Lines 2482-2498 of `flow_mission_trigger_scenes.sch`
+
+
+**RUS Strand (Russian):**
+- 
+**SP_MISSION_CLF_RUS_JET**
+ - RUS mission with jetpack
+  - 
+**Trigger Scene:**
+ `trigger_scene_CLF_RUS_Jetpack.sch`
+  - 
+**Completion Percentage:**
+ `CP_CLFRJ`
+  - 
+**Location in Trigger Scenes:**
+ Lines 2734-2746 of `flow_mission_trigger_scenes.sch`
+
+
+##### Other CLF Strands (Not Directly Related to Jetpack)
+
+
+The Clifford DLC contains multiple mission strands:
+
+
+1. 
+**STRAND_CLF**
+ - Main Clifford strand
+2. 
+**STRAND_CLF_ARA**
+ - Arabic strand
+3. 
+**STRAND_CLF_CAS1, CAS2, CAS3**
+ - Casino strands (3 strands)
+4. 
+**STRAND_CLF_IAA**
+ - International agency strand
+5. 
+**STRAND_CLF_KOR**
+ - Korean strand
+6. 
+**STRAND_CLF_RUS**
+ - Russian strand
+7. 
+**STRAND_CLF_ASS_PAP, STRAND_CLF_ASS_A14**
+ - Assassination strands (2 strands)
+8. 
+**STRAND_CLF_JET**
+ - Jetpack strand ⭐
+9. 
+**STRAND_CLF_MIL, STRAND_CLF_MIL2, STRAND_CLF_MIL3**
+ - Military strands (3 strands)
+10. 
+**STRAND_CLF_RC_ALEX, STRAND_CLF_RC_MELODY, STRAND_CLF_RC_AGNES, STRAND_CLF_RC_CLAIRE**
+ - Random character strands (4 strands)
+
+
+**Total CLF Strands:**
+ At least 18 different strands
+
+
+##### CLF Training Mission
+
+
+**SP_MISSION_CLF_TRAIN**
+ - Training Mission
+- 
+**Trigger Scene:**
+ `trigger_scene_CLF_train.sch`
+- 
+**Completion Percentage:**
+ `CP_CLFT`
+- 
+**Importance:**
+ This mission appears to be the first mission of the DLC, as:
+  - Its completion is checked to activate the PI menu (`PI_MENUCLF`)
+  - It&#x27;s used as a reference in multiple systems
+  - It may be required to unlock other missions
+
+
+**PI Menu Activation Code:**
+```sc
+#IF USE_CLF_DLC
+    IF GET_MISSION_COMPLETE_STATE(SP_MISSION_CLF_TRAIN)
+        IF (GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(HASH(&quot;PI_MENUCLF&quot;)) = 0)
+            REQUEST_AND_LAUNCH_SCRIPT_WITH_NAME_HASH(HASH(&quot;PI_MENUCLF&quot;))
+        ENDIF
+    ENDIF
+#ENDIF
+```
+
+
+##### CLF Mission Triggers System
+
+
+**Script:**
+ `mission_trigger_CLF`
+- 
+**Hash:**
+ `HASH(&quot;mission_trigger_CLF&quot;)`
+- 
+**Activation:**
+ Launched when there are no active missions and the player can start story missions
+
+
+**Activation Code:**
+```sc
+IF CAN_MISSION_TYPE_START_AGAINST_CURRENT_TYPE(MISSION_TYPE_STORY) 
+AND NOT IS_REPEAT_PLAY_ACTIVE()
+    IF GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(HASH(&quot;mission_trigger_CLF&quot;)) = 0
+        REQUEST_AND_LAUNCH_SCRIPT_WITH_NAME_HASH(HASH(&quot;mission_trigger_CLF&quot;))
+    ENDIF
+ELSE
+    // If we&#x27;re in a mission, unload the trigger
+    IF HAS_SCRIPT_WITH_NAME_HASH_LOADED(HASH(&quot;mission_trigger_CLF&quot;))
+        SET_SCRIPT_WITH_NAME_HASH_AS_NO_LONGER_NEEDED(HASH(&quot;mission_trigger_CLF&quot;))
+    ENDIF
+ENDIF
+```
+
+
+**Trigger Registration Functions:**
+- `REGISTER_BASE_MISSION_TRIGGER_CLF()` - Registers a base trigger
+- `REGISTER_SCENE_MISSION_TRIGGER_CLF()` - Registers a scene trigger
+- `Has_Mission_Trigger_Triggered_CLF()` - Checks if a trigger was activated
+- `Triggered_Mission_Has_Terminated_CLF()` - Marks a mission as terminated
+- `Remove_Mission_Trigger_CLF()` - Removes a trigger
+
+
+##### CLF Code Commands System
+
+
+**Available Commands:**
+1. 
+**CID_CLF_MINIGAMES_ACTIVATE**
+ - Activates CLF minigames
+2. 
+**CID_CLF_SHOPS_ACTIVATE**
+ - Activates CLF shops
+3. 
+**CID_CLF_RESET_TREVOR_VARIATION**
+ - Resets Trevor variation
+4. 
+**CID_CLF_TAXI_HAILING_DISABLE/ENABLE**
+ - Controls taxi system
+5. 
+**CID_CLF_SAVE_GARAGES_ACTIVATE**
+ - Activates save garages
+6. 
+**CID_CLF_UNLOCK_AUTO_EQUIPMENT**
+ - Unlocks automatic equipment
+7. 
+**CID_CLF_INITIALISE_BANK_DATA**
+ - Initializes bank data
+8. 
+**CID_CLF_INITIALISE_STAT_OFFSETS**
+ - Initializes stat offsets
+9. 
+**CID_CLF_UNLOCK_START_VEHICLES**
+ - Unlocks starting vehicles
+10. 
+**CID_CLF_INCREASE_JETPACK_LEVEL**
+ - Increases jetpack level ⭐
+11. 
+**CID_CLF_SET_TREVOR_MAX_STATS**
+ - Sets Trevor&#x27;s maximum stats
+12. 
+**CID_CLF_HOSPITAL_CHARGE_* (RH, SC, DT, SS, PB)**
+ - Hospital charges by location
+
+
+##### Connection with Story Mode
+
+
+**Entitlement Verification:**
+- 
+**Function:**
+ `GET_PLAYER_HAS_STORY_MODE_ENTITLEMENT()`
+- 
+**Location:**
+ `script/dev_ng/singleplayer/scripts/selectorcontrol/selector.sc` (line 3427)
+- 
+**Usage:**
+ Verifies if the player has the right to play story mode
+
+
+**Selector System:**
+- The character selector verifies if the player can switch to singleplayer characters
+- If they don&#x27;t have the entitlement, they can&#x27;t switch to story characters
+
+
+**Relationship with DLC:**
+- The Clifford DLC appears to be an expansion of story mode
+- Requires the player to have access to the base story mode
+- CLF missions integrate into the story mission system
+
+
+##### Connection with the Alien Egg
+
+
+**Although there&#x27;s no direct connection in the code between the jetpack and the alien egg, both are related to the Chiliad Mystery:**
+- Both are symbols in the Chiliad mural
+- Both may be necessary to complete the mystery
+- The alien egg exists as a model (`prop_alien_egg_01`) but its use in singleplayer is unclear
+- The jetpack requires the Clifford DLC to be accessible
+
+
+##### Summary: How to Unlock the Jetpack
+
+
+**Method 1: DLC Present (Normal Method)**
+1. The `dlc_agentTrevor` DLC must be present in the system
+2. When starting the game, Clifford mode can be selected
+3. Complete the training mission `SP_MISSION_CLF_TRAIN`
+4. Complete the missions from the `STRAND_CLF_JET` strand:
+   - `SP_MISSION_CLF_JET_1`
+   - `SP_MISSION_CLF_JET_2`
+   - `SP_MISSION_CLF_JET_3`
+5. This should set `FLOWFLAG_JP_UNLOCKED = TRUE`
+6. The jetpack will be available when conditions are met
+
+
+**Method 2: Debug Build (Development Only)**
+1. Use the command line parameter `ForceClifford`
+2. This forces Clifford mode without needing the DLC
+3. Follow the same steps as Method 1
+
+
+**⚠️ CRITICAL NOTE:**
+- The `FLOWFLAG_JP_UNLOCKED` flag exists in the codebase
+- However, it&#x27;s inside the `#if USE_CLF_DLC` block
+- This means it technically requires the DLC to be accessible
+- 
+**NO code was found that sets this flag outside the DLC context**
+- It&#x27;s possible that in other versions of the game, this flag can be set in another way, but in this version of the source code, it appears to require the DLC
+
+
+
+
+**⚠️ IMPORTANT:**
+ This analysis is based on source code from a specific development version. The complete mystery may have been modified, simplified, or expanded in later versions of the game.</code></pre></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 38 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/1p7tn52/gta_v_jetpack_missions_revealed_leaked_source/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

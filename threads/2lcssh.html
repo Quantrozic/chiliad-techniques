@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Script for completing Altruist Cult shootout includes much more than displaying &quot;Altruist Complete&quot; message · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game Files</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Script for completing Altruist Cult shootout includes much more than displaying &quot;Altruist Complete&quot; message</h1>
+    <div class="post-meta"><span class="score">▲ 33 pts</span><span>u/GlassGoose45</span><span>Nov 5, 2014</span><span>20 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/2lcssh/script_for_completing_altruist_cult_shootout/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge" href="../techniques/tq-x6-014.html">Audio Reverse-Engineering of Stingers</a><a class="badge weak-chip" href="../techniques/tq-x2-008.html" title="Weak match: this post may not actually demonstrate this method.">Audio Spectrogram Reverse-Search ?</a><a class="badge" href="../techniques/tq-x4-035.html">Engine-Constant Threshold Extraction</a><a class="badge weak-chip" href="../techniques/tq-modding.html" title="Weak match: this post may not actually demonstrate this method.">Modding &amp; In-Game Manipulation (Trainers / Script Hooks) ?</a><a class="badge" href="../techniques/tq-x4-017.html">Script-Decompilation Conditional Tracing</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>WARNING:  LONG POST</p><p>I am looking into what happens after completing Altruist shootout, and it seems much more complex than just displaying the message.  I will try to interpret this and find out exactly what is going on.  Anyone with game file experience please feel free to help.</p><pre><code>void sub_1D89()
+{
+if (l_169 == 0)
+{
+        AUDIO::SET_STATIC_EMITTER_ENABLED(&quot;COUNTRYSIDE_ALTRUIST_CULT_01&quot;, 0);</code></pre><p>I think this disables altruists from spawning in the future</p><pre><code>    wPtr(1000, ((&amp;g_86838) + 23510) + 5);</code></pre><p>Unknown</p><pre><code>    AUDIO::UNLOCK_MISSION_NEWS_STORY(64);</code></pre><p>Plays Weazel news story about apparent cult suicide</p><pre><code>    wPtr(54, ((&amp;g_86838) + 19911) + 472);</code></pre><p>Unknown</p><pre><code>    l_345 = GRAPHICS::REQUEST_SCALEFORM_MOVIE(&quot;MIDSIZED_MESSAGE&quot;);
+    sub_2CA2(1);
+    while (true)
+    {
+        if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(l_345) != 0)
+        {
+            break;
+        }
+        SYSTEM::WAIT(0);
+    }
+    GRAPHICS::0x215ABBE8(l_345, &quot;SHOW_MIDSIZED_MESSAGE&quot;);
+    sub_1B13(&quot;CULT_PASS&quot;);
+    GRAPHICS::0x2F38B526();
+    while (true)
+    {
+        if (sub_2C99() != 0)
+        {
+            break;
+        }
+        SYSTEM::WAIT(0);
+    }
+    sub_2C7D();
+    SYSTEM::SETTIMERA(0);
+    AUDIO::PLAY_SOUND_FRONTEND(-1, &quot;PROPERTY_PURCHASE&quot;, &quot;HUD_AWARDS&quot;);
+    l_169 = 1;
+}
+GRAPHICS::0x7B48E696(l_345, 255, 255, 255, 255);
+if (SYSTEM::TIMERA() &lt;= 10000)
+{
+    return;
+}
+if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(l_345) != 0)
+{
+    GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&amp;l_345);
+    sub_2CA2(0);
+}</code></pre><p>Displays Altruist Passed message, waits 10000 ms, then fades it out</p><pre><code>Label_015B:
+struct _s = sub_2C6A(PLAYER::PLAYER_ID());
+struct _s = &amp;l_110;
+bool flag1 = GAMEPLAY::GET_DISTANCE_BETWEEN_COORDS(rPtrOfs(_s, 0), rPtrOfs(_s, 4), rPtrOfs(_s, 8), rPtrOfs(_s, 0), rPtrOfs(_s, 4), rPtrOfs(_s, 8), 1) &lt; 209f;
+if (flag1 &amp; (PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) == 0))
+{
+    SYSTEM::WAIT(0);
+    goto Label_015B;
+}</code></pre><p>This code loops until the player is no longer within 209 feet of the cult area.</p><pre><code>sub_1E8A(18);</code></pre><p>This sends the number &quot;18&quot; to this series of functions:</p><pre><code>void sub_1E8A(var A_0)
+{
+if (A_0 == -1)
+{
+    A_0 = sub_2A42();
+}
+if (A_0 != -1)
+{
+    if (sub_2A17() != 0)
+    {
+        var num3;
+        sub_2256(A_0);
+        UI::SET_MISSION_NAME(0, 0);
+        g_86832 = GAMEPLAY::GET_GAME_TIMER();
+        sub_2244(30000);</code></pre><p>This one is weird.</p><pre><code>void sub_2244(var A_0)
+{
+g_30345 = GAMEPLAY::GET_GAME_TIMER() + A_0;
+}</code></pre><p>It creates a custom variable g_30345 that is the current game time + 30 seconds.  But then g_30345 is never used again in the entire script. What is the purpose of creating this variable that sets itself 30 seconds from when you finish the cult shootout?</p><pre><code>        strcpy(sub_203B(g_86830, 1), &amp;num3, 64);
+        if (sub_1F8A(g_86830) &gt; 0)
+        {
+            sadd(&quot; Variation &quot;, &amp;num3, 64);
+            saddi(g_86829, &amp;num3, 64);
+        }
+        STATS::0xAC2C7C63(&amp;num3, g_86827, GAMEPLAY::GET_GAME_TIMER() - g_86828, 0);
+    }
+    else
+    {
+        var num1 = GAMEPLAY::IS_BIT_SET(g_86837, 0);
+        if ((num1 &amp; (rPtr(((&amp;g_86838) + 23510) + 2) &lt; 3)) != 0)
+        {
+            GAMEPLAY::CLEAR_BIT(&amp;g_86837, 0);
+        }
+    }
+    sub_1F4D(&amp;g_19514);
+    g_86831 = 0;
+    sub_1F3F(-1);
+}
+}
+
+void sub_1F3F(var A_0)
+{
+g_86830 = A_0;
+}
+
+void sub_1F4D(var A_0)
+{
+if (rPtr(A_0) != -1)
+{
+    if (rPtr(A_0) != g_29776)
+    {
+        wPtr(-1, A_0);
+    }
+    else
+    {
+        wPtr(-1, A_0);
+        g_29775 = 0;
+        g_29777 = 0;
+        g_29814 = 12;
+        g_46768 = 0;
+        g_46769 = 0;
+    }
+}
+}
+
+var sub_1F8A(var A_0)
+{
+var num3 = 1;
+switch ((A_0))
+{
+    case 1:
+        num3 = 5;
+        break;
+    case 5:
+        num3 = 2;
+        break;
+    case 9:
+        num3 = 10;
+        break;
+    case 11:
+        num3 = 4;
+        break;
+    case 13:
+        num3 = 4;
+        break;
+    case 15:
+        num3 = 2;
+        break;
+    case 17:
+        num3 = 2;
+        break;
+    case 22:
+        num3 = 2;
+        break;
+    case 23:
+        num3 = 2;
+        break;
+    case 25:
+        num3 = 3;
+        break;
+    case 26:
+        num3 = 2;
+        break;
+    case 27:
+        num3 = 2;
+        break;
+    case 29:
+        num3 = 3;
+        break;
+}
+return num3;
+}
+
+var sub_203B(var A_0, var A_1)
+{
+switch (A_0)
+{
+    case 0:
+        return &quot;RE_ACCIDENT&quot;;
+    case 1:
+        return &quot;RE_ATMROBBERY&quot;;
+    case 2:
+        return &quot;RE_BUSTOUR&quot;;
+    case 3:
+        return &quot;RE_DOMESTIC&quot;;
+    case 4:
+        return &quot;RE_GETAWAYDRIVER&quot;;
+    case 5:
+        return &quot;RE_SHOPROBBERY&quot;;
+    case 6:
+        return &quot;RE_SNATCHED&quot;;
+    case 7:
+        return &quot;RE_LURED&quot;;
+    case 8:
+        return &quot;RE_BIKETHIEFSTAMP&quot;;
+    case 9:
+        return &quot;RE_SECURITYVAN&quot;;
+    case 10:
+        return &quot;RE_PAPARAZZI&quot;;
+    case 11:
+        return &quot;RE_CHASETHIEVES&quot;;
+    case 12:
+        return &quot;RE_DEALGONEWRONG&quot;;
+    case 13:
+        return &quot;RE_HITCHLIFT&quot;;
+    case 14:
+        return &quot;RE_STAG&quot;;
+    case 15:
+        return &quot;RE_ARREST&quot;;
+    case 16:
+        return &quot;RE_CRASHRESCUE&quot;;
+    case 17:
+        return &quot;RE_CARTHEFT&quot;;
+    case 18:
+        return &quot;RE_CULTSHOOTOUT&quot;;
+    case 19:
+        return &quot;RE_GANGFIGHT&quot;;
+    case 20:
+        return &quot;RE_GANGINTIMIDATION&quot;;
+    case 21:
+        return &quot;RE_PRISONVANBREAK&quot;;
+    case 22:
+        return &quot;RE_PRISONERLIFT&quot;;
+    case 23:
+        return &quot;RE_ABANDONEDCAR&quot;;
+    case 24:
+        return &quot;RE_BURIAL&quot;;
+    case 25:
+        return &quot;RE_MUGGING&quot;;
+    case 26:
+        return &quot;RE_BIKETHIEF&quot;;
+    case 27:
+        return &quot;RE_DRUNKDRIVER&quot;;
+    case 28:
+        return &quot;RE_HOMELANDSECURITY&quot;;
+    case 29:
+        return &quot;RE_BORDERPATROL&quot;;
+    case 30:
+        return &quot;RE_SIMEONYETARIAN&quot;;
+}
+return &quot;UNKNOWN&quot;;
+}</code></pre><p>It looks like all of that code is to change the completion stat of the random event cult shootout to completed.</p><p>Back in original function now, it calls this function next:</p><pre><code>sub_7084();</code></pre><p>Which takes us to the final 2 functions in the script file:</p><pre><code>void sub_7084()
+{
+PED::SET_RELATIONSHIP_BETWEEN_GROUPS(255, 0x783E3868, 0x6F0783F5);</code></pre><p>Setting gangs back to normal after random event</p><pre><code>bool flag1 = rPtr(((&amp;g_86838) + 23510) + 5) &gt;= l_183;
+if (flag1 &amp; (rPtr(((&amp;g_86838) + 23510) + 5) != 1000))
+{
+    if (l_165 != 0)
+    {
+        sub_538(1);</code></pre><p>function 538:</p><pre><code>void sub_538(var A_0)
+{
+if (A_0 != null)
+{
+    GAMEPLAY::SET_FADE_IN_AFTER_DEATH_ARREST(0);
+    GAMEPLAY::0x296574AE(1);
+    GAMEPLAY::0xC9F6F0BC(0);
+    sub_57A(1);
+    g_77023 = 1;
+}
+else
+{
+    GAMEPLAY::SET_FADE_IN_AFTER_DEATH_ARREST(1);
+    GAMEPLAY::0x296574AE(0);
+    GAMEPLAY::0xC9F6F0BC(1);
+    sub_57A(0);
+    g_77023 = 0;
+}
+}
+
+void sub_57A(var A_0)
+{
+bool flag1 = g_29814 == 8;
+bool flag2 = flag1 | (g_29814 == 9);
+if (flag2 | (g_29814 == 5))
+{
+    g_85582 = A_0;
+}
+else
+{
+    g_85582 = 0;
+}
+}
+
+        sub_7B1();</code></pre><p>function 7B1:</p><pre><code>void sub_7B1()
+{
+sub_A77();</code></pre><p>function A77:</p><pre><code>void sub_A77()
+{
+l_41 = 0;
+l_42 = 0;
+sub_A90(0, 1);
+sub_5C0(1);
+}
+
+void sub_A90(var A_0, var A_1)
+{
+if (A_0 != null)
+{
+    PLAYER::0x0751908A(PLAYER::PLAYER_ID());
+    PLAYER::SET_ALL_RANDOM_PEDS_FLEE(PLAYER::PLAYER_ID(), 1);
+    PLAYER::SET_POLICE_IGNORE_PLAYER(PLAYER::PLAYER_ID(), 1);
+    sub_B38(1);
+    UI::0x4D0449C6();
+    if (rPtr((&amp;g_10433) + 1) &gt; 3)
+    {
+        if (AUDIO::IS_MOBILE_PHONE_CALL_ONGOING() != 0)
+        {
+            AUDIO::STOP_SCRIPTED_CONVERSATION(0);
+        }
+        if (sub_693() == 0)
+        {
+            wPtr(3, (&amp;g_10433) + 1);
+        }
+        g_11728 = 5;
+    }
+    g_46777 = 1;
+    g_59081 = 1;
+    g_59840 = 1;
+}
+else</code></pre><p>There is nowhere in the script that would seem to allow A_0 = null and execute the following code:</p><pre><code>{
+    sub_B38(0);
+    UI::0xD3F40140();
+    g_46777 = 0;
+    if (A_1 != null)
+    {
+        GRAPHICS::0x48F16186();
+    }
+    PLAYER::SET_ALL_RANDOM_PEDS_FLEE(PLAYER::PLAYER_ID(), 0);
+    PLAYER::SET_POLICE_IGNORE_PLAYER(PLAYER::PLAYER_ID(), 0);
+    if (PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) == 0)
+    {
+        ENTITY::SET_ENTITY_INVINCIBLE(PLAYER::PLAYER_PED_ID(), 0);
+    }
+    g_59840 = 0;
+}
+}</code></pre><p>The above code is not normally executable because no script is calling sub_A90 with null variables. For some reason this script would make Trevor invincible</p><pre><code>void sub_B38(var A_0)
+{
+if (A_0 == 1)
+{
+    GAMEPLAY::SET_BIT(&amp;g_1686, 13);
+}
+else
+{
+    GAMEPLAY::CLEAR_BIT(&amp;g_1686, 13);
+}
+}
+
+
+sub_879(0, 1);</code></pre><p>Nothing important looking in sub_879, skipping it (mentions deathfail, assume its code to handle failing mission)</p><pre><code>sub_7C9(0, 1);</code></pre><p>Nothing important looking in sub_7C9, skipping it (mentions deathfail, assume its code to handle failing mission)</p><pre><code>}
+
+
+        sub_5C0(0);</code></pre><p>Nothing important looking in sub_5C0, skipping it</p><pre><code>        l_43 = 3;
+    }
+    else
+    {
+        sub_71B0(&amp;l_240);</code></pre><p>Checks scaleform movie and unloads it</p><pre><code>        g_77022 = 0;
+        g_77023 = 0;
+        g_77024 = 0;
+        sub_879(0, 1);</code></pre><p>Nothing important looking in sub_879, skipping it (mentions deathfail, assume its code to handle failing mission)</p><pre><code>        sub_7C9(0, 1);</code></pre><p>Nothing important looking in sub_7C9, skipping it (mentions deathfail, assume its code to handle failing mission)</p><pre><code>        sub_57A(0);</code></pre><p>Nothing important looking in sub_57A, skipping it</p><pre><code>        GAMEPLAY::0xC9F6F0BC(1);
+        GAMEPLAY::0x296574AE(0);
+        GAMEPLAY::IGNORE_NEXT_RESTART(0);
+        sub_5C0(0);</code></pre><p>Nothing important looking in sub_5C0, skipping it</p><pre><code>        PLAYER::SET_WANTED_LEVEL_MULTIPLIER(1f);
+        GAMEPLAY::0x0B710A51(3, 1);
+        GAMEPLAY::0x0B710A51(5, 1);
+        GAMEPLAY::CLEAR_WEATHER_TYPE_PERSIST();
+        l_171 = 0;
+        sub_2C7D();</code></pre><p>Setting variables to 0</p><pre><code>        wPtr(l_183 - 1, ((&amp;g_86838) + 23510) + 5);
+        SCRIPT::TERMINATE_THIS_THREAD();
+    }
+}
+else
+{
+    PED::REMOVE_SCENARIO_BLOCKING_AREAS();
+    sub_71B0(&amp;l_240);
+    g_77022 = 0;
+    g_77023 = 0;
+    g_77024 = 0;
+    sub_879(0, 1);
+    sub_7C9(0, 1);
+    sub_57A(0);
+    GAMEPLAY::0xC9F6F0BC(1);
+    GAMEPLAY::0x296574AE(0);
+    GAMEPLAY::IGNORE_NEXT_RESTART(0);
+    sub_5C0(0);
+    if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(l_345) != 0)
+    {
+        GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(&amp;l_345);
+        sub_2CA2(0);
+    }
+    PLAYER::SET_WANTED_LEVEL_MULTIPLIER(1f);
+    GAMEPLAY::0x0B710A51(3, 1);
+    GAMEPLAY::0x0B710A51(5, 1);
+    GAMEPLAY::CLEAR_WEATHER_TYPE_PERSIST();
+    l_171 = 0;
+    SCRIPT::TERMINATE_THIS_THREAD();
+}
+}
+
+void sub_71B0(var A_0)
+{
+if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(rPtr(A_0)) != 0)
+{
+    GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(A_0);
+    wPtr(0, A_0);
+}
+}
+
+
+
+}</code></pre><p>That seems to be everything.  There are many instances like &quot;GAMEPLAY::0x0B710A51(3, 1);&quot; which are setting specific things in the game environment.  In order to find out what these things are, I need to cross reference other script files, to see if there are other instances of the same thing happening, and try to deduce what the two have in common...</p><p>What I was (and still am) hoping to find: Something related to the hitbox on the sacrificial stone.  Without a definition or name for that hitbox, I can&#x27;t tell if there is any script related to it or not.</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 20 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/2lcssh/script_for_completing_altruist_cult_shootout/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

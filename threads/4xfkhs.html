@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strangeness in Director Mode · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game Files</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Strangeness in Director Mode</h1>
+    <div class="post-meta"><span class="score">▲ 72 pts</span><span>u/quadcorn</span><span>Aug 12, 2016</span><span>56 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/4xfkhs/strangeness_in_director_mode/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge" href="../techniques/tq-director-mode.html">Director Mode Scene &amp; Spawn Testing</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>Father-father, brother-uncle,</p><p>A bunch of codewalkers were at it a couple of nights ago and we&#x27;ve uncovered something strange in the script controlling the Director Mode, specifically the Location-part of director mode.</p><p>&quot;Location&quot; in director mode offers the player 27 pre-programmed destinations and the option of adding two user defined locations. 29 in total.<br>When using Location in Director Mode the two user defined locations are the first two in the list of possible locations. The last two are &quot;Cove&quot; and &quot;Mt Gordo&quot;.<br>Looking at the code we found the following conditions:</p><ul><li>IF the player selects &quot;Cove&quot; AND user is unharmed AND the user is in a vehicle other than plane/heli THEN override coordinates and replace with X:3101.277, Y:2244.696, Z:71.6135</li><li>IF the player selected &quot;Mt Gordo&quot; AND user is unharmed AND the user is in a vehicle other than plane/heli THEN override coordinates and replace with X:490.7735, Y:5589.512, Z:793.088</li></ul><p>So it basically seems as if the script are replacing the actual coordinates with special coordinates if certain conditions are met. We tested this and can verify that the script does indeed replace the target location for the &quot;Cove&quot; and &quot;Mt Gordo&quot; location if the user is unharmed and in/on a vehicle.</p><p>The replacement for &quot;Cove&quot; is ground level on top of the cove, so basically the same location but on top of the mountain/ground instead of in the cove.</p><p>The replacement for &quot;Mt Gordo&quot; is a location next to the platform on  - <strong>drumroll</strong>  - top of Mt Chiliad. We&#x27;ve noticed that triggering this several times in a row will occasionally move the player close to the broken wood bridge that extends out from Mt Chiliad next to the cable car platform.</p><p>The code also specifies a heading for each location, i.e. in which direction the player is positioned once the teleport is complete.</p><p>We&#x27;re uncertain on some of the conditions so it might be that you need to visit all the other locations, in the correct order, for this to trigger. Also, we noticed that small vehicles (ATV&#x27;s, motorbikes) seems to be spawned close to the other Locations. Could this be a clue for us to take the vehicle with us to the last locations?</p><p>The script offers little else so we currently don&#x27;t know if there&#x27;s a bigger meaning behind this, if it ties in with the rest of the Chiliad Mystery or if it&#x27;s simply R* messing with us.</p><p>What do you guys think? We&#x27;ve only tried this with a couple of the characters, maybe this triggers something for a specific character?</p><p>So yeah, there we have it. Another weird thing in GTA V that involves Mt Chiliad. We&#x27;re looking forward to see what you guys make of this.</p><p>Kifflom!</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 56 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/4xfkhs/strangeness_in_director_mode/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Info dump related to scripted ymaps (like JetSteal) and when they change · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Info dump related to scripted ymaps (like JetSteal) and when they change</h1>
+    <div class="post-meta"><span class="score">▲ 35 pts</span><span>u/Gnormez</span><span>Aug 20, 2020</span><span>8 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/idbhgr/info_dump_related_to_scripted_ymaps_like_jetsteal/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge" href="../techniques/tq-x3-018.html">Base64 and Hex Dump Scanning</a><a class="badge" href="../techniques/tq-x2-011.html">Texture-Atlas Dump Inspection</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>I was looking around the scripts to see if/when the JetSteal sequence might take place (no evidence yet that it does) and decided to catalogue which scripts call which ymaps for easier referencing later. A scripted ymap is a change to the map/world that can be toggled on/off within the scripts</p><p><a href="https://pastebin.com/HL5FWZbc" target="_blank" rel="noreferrer">This link</a> lists all (I think) the scripted ymaps in JSON format referenced by number, shows the coords, which scripts you can find it referenced in, and any strings (words/names) associated with it.</p><p><a href="https://pastebin.com/KukTwLac" target="_blank" rel="noreferrer">This link</a> is organized by scripts (also JSON) so you can look up specific scripts/missions to find which ymaps are referenced in them.</p><p><a href="https://pastebin.com/nhfW7Dt0" target="_blank" rel="noreferrer">This link</a> has the section of code that&#x27;s used to call the scripted ymaps and a link to the version of decompiled scripts I&#x27;ve been using if you want to follow along. Basically each ymap is given a number 1-200 and is called to be turned on/off by referencing that number. I&#x27;ve also listed at the top which ymaps I couldn&#x27;t find any reference to, and which ymaps I could only find referenced in mission_repeat_controller. It shouldn&#x27;t be too hard to figure out what mission is referenced in mission_repeat. Their must be another way (probably through flow_controller but I haven&#x27;t looked too hard yet) to call the scripted ymaps if so many only have a reference in mission_repeat_controller but seem to be also triggered through normal gameplay. The general flow is firstFunction has a call to secondFunction which has a call to thirdFunction which holds the references to ymaps. By searching for thirdFunction (the string &quot;jetsteal&quot; is handy because it&#x27;s only found in thirdFunction) you can work backwards and find all parameters it&#x27;s called with. If you find out how else they get called please let me know. Sometimes mystery related stuff is called just slightly differently in the scripts, possibly to prevent quick bruteforce searching/solving.</p><p>These are the scripts where it wasn&#x27;t immediately obvious which scripted ymap was being called and the func# responsible for calling the ymaps.</p><p>building_controller (various)</p><p>flow_controller (func 956 - &gt; func_959 -&gt; func_960)</p><pre><code>func_956 gets called in func_955(int iParam0) as:
+
+//The first variable (iVar0) is the value that holds the referenc to the scripted ymap
+func_956(iVar0, iVar1, iVar2, 1, 0); 
+
+where:
+    iVar0 = Global_71859.f_109[iParam0];
+    iVar1 = Global_71859.f_109[iParam0].f_1
+    iVar2 = 0;</code></pre><p>Solved: player_timetable_scene (also calls 192)</p><p>Solved: carwash1 (calls 189)</p><p>Solved: carwash2 (calls 190)</p><p>trevor3 (func_292 (Local_1652[iLocal_1982].f_6) - &gt; func_295 -&gt; func_298) : Probably related to the state of his trailer.</p><p>Edit: <a href="https://pastebin.com/X2cn0w5L" target="_blank" rel="noreferrer">This link</a> connects the scripted ymaps found in mission_repeat_controller to the mission reference number. The first number corresponds to a mission and the numbers in square brackets are the numbers referencing the ymaps found linked to that mission. Not sure which missions correspond to what number yet. At the bottom is the code from mission_repeat_controller that sets up repeating missions where &#x27;case X&#x27; corresponds to a repeatable mission.</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 8 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/idbhgr/info_dump_related_to_scripted_ymaps_like_jetsteal/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

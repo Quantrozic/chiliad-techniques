@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RGB Channel Separation · Techniques</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques</a>
+    <div class="chip-row"><span class="badge type-chip">Technique</span><span class="badge">Visual, Cartographic &amp; Geometric Analysis</span><span class="badge">Intermediate</span><span class="badge primary" title="Real r/chiliadmystery posts document this method in use; see below."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>3 archived cases</span></div>
+    <h1 class="detail-title">RGB Channel Separation</h1>
+    <p class="detail-desc">Splits an image into its red, green, and blue channels, since hidden patterns sometimes become visible in only one channel.</p>
+    <div class="chip-row" style="margin-top:.75rem"><span class="tag">#rgb</span><span class="tag">#channels</span><span class="tag">#image</span><span class="tag">#forensics</span></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="layout">
+    <div class="stack"><div class="panel"><h3 class="panel-h">Why It&rsquo;s Used</h3><div class="panel-c"><p class="body-text">Faint markings or letters embedded in a single channel can be invisible in the composite image; frequently applied to spectrogram output.</p></div></div><div class="panel"><h3 class="panel-h">Tools Required</h3><div class="panel-c tools-wrap"><a class="tool-badge" href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noreferrer" title="Adobe Photoshop · official site"><img src="../assets/tools/photoshop.svg" alt="Adobe Photoshop logo" loading="lazy"><span class="t">Photoshop</span></a><a class="tool-badge" href="https://www.gimp.org/" target="_blank" rel="noreferrer" title="GIMP · official site"><img src="../assets/tools/gimp.svg" alt="GIMP logo" loading="lazy"><span class="t">GIMP</span></a></div></div><div class="two-col"><div class="panel"><h3 class="panel-h success">Success Stories</h3><div class="panel-c"><ul class="plain-list"><li>Channel-isolation passes on spectrograms</li></ul></div></div><div class="panel"><h3 class="panel-h danger">False Positives</h3><div class="panel-c"><ul class="plain-list"><li>Compression artifacts</li><li>Channel noise read as text</li></ul></div></div></div><div class="panel"><h3 class="panel-h">Example Source</h3><div class="panel-c"><p class="body-text">Reddit analyses pairing RGB separation with spectrogram images to search for hidden letters.</p></div></div><div class="panel"><h3 class="panel-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>Documented cases from the archive<span class="right">3 posts</span></h3><div class="panel-c"><p class="note">Real r/chiliadmystery posts where this method was used, found across the complete community archive: every documented case, with its full thread and comments mirrored locally. Community content, not curated citations.</p><a class="case-row" href="../threads/ph77ji.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><span style="min-width:0"><span class="t">[DDH] Segregating the DDH Glyphs &amp; RGB Colourspace 101</span><span class="m">27 pts · 2021 · Backtracking · u/spaceleviathan</span></span></a><a class="case-row" href="../threads/185uqra.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><span style="min-width:0"><span class="t">Chiliad waveform and spectrometer (image spectrogram)</span><span class="m">17 pts · 2023 · Debunked · u/SparramaduxOficial</span></span></a><a class="case-row" href="../threads/302cjy.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><span style="min-width:0"><span class="t">Thinking outside-the-box: Some things could *theoretically* be invisible to most of us. [Link]</span><span class="m">2 pts · 2015 · Speculation · u/MobiuusOne</span></span></a></div></div></div>
+    <div class="stack"><div class="panel"><h3 class="panel-h">Metadata</h3><div class="panel-c"><div class="meta-row"><span>Created</span><span>Jun 1, 2026</span></div><div class="meta-row"><span>Updated</span><span>Jun 1, 2026</span></div><div class="meta-row"><span>ID</span><span class="mono">tq-rgb-separation</span></div></div></div></div>
+  </div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

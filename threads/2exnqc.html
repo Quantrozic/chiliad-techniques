@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IS_PED_PLANTING_BOMB -- Game Files Show We Missed A HUGE Amount Of Stuff Triggered By The Epsilon Robes · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game Files</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">IS_PED_PLANTING_BOMB -- Game Files Show We Missed A HUGE Amount Of Stuff Triggered By The Epsilon Robes</h1>
+    <div class="post-meta"><span class="score">▲ 225 pts</span><span>u/DC_Millions</span><span>Aug 29, 2014</span><span>223 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/2exnqc/is_ped_planting_bomb_game_files_show_we_missed_a/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge" href="../techniques/tq-x4-030.html">Interrogative Prompting of NPC Trigger Conditions</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><ul><li><strong>Last Thing: I will be devouring more game files and will post more soon.</strong> I don&#x27;t like how much information I think is being kept secret, or at the very least, being misunderstood. Also for my people questioning if this is the right way to solve this; I question this myself every second I read code, I just don&#x27;t know what else to do from here we haven&#x27;t had breakthroughs in <em>almost a year</em>. I will be posting more soon but until then please keep the ideas coming! You guys think of stuff I never would I love when we are actually a community</li><li><strong>Also, people posting they tried stuff even if it failed, people bouncing ideas around, people offering constructive criticism, people actually reading ish and digging deeper, goddamn we feel like a community again.. like early days.. and for that I thank you</strong></li></ul><p>.......................<em>you da real MVP</em></p><p>EDIT3: Many people have brought up good points on the code and have caused me to go back reread even more closely and thank you guys so much for the constructive criticism because here are some of the results:</p><ul><li>When not being played it appears any protagonist is considered a &quot;PED&quot; and therefore all the IS_PED_PLANTING_BOMB and SET_PED_BLAHBLAHBLAH can refer to any of the 3 characters</li><li>Andy Moon and also the nuke are located basically right on Mt Chiliad</li><li>Just realized the LOD interior might be related to the SPAWN_ENTITY &amp; ENTITY_ROTATE, and if so would meet the requirements for the Alien Egg as well.. they were very careful to not use any specific names and the code indicates basically that Some Trigger&gt;Activates Some Trigger&gt;Activates Something</li><li>I sifted through the yoga stuff and the only difference i can tell between Mt Gordo and M&#x27;s home is that the music is specifically set to something different. Also, the code clearly tells the Mount Lion to walk around when you get close.. unlike at your house lol</li><li>My Brother&#x27;s friend wants you all to remember Packi is an explosive specialist of sorts</li><li>The fact that some code has GROUP_HASH or similar tags that can be applied during ambient events makes want to seriously re-evaluate <em>who</em> is <em>what faction</em> and <em>when</em></li></ul><p>EDIT2: Thank you everyone for great response and replies so far! I know not everyone has 100%/robes/etc and <em>I encourage people to leave ideas or other observations as well! I have no problem testing people&#x27;s stuff</em></p><p>EDIT: Reddit isn&#x27;t playing nice with the format of the coding so it looks like shit, but even in its normal form most<br>people can&#x27;t understand it anyway. The code is just there to show I&#x27;m not talking out my ass so I apologize that it doesn&#x27;t look pretty but what it shows is pretty amazing and we missed it all</p><p>hey guys the mystery has really come to a grinding halt of reposts and arguments so I went back to something that can&#x27;t lie<br>or be jesus toast: the game files themselves.</p><p>Okay here is the link to the entire code behind the epsilon robes: <a href="https://www.dropbox.com/sh/zarahdz9r2jynjq/AADWdOxlRJ74umDhyfvcsVe1a/epsrobes.txt?dl=0" target="_blank" rel="noreferrer">https://www.dropbox.com/sh/zarahdz9r2jynjq/AADWdOxlRJ74umDhyfvcsVe1a/epsrobes.txt?dl=0</a></p><p>It&#x27;s about 1000 pages long and mostly gibberish even to someone that understands code so I&#x27;m post the exciting parts<br>I found while reading through it.</p><ul><li><strong>Ambient Animations</strong> if (PED::IS_PED_INJURED(A_2) == 0) { if (rPtr(getElemPtr(A_1, A_0, 40) + 32) == 0) { PED::SET_PED_CAN_PLAY_AMBIENT_ANIMS(A_2, 0); } else { PED::SET_PED_CAN_PLAY_AMBIENT_ANIMS(A_2, 1); }</li></ul><p>This code indicates a pedestrian can activate 1 of 2 special ambient animations based on being injured or not<br>(pedstrian is a really broad term in the code and can even refer to the player at times). I should mention the code tells<br>us that all of the ambient stuff listed here only happens when wearing the robes, and I personally can&#x27;t find in the code<br>if it&#x27;s during the 10 days or after but <em>you must be wearing the robe for ANY of this stuff to happen</em></p><ul><li><strong>Activating Conversation Automatically</strong></li></ul><p>if (PED::IS_PED_INJURED(A_2) == 0)</p><pre><code>    {
+        if (rPtr(getElemPtr(A_1, A_0, 40) + 36) == 0)
+        {
+            PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(A_2, 0);
+        }
+        else
+        {
+            PED::SET_PED_CAN_USE_AUTO_CONVERSATION_LOOKAT(A_2, 1);
+        }</code></pre><p>Again, another injury check so whatever is going on the ped can be hurt and R* made sure they handled that happening<br>with multiple scenarios in the coding again. Anyways PED::SET_PED_CAN_USE_AUTOCONVERSATION_LOOKAT in coding means<br>before the robes were involved the ped couldn&#x27;t do these special conversations. In coding &quot;Set WHATEVER&quot; means change<br>the WHATEVER so it is &quot;SET&quot; to be able to do something it couldn&#x27;t do before. So there is def unlockable dialogue we<br>haven&#x27;t found yet while wearing the robes</p><p>The code is too interwoven here for me to tell why/how these places are important but the code def lists them as significant return values</p><p>For &quot;cases&quot; like below, aka, when -blank- happens the player should go to / do -blank-. Which means they quite possibly related to the ambient interaction we are looking for.<br><em>Since all of this is ambient the ped could be anywhere so these might be locations the ped frequents!!</em></p><ul><li><strong>Places With Meaning</strong></li></ul><p>case 63:</p><pre><code>        return &quot;CHAR_CARSITE2&quot;;
+    case 64:
+        return &quot;CHAR_BOATSITE&quot;;
+    case 8:
+        return &quot;CHAR_BANK_MAZE&quot;;
+    case 9:
+        return &quot;CHAR_BANK_FLEECA&quot;;
+    case 10:
+        return &quot;CHAR_BANK_BOL&quot;;
+    case 21:
+        return &quot;CHAR_MINOTAUR&quot;;</code></pre><ul><li><strong>Proof Of Special Scripted Conversation</strong></li></ul><p>if (AUDIO::IS_SCRIPTED_CONVERSATION_ONGOING() != 0)</p><ul><li><strong>NOW LOOK AT THIS SHIT:</strong></li></ul><p>if (PED::IS_PED_PLANTING_BOMB(PLAYER::PLAYER_PED_ID()) != 0)</p><pre><code>            {
+                return 0;</code></pre><p>CHECKS IF THEY ARE PLANTING A BOMB?? YEAH I THINK WE MISSED SOMETHING WITH THE EPSILON ROBE</p><ul><li><strong>Proof Of A Phone Conversation That Can Be Activated</strong></li></ul><p>void sub_1B4B0()<br>{</p><pre><code>AUDIO::RESTART_SCRIPTED_CONVERSATION();
+g_12719 = 0;
+var num1 = AUDIO::IS_MOBILE_PHONE_CALL_ONGOING();
+var num6 = num1 | (rPtr((&amp;g_10433) + 1) == 9);
+if ((num6 | (g_10432 == 1)) != 0)
+{</code></pre><p>All of this is ambient btw guys. Ambient = can be triggered at any time and doesn&#x27;t act like a mission basically<br>(that&#x27;s a really rough translation god the coding community would slay me for that definition)</p><ul><li><strong>Marnie Specifically Invloved</strong></li></ul><p>PED::SET_PED_MONEY(l_28, 0);</p><pre><code>        PED::SET_PED_CAN_BE_TARGETTED(l_28, 0);
+        PED::SET_PED_NAME_DEBUG(l_28, &quot;POSTMARNIE&quot;);
+        PED::SET_PED_RELATIONSHIP_GROUP_HASH(l_28, 0x6F0783F5);
+        PED::SET_BLOCKING_OF_NON_TEMPORARY_EVENTS(l_28, 0);
+        sub_194FD(&amp;l_29, 4, l_28, &quot;MARNIE&quot;, 1, 1);
+        return 1;</code></pre><p>WTF does Marnie have to do with all this??</p><p><strong>TL;DR</strong></p><p>The amount of ambient coding for epsilon robes is absoulutely massive and code clearly shows there is special<br>animations and conversations that no one to my knowledge has ever unlocked with the robes.</p><ul><li>The code gives us 6 places where these things could be triggered (or where you end up I can&#x27;t tell from the code sorry)</li><li>THE CODE CHECKS IF THE PED IS PLANTING A BOMB AND CHECKS FOR INJURIES NEARLY CONSTANTLY</li><li>There is at least 1 conversation and 1 phonecall that no one has ever managed to unlock</li><li>Marnie is mentioned specifically and something about the robes changes quite a bit of characteristics</li></ul><p>Anyways guys this is direct proof from the game code that we missed ALOT of ambient content and it&#x27;s all related to<br>the robes. Now NOWHERE does it show this relates to a UFO or jetpack but at the same time Epsilon missions constantly<br>reference Mt Chiliad and even make you go there 2 times, and one time is on the observation deck with &quot;Come back when your<br>story is complete&quot; so I really do think this missing content is THE biggest lead we have right now</p><p>Get the robes and kifflom the world guys. Happy Hunting. Kifflom</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 223 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/2exnqc/is_ped_planting_bomb_game_files_show_we_missed_a/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

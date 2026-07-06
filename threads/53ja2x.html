@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA IV and the Chiliad Mountain UFO · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Speculation</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">GTA IV and the Chiliad Mountain UFO</h1>
+    <div class="post-meta"><span class="score">▲ 75 pts</span><span>u/mrgame64</span><span>Sep 19, 2016</span><span>31 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/53ja2x/gta_iv_and_the_chiliad_mountain_ufo/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge" href="../techniques/tq-director-mode.html">Director Mode Scene &amp; Spawn Testing</a><a class="badge" href="../techniques/tq-x4-004.html">Memory-Scanning for Hidden State Flags</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p><strong>Introduction:</strong> Remember when we <a href="https://www.reddit.com/r/chiliadmystery/comments/34bzmj/breaking_down_the_ufo_script_reveals_a_roadblock/" target="_blank" rel="noreferrer">discovered some code that was supposed to load an interior in the Chiliad Mountain UFO!</a>?</p><p>The same code that gradually checked for:</p><ul><li>Weather (rain/thunder)</li><li>Time (3am)</li><li>Unknown variables (which could be game completion?)</li></ul><p>but also...</p><p><strong>Evidence 1:</strong></p><ul><li>Checking if player is not injured</li><li>Checking some variable for the value -1 or 999</li></ul><p>The first 3 variables simply check whether the conditions to spawn the UFO are met. What about the other 2 though?</p><p><strong>Evidence 2:</strong> GTA IV has a secret internet forum, to which access is given you by a certain user &#x27;<em>chiliad8888</em>&#x27; (sounds VERY familiar, doesn&#x27;t it?) and the mentioned contains locations of various objects, such as weapons, armor, etc.</p><p>What&#x27;s curious though, each of those maps have <a href="https://www.reddit.com/r/chiliadmystery/comments/1ndj6c/in_gta_iv_niko_receives_an_email_with_a_link_to/" target="_blank" rel="noreferrer">quite interesting comments in them!</a></p><p><strong>Speculation:</strong></p><p>&quot;<strong>Health</strong> is a gift from <strong>space</strong>&quot;? &quot;Make sure you&#x27;ve got <strong>armor</strong>. Be ready to fight the <strong>Aliens</strong>!&quot;?</p><p>Sounds confusing at first, doesn&#x27;t it? Well first, both of those statements are mentioning space and aliens, as well as two very specific stats, <strong>health</strong> and <strong>armor</strong>.</p><p><strong>Theory:</strong> What if, just what if the global variable g_19456 was actually the armor level?</p><p>With 999 potentially meaning &quot;max armor&quot; and -1 meaning &quot;infinite armor&quot;? (<em>Disclaimer:</em> coming from a game development background, as a programmer it makes much sense to me if those values actually had those meanings. <em>It&#x27;d be very welcome</em> if any codewalkers or modders could provide us with information about this specific variable.)</p><p>We&#x27;re already sure the other function checks our health level, so <strong>it&#x27;d make a lot of sense if those two sentences from Chiliad8888&#x27;s link actually matched the UFO-loading code!</strong></p><p><strong>Steps to reproduce:</strong> Visit the Mount Chiliad UFO under the following conditions:</p><ul><li>Weather: thunderstorm</li><li>Time: 3am</li><li>Game completion: 100%</li><li>Health: Max</li><li>Armor: Max</li></ul><p><strong>How can I help?</strong></p><ul><li>Look through the code for the global variable g_19456 or the function sub_B56()</li><li>Attempt to reproduce and record the attempts</li><li>(<em>I&#x27;d appreciate if I could access the source code myself so I could look through the code myself as well</em>)</li></ul></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 31 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/53ja2x/gta_iv_and_the_chiliad_mountain_ufo/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

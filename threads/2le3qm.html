@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>There could be more hidden symbols similar to the one on Ron Oil sign · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Speculation</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">There could be more hidden symbols similar to the one on Ron Oil sign</h1>
+    <div class="post-meta"><span class="score">▲ 35 pts</span><span>u/GlassGoose45</span><span>Nov 5, 2014</span><span>38 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/2le3qm/there_could_be_more_hidden_symbols_similar_to_the/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x4-004.html" title="Weak match: this post may not actually demonstrate this method.">Memory-Scanning for Hidden State Flags ?</a><a class="badge weak-chip" href="../techniques/tq-x2-035.html" title="Weak match: this post may not actually demonstrate this method.">Semiotic Sign-System Decomposition ?</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p><del>Many of you are familiar with this symbol on the Ron Oil sign that only appears at night: <a href="http://i.imgur.com/3jZmtMM.jpg</del>" target="_blank" rel="noreferrer">http://i.imgur.com/3jZmtMM.jpg~~</a> Will be coming back to this when I find it</p><p>In the game scripts, there is a large list of all the &quot;alternates&quot; on the map.  This includes things like O&#x27;neil ranch normal/burned, Paleto bay gas station normal/destroyed, etc. and allows the game to switch parts of the map for alternate versions.</p><p>I have found several interesting things by examining this list.  Here is what I would like to look at first:</p><pre><code>    case 102:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;SM_15_BldGRAF1&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        setStruct(330.4596f, -584.8196f, 42.3174f, 3, A_0);
+        break;
+    case 103:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;CH3_RD2_BishopsChickenGraffiti&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        setStruct(1861.28f, 2402.11f, 58.53f, 3, A_0);
+        break;
+    case 104:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;FruitBB&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        setStruct(-1327.46f, -274.82f, 54.25f, 3, A_0);
+        break;
+    case 105:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;CS5_04_MazeBillboardGraffiti&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        setStruct(2697.32f, 3162.18f, 58.1f, 3, A_0);
+        break;
+    case 106:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;CS5_Roads_RonOilGraffiti&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        setStruct(2119.12f, 3058.21f, 53.25f, 3, A_0);
+        break;
+    case 107:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;ap1_03_bbrd_dcl&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        setStruct(-804.25f, -2276.88f, 23.59f, 3, A_0);
+        break;</code></pre><p>The cases above and below this section relate to other things entirely.  But they are all broken up into sections.  This section seems to be graffiti that can either be &quot;&quot; (invisible) or be visible.</p><p>Breaking it down, there are 5 more hidden graffitis besides the Ron oil one which have both visible and invisible versions, and I&#x27;m pretty sure it also does us the favor of including exact locations:</p><ul><li>SM_15_BldGRAF1 located at 330.4596f, -584.8196f, 42.3174f</li><li>CH3_RD2_BishopsChickenGraffiti located at 1861.28f, 2402.11f, 58.53f</li><li>FruitBB located at -1327.46f, -274.82f, 54.25f</li><li>CS5_04_MazeBillboardGraffiti located at 2697.32f, 3162.18f, 58.1f</li><li>CS5_Roads_RonOilGraffiti located at 2119.12f, 3058.21f, 53.25f</li><li>ap1_03_bbrd_dcl located at -804.25f, -2276.88f, 23.59f</li></ul><p>The 2nd thing I would like to explore is this, in the same string of alternates:</p><pre><code>    case 148:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;ufo&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        wPtr(0, (A_0) + 132);
+        setStruct(487.31f, 5588.386f, 793.0532f, 3, A_0);
+        break;
+    case 149:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;ufo_eye&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        wPtr(0, (A_0) + 132);
+        setStruct(487.31f, 5588.386f, 793.0532f, 3, A_0);
+        break;</code></pre><p>Which also have &quot;&quot; (null) alternates.  Anything in this list with a &quot;&quot; alternate means it could be either visible or invisible.  So these are also hidden objects which only show at certain times.</p><ul><li>ufo_eye located at 487.31f, 5588.386f, 793.0532</li><li>ufo located at same place</li></ul><p>The 3rd thing I would like to explore are various other interesting alternate locations which are not fully explored on the spreadsheet yet:</p><pre><code>1 - JetSteal Tunnel: This is the tunnel where you were supposed to steal a Harrier Jet for a Solomon mission.
+I will select the location with the lowest elevation for testing.
+    case 20:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;jetstealtunnel&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        setStruct(801.7f, -1810.8f, 23.3f, 3, A_0);
+        break;
+    case 21:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;Jetsteal_ipl_grp1&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;Jetsteal_ipl_grp2&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        strcpy(&quot;REMOVE_ALL_STATES&quot;, getElemPtr(2, (A_0) + 32, 32), 32);
+        wPtr(1, (A_0) + 132);
+        setStruct(787.3967f, -1808.858f, 29.8532f, 3, A_0);
+        **setStruct(814f, -1750f, 20f, 3, (A_0) + 232);**
+        setStruct(790f, -1899f, 35f, 3, (A_0) + 244);
+        setElem(1, 0, (A_0) + 256, 4);
+        setElem(0, 1, (A_0) + 256, 4);
+        setElem(0, 2, (A_0) + 256, 4);
+        break;
+
+2 &amp; 3 - Cargoships
+    case 12:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;cargoship&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;sunkcargoship&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        setStruct(-162.8918f, -2365.769f, 0f, 3, (A_0) + 272);
+        setStruct(190.75f, 31.25f, 21f, 3, (A_0) + 284);
+        wPtr(0f, (A_0) + 296);
+        setElem(0, 0, (A_0) + 300, 4);
+        setElem(1, 1, (A_0) + 300, 4);
+        break;
+
+4 &amp; 5 - These have no name, just hashes.  So its a complete mystery what happens here.
+    case 29:
+        wPtr(4, (A_0) + 12);
+        setElem(0xCDC10CF4, 0, (A_0) + 16, 4);
+        setElem(0xAC4365DD, 1, (A_0) + 16, 4);
+        setStruct(136.004f, -749.287f, 153.302f, 3, A_0);
+        break;
+    case 30:
+        wPtr(4, (A_0) + 12);
+        setElem(0xF9526184, 0, (A_0) + 16, 4);
+        setElem(0xE1047885, 1, (A_0) + 16, 4);
+        setStruct(136.004f, -749.287f, 153.302f, 3, A_0);
+        break;
+    case 31:
+        wPtr(4, (A_0) + 12);
+        setElem(0xF4E5BC6D, 0, (A_0) + 16, 4);
+        setElem(0x9A8EC57D, 1, (A_0) + 16, 4);
+        setStruct(178.534f, -668.835f, 37.2113f, 3, A_0);
+        break;
+
+6, 7, &amp; 8 - These have no associated names OR hashes, all the alternates are null (&quot;&quot;).
+    case 92:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        strcpy(&quot;REMOVE_ALL_STATES&quot;, getElemPtr(2, (A_0) + 32, 32), 32);
+        wPtr(1, (A_0) + 132);
+        setStruct(1222.9f, 1877.9f, 79.9f, 3, A_0);
+        setStruct(1206.8f, 1803f, 43.9f, 3, (A_0) + 232);
+        setStruct(1329f, 2060.4f, 143.9f, 3, (A_0) + 244);
+        setElem(0, 0, (A_0) + 256, 4);
+        setElem(1, 1, (A_0) + 256, 4);
+        setElem(0, 2, (A_0) + 256, 4);
+        break;
+
+9, 10, &amp; 11 - Same case here. No associated names OR hashes, all the alternates are null (&quot;&quot;).
+    case 75:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        strcpy(&quot;&quot;, getElemPtr(2, (A_0) + 32, 32), 32);
+        wPtr(1, (A_0) + 132);
+        setStruct(480.9554f, -1321.21f, 28.2037f, 3, A_0);
+        setStruct(508.3f, -1299.3f, 39.4f, 3, (A_0) + 340);
+        setStruct(459.9f, -1363.2f, 21.4f, 3, (A_0) + 352);
+        setElem(0, 0, (A_0) + 364, 4);
+        setElem(1, 1, (A_0) + 364, 4);
+        setElem(0, 2, (A_0) + 364, 4);
+        break;</code></pre><p>UPDATES:</p><p><strong>SOLVED:</strong></p><ul><li>FruitBB is the iFruit billboard.  And the graffiti that appears is a stamp that says &quot;Now Obsolete&quot;. Source: <a href="https://docs.google.com/spreadsheet/ccc?key=0AjoRlV0eYIIxdERscDZtaFpULVNZaGZKcG5NWTdIRHc#gid=0" target="_blank" rel="noreferrer">https://docs.google.com/spreadsheet/ccc?key=0AjoRlV0eYIIxdERscDZtaFpULVNZaGZKcG5NWTdIRHc#gid=0</a></li><li>CS5_04_MazeBillboardGraffiti overlays FORECLOSED and changes Maze Bank to Maze Balls on a billboard for Maze Bank in the desert.  (This can be added to that spreadsheet) <a href="http://i.imgur.com/hDlsTYp.jpg" target="_blank" rel="noreferrer">http://i.imgur.com/hDlsTYp.jpg</a></li><li>CS5_Roads_RonOilGraffiti &quot;Normal Ron Oil Billboard. Change: Graffitied, &quot;&quot;Polluting beaches&quot;&quot; -- triggered by 100%??&quot;	Source: <a href="https://docs.google.com/spreadsheet/ccc?key=0AjoRlV0eYIIxdERscDZtaFpULVNZaGZKcG5NWTdIRHc#gid=0" target="_blank" rel="noreferrer">https://docs.google.com/spreadsheet/ccc?key=0AjoRlV0eYIIxdERscDZtaFpULVNZaGZKcG5NWTdIRHc#gid=0</a>  Before image:  <a href="https://lh6.googleusercontent.com/-phjtO37qsG8/UshQ6WS5nMI/AAAAAAAADww/ZtlrF7AdCVk/w1149-h850-no/IMG_20140104_181947.jpg" target="_blank" rel="noreferrer">https://lh6.googleusercontent.com/-phjtO37qsG8/UshQ6WS5nMI/AAAAAAAADww/ZtlrF7AdCVk/w1149-h850-no/IMG_20140104_181947.jpg</a>  After image:	<a href="https://lh3.googleusercontent.com/-tMYY4gjYNSA/UshUfjOXF-I/AAAAAAAADx0/OAnBPuUOg58/w1149-h850-no/IMG_20140104_182613.jpg" target="_blank" rel="noreferrer">https://lh3.googleusercontent.com/-tMYY4gjYNSA/UshUfjOXF-I/AAAAAAAADx0/OAnBPuUOg58/w1149-h850-no/IMG_20140104_182613.jpg</a>  Thanks to tgascoigne and <a href="https://www.reddit.com/u/DangerDegan" target="_blank" rel="noreferrer">/u/DangerDegan</a> for pointing this out.</li><li>ap1_03_bbrd_dcl is one of the billboards near the airport.  It has a guy lying chest down on a white background, and the graffiti overlaid adds birds, clouds, and a parachute to the guy so it looks like hes skydiving <a href="http://i.imgur.com/SSCwG1M.jpg" target="_blank" rel="noreferrer">http://i.imgur.com/SSCwG1M.jpg</a>  (This can be added to that spreadsheet)</li></ul><p><strong>UNSOLVED:</strong></p><ul><li>SM_15_BldGRAF1 is Pillbox Hill Medical Center. <strong>Unknown what appears or what conditions are needed.  Map location: <a href="http://i.imgur.com/M6NgTpx.jpg</strong>" target="_blank" rel="noreferrer">http://i.imgur.com/M6NgTpx.jpg**</a></li><li>CH3_RD2_BishopsChickenGraffiti is near the Hell Awaits billboard.  <strong>Unknown what appears or what conditions are needed. Map location: <a href="http://i.imgur.com/uwAkj5w.jpg</strong>" target="_blank" rel="noreferrer">http://i.imgur.com/uwAkj5w.jpg**</a></li><li>ufo_eye and ufo are located near the sawmill. The exact location seems to be a silo <a href="http://i.imgur.com/vpwAaEj.jpg" target="_blank" rel="noreferrer">http://i.imgur.com/vpwAaEj.jpg</a>  Map location: <a href="http://i.imgur.com/mpWJ3fS.jpg" target="_blank" rel="noreferrer">http://i.imgur.com/mpWJ3fS.jpg</a> Does anyone else feel this is way too far away from the peak for this to be an anchor point for the UFO that spawns all the way up there?  And if it is an anchor for the UFO, what is UFO eye?</li><li>JetSteal Tunnel - although this is likely cut content from the VOID mission, the environment could still feasibly be altered using a memory editor to display the destroyed/reconstructed area from after the mission. <a href="http://imgur.com/c7OVumV,dFs3KFJ,OAnqtig" target="_blank" rel="noreferrer">http://imgur.com/c7OVumV,dFs3KFJ,OAnqtig</a></li></ul><p>Additional info:</p><p>This has been discussed in at least 1 past topic:</p><p><a href="http://www.reddit.com/r/chiliadmystery/comments/2fu88r/something_about_the_billboards_and_other_stuff/" target="_blank" rel="noreferrer">http://www.reddit.com/r/chiliadmystery/comments/2fu88r/something_about_the_billboards_and_other_stuff/</a></p><p>And someone has begun documenting all the alternates in a spreadsheet, which I am cross referencing with the actual script files, and finding some omissions:</p><p><a href="https://docs.google.com/spreadsheet/ccc?key=0AjoRlV0eYIIxdERscDZtaFpULVNZaGZKcG5NWTdIRHc#gid=0" target="_blank" rel="noreferrer">https://docs.google.com/spreadsheet/ccc?key=0AjoRlV0eYIIxdERscDZtaFpULVNZaGZKcG5NWTdIRHc#gid=0</a></p><p>To give some more common examples for your reference:</p><pre><code>    case 78:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;chop_props&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        setStruct(-13.83f, -1455.45f, 31.81f, 3, A_0);
+        break;</code></pre><p>This one will either hide or show Chop&#x27;s doghouse, bowl, and other props in Franks&#x27; backyard.</p><p>And to give an example of a multi-switch:</p><pre><code>    case 76:
+        wPtr(1, (A_0) + 12);
+        strcpy(&quot;TrevorsTrailer&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+        strcpy(&quot;TrevorsTrailerTrash&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+        strcpy(&quot;TrevorsTrailerTidy&quot;, getElemPtr(2, (A_0) + 32, 32), 32);
+        setStruct(1973f, 3815f, 34f, 3, A_0);
+        wPtr(0, (A_0) + 132);
+        break;</code></pre><p>This one switches between alternate versions of Trevor&#x27;s Trailer, including the tidy version when Martin&#x27;s wife is there. Note this one does not have a &quot;&quot; (null) alternate, because Trevor&#x27;s trailer is never gone.</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 38 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/2le3qm/there_could_be_more_hidden_symbols_similar_to_the/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

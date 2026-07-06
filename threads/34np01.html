@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digging into Family5 Script (Did Somebody Say Yoga?) reveals something could else be happening while Michael is freefalling · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game Files</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Digging into Family5 Script (Did Somebody Say Yoga?) reveals something could else be happening while Michael is freefalling</h1>
+    <div class="post-meta"><span class="score">▲ 56 pts</span><span>u/trainwreck42o</span><span>May 2, 2015</span><span>51 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/34np01/digging_into_family5_script_did_somebody_say_yoga/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x1-011.html" title="Weak match: this post may not actually demonstrate this method.">Color-Channel Separation Glyph Reveal ?</a><a class="badge weak-chip" href="../techniques/tq-modding.html" title="Weak match: this post may not actually demonstrate this method.">Modding &amp; In-Game Manipulation (Trainers / Script Hooks) ?</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>The script for the mission where Michael gets abducted - &quot;Did Somebody Say Yoga?&quot; is called family5.txt, in case anyone was wondering.</p><p>Here is the script which controls sequence of events in the cutscene.  Each &quot;case&quot; is a segment in the cutscene, and at the end of each &quot;case&quot; it adds +1 to the number, which causes the next &quot;case&quot; to play.  It&#x27;s much like a movie timeline - the cases play <strong>in sequence</strong>.</p><pre><code>var sub_26798(var A_0)
+{
+TIME::SET_CLOCK_TIME(22, 0, 0);  &lt;-- they decided the time is 22 (10:00 pm) throughout this whole cutscene
+switch (rPtr(A_0))  &lt;-- The main switch function that controls the sequence of cases
+{
+    case 0:
+        GAMEPLAY::SET_WEATHER_TYPE_NOW_PERSIST(&quot;CLOUDS&quot;); &lt;-- it sets weather to cloudy
+        wPtr(rPtr(A_0) + 1, A_0);  &lt;-- adds 1 to the case number
+        goto Label_0953;  &lt;-- restarts from the beginning, loading the next case
+    case 1:
+
+ (just a bunch of gibberish, I cut this out. http://pastebin.com/pgxBRpTW )       
+
+    case 2:  Here is the first of two important segments of the cutscene, the first one dealing with spaceship interior, proceeded by the &quot;DMT flight&quot; as they call it in the code:
+
+        STREAMING::REQUEST_IPL(&quot;SpaceInterior&quot;);  &lt;-- This is the official name of the UFO interior
+                sub_1D89A(&quot;Michael&quot;, PLAYER::PLAYER_PED_ID(), 0, 2);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien&quot;, 0, 0, 0, 0x64611296);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien&quot;, 3, 0, 0, 0x64611296);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien&quot;, 4, 0, 0, 0x64611296);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien^1&quot;, 0, 0, 0, 0x64611296);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien^1&quot;, 3, 0, 0, 0x64611296);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien^1&quot;, 4, 0, 0, 0x64611296);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien^2&quot;, 0, 0, 0, 0x64611296);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien^2&quot;, 3, 0, 0, 0x64611296);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien^2&quot;, 4, 0, 0, 0x64611296);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien^3&quot;, 0, 0, 0, 0x64611296);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien^3&quot;, 3, 0, 0, 0x64611296);
+                CUTSCENE::SET_CUTSCENE_PED_COMPONENT_VARIATION(&quot;Movie_Alien^3&quot;, 4, 0, 0, 0x64611296);
+
+There are only 2 aliens on-screen in the cutscene, but it seems to be dealing with 4.  The other 2 could be off-screen or only visible for a very short period
+
+            }
+        }
+        else
+        {
+            sub_1DBC3(1, 1);
+            GRAPHICS::0x06BB5CDA(&quot;DMT_flight&quot;); &lt;-- This is Michael&#x27;s DMT-induced freefall hallucination
+            GRAPHICS::SET_TIMECYCLE_MODIFIER(&quot;stoned_monkeys&quot;); &lt;-- I have no idea what this means but its very interesting that its played AFTER the UFO interior and Michael&#x27;s DMT freefall in the timeline
+            CUTSCENE::START_CUTSCENE(64);
+            wPtr(rPtr(A_0) + 1, A_0);
+        }
+        goto Label_0953;  &lt;-- loads next case
+    case 3:
+        if (CUTSCENE::IS_CUTSCENE_PLAYING() != 0) &lt;-- we are now back in control of Michael as we are freefalling
+        {
+            CAM::DESTROY_ALL_CAMS(0);
+            CAM::RENDER_SCRIPT_CAMS(0, 0, 3000, 1, 0);
+            STREAMING::0xFA037FEB(41.1f, -779.8f, 837f, 20f, 0);</code></pre><p>This last line is the line which interests me the most. More on this later</p><p>Some more interesting lines:</p><pre><code>                        GRAPHICS::SET_TIMECYCLE_MODIFIER(&quot;stoned_aliens&quot;);
+
+                        GRAPHICS::0x1D980479(&quot;DMT_flight_intro&quot;, 0, 0);</code></pre><p>What I consider most interesting is this set of coords which matches with the probing scene, but is happening while Michael is freefalling:</p><pre><code>            STREAMING::0xFA037FEB(41.1f, -779.8f, 837f, 20f, 0);</code></pre><p>This is the only set of coords in the entire script file of nearly 2000 lines which comes within 20 distance units of matching with the probing coords from this thread <a href="https://www.reddit.com/r/chiliadmystery/comments/33vqj9/coordinates_for_michaels_druginduced_abduction/" target="_blank" rel="noreferrer">https://www.reddit.com/r/chiliadmystery/comments/33vqj9/coordinates_for_michaels_druginduced_abduction/</a></p><p>Michael&#x27;s location when in probing scene:  41.4, -779.8, 836.9</p><p>Coords in the script: 41.1, -779.8, 837</p><p>There is something happening at the same location of the probing (UFO interior), but its happening while michael is freefalling (after the cutscene is ended and we are in control of the player).</p><p>My first question is, Are we meant to freefall back to that location to see the UFO again?</p><p>If so, it should be possible, considering the drop is at &quot;880-ish&quot; elevation according to that thread, the UFO is at 836, and gravity seems to be lower in the freefall (or sky surfing works much better, either or)</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 51 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/34np01/digging_into_family5_script_did_somebody_say_yoga/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

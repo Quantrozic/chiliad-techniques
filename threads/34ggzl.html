@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The search for how to unlock &quot;UFO&quot; instead of &quot;UFO_EYE&quot; · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">The search for how to unlock &quot;UFO&quot; instead of &quot;UFO_EYE&quot;</h1>
+    <div class="post-meta"><span class="score">▲ 31 pts</span><span>u/KuztomX</span><span>Apr 30, 2015</span><span>26 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/34ggzl/the_search_for_how_to_unlock_ufo_instead_of_ufo/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge" href="../techniques/tq-x6-004.html">Determinism Testing of UFO Spawns</a><a class="badge weak-chip" href="../techniques/tq-x6-029.html" title="Weak match: this post may not actually demonstrate this method.">Eye-Tracking Attention Mapping ?</a><a class="badge" href="../techniques/tq-x2-019.html">Markov-Chain Sighting Sequence Modeling</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>Hi folks,</p><p>I saw <a href="http://www.reddit.com/r/chiliadmystery/comments/34bzmj/breaking_down_the_ufo_script_reveals_a_roadblock/" target="_blank" rel="noreferrer">this post</a> yesterday regarding the dissection of the UFO script and it got me hunting through the code myself.  In my search, I noticed that the code is loading the resource &quot;UFO_EYE&quot; at the mountain peak coordinates:</p><pre><code>case 149:
+     wPtr(1, (A_0) + 12); 
+     strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+     strcpy(&quot;ufo_eye&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+     wPtr(0, (A_0) + 132);
+     setStruct(487.31f, 5588.386f, 793.0532f, 3, A_0);
+     break;</code></pre><p>The UFO script calls this by passing the value 149 to the method loading the resources.  However, what I DID notice was that right above that code was another conditional statement, that loads a DIFFERENT resource &quot;UFO&quot; at the exact same coordinates:</p><pre><code>case 148:
+     wPtr(1, (A_0) + 12);
+     strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+     strcpy(&quot;ufo&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+     wPtr(0, (A_0) + 132);
+     setStruct(487.31f, 5588.386f, 793.0532f, 3, A_0);
+     break;</code></pre><p>It makes me wonder what the difference between &quot;UFO&quot; and &quot;UFO_EYE&quot; is, and why they need separate resources.  What is known is that they require difference sequences to trigger, but will both execute at the same location (the mountain peak).  So maybe the difference is the &quot;UFO_EYE&quot; is the resource which can only be <em>seen</em> and not interacted with, whereas &quot;UFO&quot; is the resource that CAN be interacted with.</p><p>The difference is that in order to execute this block of code to load &quot;UFO&quot; the value 148 must be passed.  So I got to thinking that I need to look up the other scripts to see which one has the code that passes 148 instead of 149.  After using GREP, I found the script file that indeed does this.  The file is &quot;CompletionPercentage_Controller.txt&quot;.  I just got started analyzing the code, but it looks like this trigger might be a time difference based sequence.  I say this because the first part tracks the start time (in ticks) and then later checks the ticks again, and ensures the difference is within an acceptable range.</p><p>I will continue to dig into this file to try to understand what is going on, but I thought I would pass this information onto you hunters to see if anyone else can pull something from this.</p><p><strong>Update 1:</strong> In looking at the code, right before the resource &quot;UFO&quot; is loaded, the following resource (160) is loaded:</p><pre><code>case 160:
+    strcpy(&quot;TORSO_P2_24_6&quot;, &amp;num5, 16);
+    num9 = 24;
+    num10 = 6;
+    num4 = 28;
+    break;</code></pre><p>Not quite sure what the &quot;TORSO&quot; resources are, but do they have to do with the character model when in the interior of a vehicle?  If so, then the fact that it happens immediately before the loading of &quot;UFO&quot; is most interesting.</p><p><strong>Update 2:</strong> Looks like more resources are loaded.  Here are all the resources loaded right before &quot;UFO&quot;:</p><pre><code>TORSO_P1_17_0
+TORSO_P0_24_9
+TORSO_P2_24_6
+PROPS_P1_EA1_3
+TORSO_P1_17_0 
+progress_tshirt
+v_franklinshouse (at the coordinates X: 7.0256f, Y: 537.3075f, Z: 175.0281f)</code></pre><p><strong>Update 3:</strong> As I dig through the code, there are some references to 100 (which could be 100%), such as:</p><pre><code>bool flag10 = rPtr(((&amp;g_86931) + 7795) + 3817) == 100f;
+if (flag10 | (rPtr(((&amp;g_86931) + 7795) + 3817) &gt; 100f))
+{
+     if (NETWORK::NETWORK_IS_CLOUD_AVAILABLE() != 0)
+     {
+          STATS::0x3E69E7C3(0x486CDCFF, rPtr(((&amp;g_86931) + 7795) + 3817), 0);
+          if (NETWORK::0x429AEAB3() != 0)
+          {
+               NETWORK::0x2D947814(0);
+               sub_1B6E1(0);
+           }
+      }...</code></pre><p>Interestingly enough, there are a LOT of references to the network, such as:</p><pre><code>if (NETWORK::NETWORK_IS_CLOUD_AVAILABLE() != 0)..... (this is called a LOT of times)</code></pre><p>And this:</p><pre><code>if (DATAFILE::0x768CBB35(&quot;GTA5/checklist/index.json&quot;) != 0).....  (json is a commonly used format for web)</code></pre><p>And references to Facebook (funny enough), like:</p><pre><code> if (GAMEPLAY::IS_STRING_NULL_OR_EMPTY(A_0) == 0)
+{
+     UI::0x574EE85C(&quot;FB_TITLE&quot;);
+     UI::0xDCE05406(A_0);
+     UI::0xE7E3C98B(&quot;CHAR_FACEBOOK&quot;, &quot;CHAR_FACEBOOK&quot;, 1, 0, &quot;&quot;, 0);
+ }</code></pre><p>And this:</p><pre><code>case 0:
+        num3 = &quot;FB_HUND_PERC&quot;;
+        break;
+case 1:
+        num3 = &quot;FB_STORY&quot;;
+        break;
+case 2:
+        num3 = &quot;FB_VEHICLES&quot;;
+        break;
+case 3:
+        num3 = &quot;FB_PROPERTIES&quot;;
+        break;
+case 4:
+        num3 = &quot;FB_PSYCH&quot;;
+        break;
+case 5:
+        num3 = &quot;FB_MAPREV&quot;;
+        break;</code></pre><p>This makes me wonder if &quot;UFO_EYE&quot; is a single player resource, while &quot;UFO&quot; is a <em>multiplayer</em> resource.  Makes me think the UFO is an unlockable vehicle in multiplayer, which has its own completion percentage tracking.  Either that OR your story isn&#x27;t <em>fully</em> complete unless you have completed single player, played or achieved a certain point in multiplayer, and participated in the Facebook functionality.</p><p><strong>Update 4:</strong>  There is a likelihood that the &quot;UFO&quot; resource is just the script that loads the &quot;UFO_EYE&quot;, as dissected yesterday.  It looks that way because it loads things such as the 100% t-shirt, appears to track things in Facebook, etc.  That being the case, THIS is the file we should be dissecting to see what else is unlocked as it seems like the root.</p><p><strong>Update 5:</strong>  Not a good update, folks.  It looks like the PercentageController script tracks when you hit 100%, then loads a bunch of resources (100% shirt, FaceBook brags, etc), including the UFO script.  However, as I comb through this code, I&#x27;m REALLY, really starting to believe that these UFOs are all we are to find.  UFO triggers two ambient UFOs (the fort one and hippie camp), and starts the UFO_EYE script.  UFO_EYE is separate because it has the other conditions to unlock the model (the location, time, weather, etc).  None of these mention the sunken UFO, which is treated just as a regular landmark.</p><p>However, none of these are showing any interaction code.  So I think the mural really is just conveying that at 100%, you can unlock the THREE UFOs (remember, the fourth appears to have no script and just is a landmark).  The two ambient UFOs are the one above the hippie camp (the left icon of the UFO) and the one at the fort (the jetpack icon as the jetpack is found at the fort in the previous game).  The NON ambient UFO (represented by the middle icon of a TRAIL...not egg) is special because it is the only one that requires additional conditions to be met (hence having its own script &quot;UFO_EYE&quot;.  That&#x27;s why it is in the middle, as it needs more than 100%.  The rest of the mural depicts the additional conditions that need to be met (top of mountain, lighting for storm, etc).</p><p>So I think the theory that the glyphs just represent the locations, and not unlockables, is DEAD on.</p><p>Very discouraging...</p><p><strong>Update 6:</strong> While discouraging that there may be no more UFOs, the more I look at the code that <a href="https://www.reddit.com/u/trainwreck42o" target="_blank" rel="noreferrer">/u/trainwreck42o</a> is talking about at <a href="http://www.reddit.com/r/chiliadmystery/comments/34bzmj/breaking_down_the_ufo_script_reveals_a_roadblock/" target="_blank" rel="noreferrer">this post</a>, the more I think they are on to something.  There is definitely code there that checks if the player is uninjured AND close enough to a certain entity before it loads some Interior resources.  I suggest moving the hunt back to that post.</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 26 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/34ggzl/the_search_for_how_to_unlock_ufo_instead_of_ufo/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

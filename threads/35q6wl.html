@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karma in the Scripts PT. 1 - Stealing Epsilon Cash · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game File Analysis</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Karma in the Scripts PT. 1 - Stealing Epsilon Cash</h1>
+    <div class="post-meta"><span class="score">▲ 43 pts</span><span>u/trainwreck42o</span><span>May 12, 2015</span><span>39 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/35q6wl/karma_in_the_scripts_pt_1_stealing_epsilon_cash/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-karma-run.html" title="Weak match: this post may not actually demonstrate this method.">Karma / Pacifist Playthrough Protocol ?</a><a class="badge weak-chip" href="../techniques/tq-modding.html" title="Weak match: this post may not actually demonstrate this method.">Modding &amp; In-Game Manipulation (Trainers / Script Hooks) ?</a><a class="badge weak-chip" href="../techniques/tq-x4-017.html" title="Weak match: this post may not actually demonstrate this method.">Script-Decompilation Conditional Tracing ?</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p><em>End summary/TLDR;</em></p><blockquote><p>In my eyes this debunks the possibility that stealing the Epsilon cash can have any additional effect on the game whatsoever.  It seems to simply play the &quot;angry&quot; Marnie message instead of the &quot;congratulations&quot; message, and then she makes you wait a different amount of time before you can begin collecting the tracts.  There is no other usage in the scripts of the global variable 388 - g_bStoleEpsilonCash.</p></blockquote><p><strong>Takeaway: Stealing the Epsilon cash does not have any unknown effects, and does not affect the mystery</strong></p><p>I recently came across a set of variables which seem to relate to Karma.  They are saved to your savefile when you perform what many would consider to be Karma-related tasks such as donating to Epsilon, stealing from Epsilon, random events (stopping wallet thieves), and more.  Here is the game-save code related to these Karma variables, where they are all grouped together:</p><pre><code>        GAMEPLAY::REGISTER_INT_TO_SAVE(((&amp;g_86931) + 15438) + 379, &quot;RC_EVENTS&quot;);
+        GAMEPLAY::REGISTER_INT_TO_SAVE(((&amp;g_86931) + 15438) + 380, &quot;iRCMissionsCompleted&quot;);
+        GAMEPLAY::REGISTER_INT_TO_SAVE(((&amp;g_86931) + 15438) + 381, &quot;g_iCurrentEpsilonPayment&quot;);
+        GAMEPLAY::REGISTER_INT_TO_SAVE(((&amp;g_86931) + 15438) + 382, &quot;g_iWebsiteQueryBit&quot;);
+        GAMEPLAY::REGISTER_INT_TO_SAVE(((&amp;g_86931) + 15438) + 383, &quot;g_iREDomesticCompOrder&quot;);
+        GAMEPLAY::REGISTER_BOOL_TO_SAVE(((&amp;g_86931) + 15438) + 384, &quot;g_bFanaticHelp&quot;);
+        GAMEPLAY::REGISTER_BOOL_TO_SAVE(((&amp;g_86931) + 15438) + 385, &quot;g_bFanaticStamina&quot;);
+        GAMEPLAY::REGISTER_BOOL_TO_SAVE(((&amp;g_86931) + 15438) + 386, &quot;g_bFanaticCheated&quot;);
+        GAMEPLAY::REGISTER_BOOL_TO_SAVE(((&amp;g_86931) + 15438) + 387, &quot;g_bFinalEpsilonPayment&quot;);
+        GAMEPLAY::REGISTER_BOOL_TO_SAVE(((&amp;g_86931) + 15438) + 388, &quot;g_bStoleEpsilonCash&quot;);
+        GAMEPLAY::REGISTER_BOOL_TO_SAVE(((&amp;g_86931) + 15438) + 389, &quot;g_bTriggeredHao1&quot;);</code></pre><p>So, the variables are all identified by this one address ((&amp;g_86931) + 15438) + an additional value for each one.</p><ul><li>379 - RC_EVENTS</li><li>380 - iRCMissionsCompleted</li><li>381 - g_iCurrentEpsilonPayment</li><li>382 - g_iWebsiteQueryBit</li><li>383 - g_iREDomesticCompOrder</li><li>384 - g_bFanaticHelp</li><li>385 - g_bFanaticStamina</li><li>386 - g_bFanaticCheated</li><li>387 - g_bFinalEpsilonPayment</li><li>388 - g_bStoleEpsilonCash</li><li>389 - g_bTriggeredHao1</li></ul><p>EDIT: Many of these seem to be non-Karma related. I have analyzed the Epsilon ones which most people agree are possibly karmic related.</p><ul><li><a href="http://pastebin.com/HYzfHkn1" target="_blank" rel="noreferrer">384 - g_bFanaticHelp</a></li><li><a href="http://pastebin.com/HYzfHkn1" target="_blank" rel="noreferrer">385 - g_bFanaticStamina</a></li><li><a href="http://pastebin.com/HYzfHkn1" target="_blank" rel="noreferrer">386 - g_bFanaticCheated</a></li></ul><p>We can find the cause and effects of these Karma variables by searching for the same thing in the scripts.</p><p>In this first post I am going to analyze what cause and effect stealing Epsilon Cash has.</p><p><strong>ALL CAUSES OF g_bStoleEpsilonCash:</strong>  (1 script)</p><pre><code>epsilon8.txt:1427:     if ((sub_3335A() == 0) &amp;&amp; (rPtr(((&amp;g_86931) + 15438) + 388) == 0))
+epsilon8.txt:1429:         wPtr(1, ((&amp;g_86931) + 15438) + 388);</code></pre><p>In this script, epsilon 8, it writes value 388 (g_bStoleEpsilonCash) as 1 (TRUE) when you steal the cash.</p><p><strong>ALL EFFECTS OF g_bStoleEpsilonCash:</strong>  (1 script)</p><pre><code>epsilontract.txt:1512:     if (rPtr(((&amp;g_86931) + 15438) + 388) != 0)</code></pre><p>This usage, in the epsilon tracts script, is the only effect of this Karma variable in all the scripts.</p><pre><code>if (rPtr(((&amp;g_86931) + 15438) + 388) != 0)
+{
+    setElem(&quot;TRACT_HINT1B&quot;, 0, &amp;l_144, 4);
+    l_27 = 0x493E0;
+}
+else
+{
+    setElem(&quot;TRACT_HINT1&quot;, 0, &amp;l_144, 4);
+    l_27 = 16000;
+}</code></pre><p>The first line regarding &quot;TRACT_HINT&quot; is an audio file which will play when Marnie phones you after the last epsilon8 mission, now talking about the tracts - there are two audio files, one for each of the variables.  If you stole the cash, she says something like &quot;You can still be saved&quot;.  If you didn&#x27;t still the cash, she congratulates you for becoming a full epsilon member.</p><p>The second line seems to be setting a wait period before you can begin the tracts mission.</p><p>If you stole the cash, you get <a href="http://pastebin.com/nemHx4jX" target="_blank" rel="noreferrer">0x493E0</a> as your wait period.  That pointer seems to deal with current system time (click link for all usages of that in scripts). I am not sure what the result would be, but we can assume it makes you wait a longer amount of time for stealing the cash, to reflect on your actions.</p><p>If you don&#x27;t steal the cash however, it gives you a wait period of 16000.</p><p>Here is the usage of l_27 which is the wait period variable:</p><pre><code>if (flag1 &amp; ((GAMEPLAY::GET_GAME_TIMER() - l_26) &gt; l_27))
+    {
+        sub_1E61(0, 60, getElem(0, &amp;l_144, 4), 1, 0, 0, 0, 0, 1);
+        sub_1E1F(36);
+        l_26 = -1;
+    }</code></pre><p>This seems to be the function which begins the search for the first tract with the first email message from Marnie.</p><p>First it calls sub_1E61(0, 60, getElem(0, &amp;l_144, 4), 1, 0, 0, 0, 0, 1);</p><pre><code>var sub_1E61(var 0, var 60, var getElem(0, &amp;l_144, 4), var 1, var 0, var 0, var 0, var 0, var 1)
+{
+strcpy(getElem(0, &amp;l_144, 4), getElemPtr(num3, (&amp;g_86931) + 11705, 336), 64);
+wPtr(60, getElemPtr(21, (&amp;g_86931) + 11705, 336) + 68);
+wPtr(1, getElemPtr(21, (&amp;g_86931) + 11705, 336) + 96);
+wPtr(0, getElemPtr(21, (&amp;g_86931) + 11705, 336) + 100);
+wPtr(0, getElemPtr(21, (&amp;g_86931) + 11705, 336) + 104);
+wPtr(0, getElemPtr(21, (&amp;g_86931) + 11705, 336) + 116);
+wPtr(1, getElemPtr(21, (&amp;g_86931) + 11705, 336) + 120);
+wPtr(0, getElemPtr(21, (&amp;g_86931) + 11705, 336) + 124);
+wPtr(0, getElemPtr(21, (&amp;g_86931) + 11705, 336) + 112);
+return 1;
+}</code></pre><p>Then sub_1E1F(36);</p><pre><code>void sub_1E1F(36)
+{
+var num3 = 36;
+var num4 = 0;
+while (true)
+{
+    if (num3 &lt;= 31)
+    {
+        break;   (at first num3 is 36 so it will not break yet)
+    }
+    num3 -= 32;  (now num3 = 4)
+    num4++;  (now num4 = 1, and it will go back up and break because num3 is now &lt;= 31)
+}
+
+if (num4 &lt; 2)   (yes, num4 is 1)
+{
+    GAMEPLAY::SET_BIT(getElemPtr(1, ((&amp;g_86931) + 19808) + 102, 4), 4);
+}
+}</code></pre><p>It then sets l_26 = -1; and moves on to the next piece of code:</p><pre><code>if (rPtr(getElemPtr(l_25, &amp;l_33, 44) + 40) != 0)
+{
+    var num1 = OBJECT::HAS_PICKUP_BEEN_COLLECTED(rPtr(getElemPtr(l_25, &amp;l_33, 44) + 4));
+    if ((num1 | sub_1DBA(rPtr(getElemPtr(l_25, &amp;l_33, 44) + 4))) != 0)
+    {
+        if (ENTITY::DOES_ENTITY_EXIST(PLAYER::PLAYER_PED_ID()) != 0)
+        {
+            AI::TASK_CLEAR_LOOK_AT(PLAYER::PLAYER_PED_ID());
+        }
+        sub_1DA1(getElemPtr(l_25, &amp;l_33, 44) + 4);
+        wPtr(0, getElemPtr(l_25, &amp;l_33, 44) + 40);
+        CONTROLS::SET_PAD_SHAKE(0, 200, 250);
+        var num3 = 805 + l_25;
+        sub_1C72(num3, 1, -1, 1);
+        STATS::STAT_INCREMENT(0xFAF0DFB7, 1f);
+        **l_30 = 1;** (this allows the final function to happen)
+        if (l_25 &lt; 10)
+        {
+            l_25++;
+            l_26 = GAMEPLAY::GET_GAME_TIMER();
+            sub_1C5A(1, 0);
+            sub_1C00();
+        }
+    }
+    else if (OBJECT::DOES_PICKUP_EXIST(rPtr(getElemPtr(l_25, &amp;l_33, 44) + 4)) != 0)
+    {
+        struct _s = getElemPtr(l_25, &amp;l_33, 44) + 12;
+        sub_1BB9(rPtrOfs(_s, 0), rPtrOfs(_s, 4), rPtrOfs(_s, 8));
+        sub_1B79(getElemPtr(l_25, &amp;l_33, 44) + 4, getElemPtr(l_25, &amp;l_33, 44) + 40);
+    }
+    goto Label_0416;
+Label_0416:
+sub_265(**&amp;l_30**, &amp;l_31, &amp;l_32, 4, **&amp;l_28**, &amp;l_29, &quot;TRACT_TITLE&quot;, &quot;TRACT_COLLECT&quot;);</code></pre><p>The two important variables being passed in this final line are the first and fifth.  The first (&amp;l_30 which becomes A_0 in the next function) is set to 1 already, as seen in the above block.  The fifth (&amp;l_28 which becomes A_4 in the next function) is not set in this entire script, so we can assume it begins its life as a variable at a default of 0, as it is never set to anything else.</p><pre><code>void sub_265(**var A_0**, var A_1, var A_2, var A_3, **var A_4**, var A_5, var A_6, var A_7)
+{
+if (rPtr(A_0) != 0)  (yes, A_0 = 1)
+{
+    switch (rPtr(A_4))  (A_4 starts at 0 because it&#x27;s not set)
+    {
+        case 0:
+            wPtr(GRAPHICS::REQUEST_SCALEFORM_MOVIE(&quot;MIDSIZED_MESSAGE&quot;), A_5);
+            if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(rPtr(A_5)) != 0)
+            {
+                AUDIO::PLAY_SOUND_FRONTEND(AUDIO::GET_SOUND_ID(), &quot;COLLECTED&quot;, &quot;HUD_AWARDS&quot;);
+                wPtr(rPtr(A_4) + 1, A_4);   (add 1 to A_4, this is a sequence of events)
+            }
+            break;
+        case 1:
+            GRAPHICS::0x215ABBE8(rPtr(A_5), &quot;SHOW_MIDSIZED_MESSAGE&quot;);
+            GRAPHICS::0x3AC9CB55(A_6);
+            GRAPHICS::0x386CE0B8();
+            GRAPHICS::0x3AC9CB55(A_7);
+            UI::ADD_TEXT_COMPONENT_INTEGER(sub_386(A_3));
+            GRAPHICS::0x386CE0B8();
+            GRAPHICS::0x02DBF2D7();
+            wPtr(GAMEPLAY::GET_GAME_TIMER(), A_2);
+            wPtr(rPtr(A_4) + 1, A_4);  (add 1 to A_4, this is a sequence of events)
+            break;
+        case 2:
+            if ((GAMEPLAY::GET_GAME_TIMER() - rPtr(A_2)) &lt;= 7500)
+            {
+                if ((sub_35D() == 0) &amp;&amp; (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(rPtr(A_5)) != 0))
+                {
+                    GRAPHICS::0x7B48E696(rPtr(A_5), 100, 100, 100, 255);
+                }
+                break;
+            }
+            wPtr(rPtr(A_4) + 1, A_4);  (add 1 to A_4, this is a sequence of events)
+            break;
+        case 3:
+            if (GRAPHICS::HAS_SCALEFORM_MOVIE_LOADED(rPtr(A_5)) != 0)
+            {
+                GRAPHICS::SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(A_5);
+            }
+            wPtr(0, A_1);
+            wPtr(0, A_0);
+            wPtr(0, A_4);
+            break;
+    }
+}
+}</code></pre><p>All this does is display the final completion message for a set period of time and then remove the completion message.</p><p>After analyzing the file for a further 30 minutes, I could not find any possible alternate ending of the script.</p><p><strong>TLDR; In my eyes this debunks the possibility that stealing the Epsilon cash can have any additional effect on the game whatsoever.  It seems to simply play the &quot;angry&quot; Marnie message instead of the &quot;congratulations&quot; message, and then she makes you wait a different amount of time before you can begin collecting the tracts.</strong></p><p><strong>There is no other usage in the scripts of the global variable 388 - g_bStoleEpsilonCash.</strong></p><p>Other instances of Karma in the scripts:</p><ul><li><a href="https://www.reddit.com/r/chiliadmystery/comments/35qojx/karma_in_the_scripts_pt_2_epsilon_payments/" target="_blank" rel="noreferrer">g_iCurrentEpsilonPayment  (the total amount you have donated)</a></li><li><a href="https://www.reddit.com/r/chiliadmystery/comments/35qojx/karma_in_the_scripts_pt_2_epsilon_payments/" target="_blank" rel="noreferrer">g_bFinalEpsilonPayment   (true/false value - did you make a &quot;final payment&quot;)</a></li><li><a href="https://www.reddit.com/r/chiliadmystery/comments/362kks/karma_in_the_scripts_pt_3_the_psych_report/" target="_blank" rel="noreferrer">The Psych Report</a></li></ul><p>Thanks for reading.  Kifflom!</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 39 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/35q6wl/karma_in_the_scripts_pt_1_stealing_epsilon_cash/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

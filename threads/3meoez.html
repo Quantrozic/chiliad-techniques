@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using Squash to find other Time/Weather Based Events · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game Files</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Using Squash to find other Time/Weather Based Events</h1>
+    <div class="post-meta"><span class="score">▲ 30 pts</span><span>u/Trevor_E</span><span>Sep 26, 2015</span><span>19 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/3meoez/using_squash_to_find_other_timeweather_based/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x4-021.html" title="Weak match: this post may not actually demonstrate this method.">Procedural Weather-Cycle Triggering ?</a><a class="badge weak-chip" href="../techniques/tq-x6-012.html" title="Weak match: this post may not actually demonstrate this method.">Procedural Weather-State Sweep ?</a><a class="badge weak-chip" href="../techniques/tq-x2-001.html" title="Weak match: this post may not actually demonstrate this method.">Trainer-Based Weather Cycling ?</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>Ill keep this as short as possible. TL;DR theory at bottom.  I have no way to test this but hope posting my logic someone will see the reasoning this is important and try. Using <a href="https://www.reddit.com/u/rkRusty" target="_blank" rel="noreferrer">/u/rkRusty</a> screenshot - <a href="https://i.imgur.com/doAYFLl.png" target="_blank" rel="noreferrer">https://i.imgur.com/doAYFLl.png</a> - I looked around for other instances of &quot;GET_WEATHER_TYPE_TRANSITION&quot; and &quot;GET_CLOCK_DAY_OF_WEEK&quot;.</p><p><strong>Weather Data</strong></p><p>From here I weeded out the junk that was repeated everywhere and then ignored a few other files (for reference - appinternet,player_timetable_scene, player_controller_b,family_scene_t0,family_scene_t1,family_scene_f0,family_scene_m,startup_positioning,initial)</p><p>The only files remaining were the below few missions that have a very suspicious code doing something with a snow / smog weather check - extract here  <a href="http://pastebin.com/Lxng2GKp" target="_blank" rel="noreferrer">http://pastebin.com/Lxng2GKp</a></p><pre><code>family6
+martin1
+mrsphilips2
+finale_endgame</code></pre><p>Also, worthwhile noting, there are a few ways I see smog can be set legitimately.  Most notable - trevor3. It seems to have these audio scenes contained around where it could happen</p><pre><code>if (AUDIO::IS_AUDIO_SCENE_ACTIVE(&quot;TREVOR_3_DRIVE_TO_TRAILER_PARK&quot;)) {
+if (AUDIO::IS_AUDIO_SCENE_ACTIVE(&quot;TREVOR_3_TRAILER_PARK_OVERVIEW&quot;)) {
+if (AUDIO::IS_AUDIO_SCENE_ACTIVE(&quot;TREVOR_3_PLANT_BOMBS_STEALTH&quot;)) {
+if (AUDIO::IS_AUDIO_SCENE_ACTIVE(&quot;TREVOR_3_PLANT_BOMBS_SHOOTOUT&quot;)) {
+if (AUDIO::IS_AUDIO_SCENE_ACTIVE(&quot;TREVOR_3_DETONATE_BOMBS&quot;)) {
+if (AUDIO::IS_AUDIO_SCENE_ACTIVE(&quot;TREVOR_3_RAYFIRE&quot;)) {
+if (AUDIO::IS_AUDIO_SCENE_ACTIVE(&quot;TREVOR_3_DRIVE_TO_LS_DIALOGUE&quot;)) {
+if (AUDIO::IS_AUDIO_SCENE_ACTIVE(&quot;TREVOR_3_DRIVE_TO_FLOYDS&quot;)) {</code></pre><p>And here is the code: 	(clear the area and set weather extrasunny if 3, if not set smog)</p><pre><code>if (a_0 == 3) {
+    GAMEPLAY::CLEAR_AREA(953.5855712890625, 3654.504638671875, 44.901798248291016, 1000.0, 1, 0, 0, 0);
+}
+if (((a_0 != 0) &amp;&amp; (a_0 != 2)) &amp;&amp; (a_0 != 1)) {
+    GAMEPLAY::SET_WEATHER_TYPE_NOW(&quot;EXTRASUNNY&quot;);
+} else { 
+    g_17C11 = 0;
+    GAMEPLAY::_SET_WEATHER_TYPE_OVER_TIME(&quot;SMOG&quot;, 30.0);
+}</code></pre><p>And there is only one way foggy gets set - which is even more curious.</p><pre><code>finale_credits:            GAMEPLAY::SET_WEATHER_TYPE_NOW(&quot;FOGGY&quot;);</code></pre><p><strong>Time Data</strong></p><p>There are also very few files which actually care about &quot;GET_CLOCK_DAY_OF_WEEK&quot; as squash does. Everything else uses &quot;TIME::GET_CLOCK_DAY_OF_MONTH&quot;.  Something notable which may just be a save game bounds check (but it happens to be different everywhere else) - finale_heist2a uses the DOW for the check- extract here - <a href="http://pastebin.com/6jRCRrwa" target="_blank" rel="noreferrer">http://pastebin.com/6jRCRrwa</a></p><p>Lastly something that should be noted, only a few places check where GET_CLOCK_HOURS is equal to something.</p><pre><code>//worth checking if anyone can follow the finale_heist1 code
+finale_heist1:    } else if (TIME::GET_CLOCK_HOURS() == a_0) {
+ufo:            if ((TIME::GET_CLOCK_HOURS() == 3) &amp;&amp; sub_43fa()) {
+
+//probably junk
+main_persistent:            if (TIME::GET_CLOCK_HOURS() == 23) { 
+michael1:    if ((TIME::GET_CLOCK_HOURS() &lt; 22) || ((TIME::GET_CLOCK_HOURS() == 23) &amp;&amp; (TIME::GET_CLOCK_MINUTES() == 59))) {
+michael1:    if ((TIME::GET_CLOCK_HOURS() &lt; 22) || ((TIME::GET_CLOCK_HOURS() == 23) &amp;&amp; (TIME::GET_CLOCK_MINUTES() == 59))) {
+rural_bank_heist:    if (TIME::GET_CLOCK_HOURS() == 18) {</code></pre><p><strong>TL;DR Theory</strong> -</p><p><del>Set console clock to December 31st 1978--Junk, dis-proven already</del>. Complete something in the last family missions while its snowing (freelander family one?), beat the game choosing 2a with it snowing (kill Michael?), squash mission, find the golden peyote (optional, but it seems to be only time conditions are right?), see trevors mom in the snow? profit?</p><p>Reasoning  : The check is coming out to if weather is neutral and changing to snowing/snowlite/snowblizard after something is complete during a cutscene set weather to smoggy.  Otherwise set it extra sunny.  I do not believe it is environmental cleanup as it would be in every mission, not these pretty unique few.  And only in these 4 missions which seem to follow a pattern as in order, some type of slow decent into a drug fueled madness or something.  I would assume these steps would be easy to prove/disprove if we could get smog repetitively to happen after snow. Or even more basic - its always extra sunny in these 4 missions after a cutscene somewhere.</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 19 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/3meoez/using_squash_to_find_other_timeweather_based/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

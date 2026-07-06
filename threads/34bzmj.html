@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breaking down the UFO script reveals a roadblock in the code which may load the UFO interior · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game Files</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Breaking down the UFO script reveals a roadblock in the code which may load the UFO interior</h1>
+    <div class="post-meta"><span class="score">▲ 426 pts</span><span>u/trainwreck42o</span><span>Apr 29, 2015</span><span>375 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/34bzmj/breaking_down_the_ufo_script_reveals_a_roadblock/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x1-011.html" title="Weak match: this post may not actually demonstrate this method.">Color-Channel Separation Glyph Reveal ?</a><a class="badge" href="../techniques/tq-morse.html">Morse Code Analysis</a><a class="badge weak-chip" href="../techniques/tq-x1-038.html" title="Weak match: this post may not actually demonstrate this method.">Script Decompilation and String Mining ?</a><a class="badge weak-chip" href="../techniques/tq-x3-037.html" title="Weak match: this post may not actually demonstrate this method.">Script Decompilation Trigger Tracing ?</a><a class="badge weak-chip" href="../techniques/tq-x4-017.html" title="Weak match: this post may not actually demonstrate this method.">Script-Decompilation Conditional Tracing ?</a><a class="badge weak-chip" href="../techniques/tq-x5-038.html" title="Weak match: this post may not actually demonstrate this method.">Script-Decompilation String Mining ?</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>Hey guys.  This is going to be a long post.  I just broke down the UFO script in attempt to figure out if interiors really load or not, and where to go to warp into any interior that does load.</p><p>UPDATE: I have been told that | represents &quot;OR&quot; not &quot;AND&quot; so I have corrected a few aspects of the post.</p><p>TLDR; I found there ARE interiors which CAN load, and the script which loads them requires the player to be not injured and also for a certain global variable to be either -1 or 999.  So there is a ton of code in the UFO ambient script which we <em>may</em> have never been able to activate, and could contain literally everything we are looking for (at the very least it contains several interior loading scripts which are unique to the UFO script).</p><p>If we can verify we are indeed un-injured and have the global variable set to either -1 or 999 when viewing the UFO, we can know the interiors are being loaded.</p><p>If we assume we are able to meet those requirements, then the final step is to uncover the warp points which will take us from Mt. Chiliad into the loaded interiors.</p><p>BEGIN CODE ANALYSIS</p><p>Starting with the weather checking function, we see that it returns 1 if any of these conditions are met:</p><pre><code>var sub_4214() (WEATHER CHECKING FUNCTION)
+{
+    var num1 = GAMEPLAY::IS_NEXT_WEATHER_TYPE(&quot;RAIN&quot;);
+    var num6 = num1 | GAMEPLAY::IS_NEXT_WEATHER_TYPE(&quot;THUNDER&quot;);
+    var num7 = num6 | GAMEPLAY::IS_PREV_WEATHER_TYPE(&quot;RAIN&quot;);
+    if ((num7 | GAMEPLAY::IS_PREV_WEATHER_TYPE(&quot;THUNDER&quot;)) != 0)
+    {
+        return 1;
+    }
+    return 0;
+}</code></pre><p>The first and only usage of this function sub_4214 is here:</p><pre><code>switch (l_14)  (SEQUENCE OF EVENTS CONTROLLER)
+    {
+        case 0:
+        {
+            bool flag1 = TIME::GET_CLOCK_HOURS() == 3;
+            if (flag1 &amp; sub_4214())</code></pre><p>If time is 3am AND weather check sub both return as positive response, then it moves to the next step of the script</p><pre><code>            {
+                l_14 = 1;
+            }
+            break;
+        }
+        case 1:
+            sub_CF(149, 1, 0, 1);
+            l_14 = 2;
+            if (AUDIO::IS_AMBIENT_ZONE_ENABLED(&quot;AZ_SPECIAL_UFO_03&quot;) == 0)
+            {
+                AUDIO::SET_AMBIENT_ZONE_STATE(&quot;AZ_SPECIAL_UFO_03&quot;, 1, 1);
+            }
+            break;</code></pre><p>It runs the function &quot;sub_CF&quot;, enables UFO ambient audio, and moves to next step of the script</p><pre><code>        case 2:
+        {
+            bool flag2 = TIME::GET_CLOCK_HOURS() != 3;
+            if (flag2 | (sub_4214() == 0))
+            {
+                sub_4256();
+            }
+            break;
+        }
+    }</code></pre><p>If hours digit on clock is something other than 3 OR weather check function returns 0, then runs function &quot;sub_4256&quot;</p><p>So we have two functions to explore next, the first one is sub_CF, which is the function that is run when the glyph conditions are met:</p><pre><code>void sub_CF(var A_0, var A_1, var A_2, var A_3)  (UNKNOWN FUNCTION WHICH TRIGGERS 2 MORE FUNCTIONS)</code></pre><p>To review, this sub is called using this string: sub_CF(149, 1, 0, 1), so I will replace all the variables with the ones which will be used in the live environment.</p><pre><code>{
+if (149 != 192)  (if 149 is different than 192, then)
+{
+    if (g_59935 != 0)  (if this global variable is not 0)
+    {
+        setElem(1, 149, ((&amp;g_1338499) + 61) + 226, 4);
+    }
+    else
+    {
+        setElem(1, 149, ((&amp;g_86931) + 4964) + 226, 4);
+    }
+    setElem(0, 149, &amp;g_26924, 4);
+    setElem(1, 149, &amp;g_27117, 4);</code></pre><p>The above is too cryptic for me to interpret, but it seems to be checking a global variable, and then setting an attribute to a certain element based on that global variable</p><pre><code>    sub_22F(149, 1, 0);
+    sub_127(149, 1);
+}
+}</code></pre><p>It runs these two functions, sub_22F and sub_127, which we will explore next.</p><pre><code>void sub_127(var A_0, var A_1)  (
+
+    To review, this sub is called using this string: sub_127(149, 1), so I will replace all the variables with the ones which will be used in the live environment.</code></pre><p>... Truncated irrelevant code due to reddit limit ...</p><p>For some reason this function does nothing, with the input of 149, because only an input of 12, 69, 171, 6, or 63 would produce any effect.  There seems to be no possible way in this script for the input to be anything but 149, which means this function of the script is completely unused. It seems to deal with audio emitters though, so maybe its just a global function which happens to be in every script.</p><p>Moving on to the next function: sub_22F, this is the largest and most complex function in the script</p><pre><code>var sub_22F(var A_0, var A_1, var A_2)  (THE BIGGEST FUNCTION WHICH CONTAINS INTERIOR LOADING SCRIPTS)</code></pre><p>To review, this sub is called using this string: sub_22F(149, 1, 0), so I will replace all the variables with the ones which will be used in the live environment.</p><pre><code>{
+var num3 = 0;
+if (PED::IS_PED_INJURED(PLAYER::PLAYER_PED_ID()) == 0)</code></pre><p>! This entire function is contained in this one if statement, which only runs if the player is not injured !  Viewing the UFO if you are injured will not run this function.</p><pre><code>{
+    var num5;
+    var num7;
+    initArray((&amp;num7) + 4, 3);
+    initArray((&amp;num7) + 8, 3);
+    initArray((&amp;num7) + 64, 3);
+    initArray((&amp;num7) + 75, 3);
+    initArray((&amp;num7) + 91, 3);
+    sub_B61(&amp;num7, 149);
+    if (sub_B32() != 0)
+    {
+        num5 = getElem(149, ((&amp;g_86931) + 4964) + 226, 4);
+    }
+    else
+    {
+        num5 = getElem(149, ((&amp;g_1338499) + 61) + 226, 4);
+    }</code></pre><p>This b32 function is very important and I will go over it at the end of this function</p><p>... Truncated irrelevant code because of reddit limit ... The truncated code looks like preload handling for moving the player to a different spot on the map</p><pre><code>            case 2:
+            {
+                struct _s = &amp;num7;
+                var num103 = INTERIOR::0x96525B06(rPtrOfs(_s, 0), rPtrOfs(_s, 4), rPtrOfs(_s, 8), (&amp;num7) + 42);</code></pre><p>The first mention of an interior (!)</p><pre><code>                if (num103 != 0)
+                {
+                    if ((GAMEPLAY::GET_HASH_KEY((&amp;num7) + 50) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) &amp;&amp; (INTERIOR::0x39A3CC6F(num103, (&amp;num7) + 50) != 0))
+                    {
+                        INTERIOR::0xDBA768A1(num103, (&amp;num7) + 50);
+                    }
+                    if (num5 != 0)
+                    {
+                        switch (num5)
+                        {
+                            case 1:
+                            {
+                                if ((GAMEPLAY::GET_HASH_KEY(getElemPtr(0, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) &amp;&amp; (INTERIOR::0x39A3CC6F(num103, getElemPtr(0, (&amp;num7) + 8, 32)) != 0))
+                                {
+                                    INTERIOR::0xDBA768A1(num103, getElemPtr(0, (&amp;num7) + 8, 32));
+                                }
+                                bool flag13 = GAMEPLAY::GET_HASH_KEY(getElemPtr(2, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;);
+                                bool flag14 = flag13 &amp; (GAMEPLAY::GET_HASH_KEY(getElemPtr(2, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;REMOVE_ALL_STATES&quot;));
+                                if ((flag14 &amp; (GAMEPLAY::GET_HASH_KEY(getElemPtr(2, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(getElemPtr(num5, (&amp;num7) + 8, 32)))) &amp;&amp; (INTERIOR::0x39A3CC6F(num103, getElemPtr(2, (&amp;num7) + 8, 32)) != 0))
+                                {
+                                    INTERIOR::0xDBA768A1(num103, getElemPtr(2, (&amp;num7) + 8, 32));
+                                }
+                                if ((GAMEPLAY::GET_HASH_KEY(getElemPtr(1, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) &amp;&amp; (INTERIOR::0x39A3CC6F(num103, getElemPtr(1, (&amp;num7) + 8, 32)) == 0))
+                                {
+                                    INTERIOR::0xC80A5DDF(num103, getElemPtr(1, (&amp;num7) + 8, 32));
+                                }
+                                break;
+                            }
+                            case 2:
+                            {
+                                if ((GAMEPLAY::GET_HASH_KEY(getElemPtr(0, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) &amp;&amp; (INTERIOR::0x39A3CC6F(num103, getElemPtr(0, (&amp;num7) + 8, 32)) != 0))
+                                {
+                                    INTERIOR::0xDBA768A1(num103, getElemPtr(0, (&amp;num7) + 8, 32));
+                                }
+                                if ((GAMEPLAY::GET_HASH_KEY(getElemPtr(1, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) &amp;&amp; (INTERIOR::0x39A3CC6F(num103, getElemPtr(1, (&amp;num7) + 8, 32)) != 0))
+                                {
+                                    INTERIOR::0xDBA768A1(num103, getElemPtr(1, (&amp;num7) + 8, 32));
+                                }
+                                bool flag15 = GAMEPLAY::GET_HASH_KEY(getElemPtr(2, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;);
+                                if ((flag15 &amp; (GAMEPLAY::GET_HASH_KEY(getElemPtr(2, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;REMOVE_ALL_STATES&quot;))) &amp;&amp; (INTERIOR::0x39A3CC6F(num103, getElemPtr(2, (&amp;num7) + 8, 32)) == 0))
+                                {
+                                    INTERIOR::0xC80A5DDF(num103, getElemPtr(2, (&amp;num7) + 8, 32));
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if ((GAMEPLAY::GET_HASH_KEY(getElemPtr(1, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) &amp;&amp; (INTERIOR::0x39A3CC6F(num103, getElemPtr(1, (&amp;num7) + 8, 32)) != 0))
+                        {
+                            INTERIOR::0xDBA768A1(num103, getElemPtr(1, (&amp;num7) + 8, 32));
+                        }
+                        bool flag11 = GAMEPLAY::GET_HASH_KEY(getElemPtr(2, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;);
+                        bool flag12 = flag11 &amp; (GAMEPLAY::GET_HASH_KEY(getElemPtr(2, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;REMOVE_ALL_STATES&quot;));
+                        if ((flag12 &amp; (GAMEPLAY::GET_HASH_KEY(getElemPtr(2, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(getElemPtr(num5, (&amp;num7) + 8, 32)))) &amp;&amp; (INTERIOR::0x39A3CC6F(num103, getElemPtr(2, (&amp;num7) + 8, 32)) != 0))
+                        {
+                            INTERIOR::0xDBA768A1(num103, getElemPtr(2, (&amp;num7) + 8, 32));
+                        }
+                        if ((GAMEPLAY::GET_HASH_KEY(getElemPtr(0, (&amp;num7) + 8, 32)) != GAMEPLAY::GET_HASH_KEY(&quot;&quot;)) &amp;&amp; (INTERIOR::0x39A3CC6F(num103, getElemPtr(0, (&amp;num7) + 8, 32)) == 0))
+                        {
+                            INTERIOR::0xC80A5DDF(num103, getElemPtr(0, (&amp;num7) + 8, 32));
+                        }
+                    }
+                    if (1 != null)
+                    {
+                        INTERIOR::REFRESH_INTERIOR(num103);</code></pre><p>There is clearly some action happening with interiors here</p><p>... Truncated due to reddit limit ...</p><p>So that looks like some exciting stuff, obviously its doing more than just showing the UFO! But, the problem is activating all that code.  It all relies on A. non-injured player and B. the outcome of sub_B32:</p><p>Here we explore the B_32 function  if (sub_B32() != 0):</p><pre><code>var sub_B32()   (GLOBAL VARIABLE CHECK)
+{
+bool flag1 = sub_B56() == -1;</code></pre><p>sub_B56 returns the value of global variable g_19456</p><p>flag1 will be false if g_19456 is anything but -1</p><p>flag1 will be true if g_19456 is -1</p><pre><code>if (flag1 | (sub_B56() == 999))</code></pre><p>if flag1 is true, or if g_19456 is 999, then we get the positive response</p><pre><code>{
+    return 1;</code></pre><p>otherwise it returns 0</p><pre><code>}
+return 0;
+}
+var sub_B56()
+{
+return g_19456;
+}</code></pre><p>END CODE ANALYSIS</p><p>To summarize:</p><p>If we can verify we are indeed un-injured and have the global variable set to either -1 or 999 when viewing the UFO, we can know the interiors are being loaded.</p><p>If we assume we are able to meet those requirements, then the final step is to uncover the warp points which will take us from Mt. Chiliad into the loaded interiors.</p><p>Top 5 posts of all time as of May 6 2015 - Kifflom to everyone who has followed this thread!</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 375 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/34bzmj/breaking_down_the_ufo_script_reveals_a_roadblock/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

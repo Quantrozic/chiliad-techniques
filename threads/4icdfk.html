@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rayfire · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game Files</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Rayfire</h1>
+    <div class="post-meta"><span class="score">▲ 39 pts</span><span>u/Caffine1</span><span>May 7, 2016</span><span>33 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/4icdfk/rayfire/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge" href="../techniques/tq-x1-024.html">Gematria / Isopsephy Numeric Mapping</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>We&#x27;ve spent a considerable amount of time going through the files, and came across something interesting. The rayfire.xml file is puzzling. It can be found at:  \common.rpf\data\rayfire.xml</p><p>This is the code:</p><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;CRayFireArray&gt;
+	&lt;RayFires&gt;
+		&lt;Item&gt;
+			&lt;Position x=&quot;-1234.810059&quot; y=&quot;-1105.000000&quot; z=&quot;10.370000&quot;/&gt;
+			&lt;Orientation x=&quot;0.000000&quot; y=&quot;0.000000&quot; z=&quot;0.000000&quot;/&gt;
+			&lt;Name&gt;RAYFIRE_TEST&lt;/Name&gt;
+			&lt;AnimDict&gt;v_inttest&lt;/AnimDict&gt;
+			&lt;AnimName&gt;v_ray_root&lt;/AnimName&gt;
+			&lt;StartModel&gt;V_RAY_START&lt;/StartModel&gt;
+			&lt;AnimatedModel&gt;V_RAY_ROOT&lt;/AnimatedModel&gt;
+			&lt;EndModel&gt;V_RAY_END&lt;/EndModel&gt;
+		&lt;/Item&gt;
+		&lt;Item&gt;
+			&lt;Position x=&quot;0.000000&quot; y=&quot;0.000000&quot; z=&quot;0.000000&quot;/&gt;
+			&lt;Orientation x=&quot;1.000000&quot; y=&quot;0.000000&quot; z=&quot;0.000000&quot;/&gt;
+			&lt;Name/&gt;
+			&lt;AnimDict/&gt;
+			&lt;AnimName/&gt;
+			&lt;StartModel/&gt;
+			&lt;AnimatedModel/&gt;
+			&lt;EndModel/&gt;
+		&lt;/Item&gt;
+		&lt;Item&gt;
+			&lt;Position x=&quot;0.000000&quot; y=&quot;0.000000&quot; z=&quot;0.000000&quot;/&gt;
+			&lt;Orientation x=&quot;1.000000&quot; y=&quot;0.000000&quot; z=&quot;0.000000&quot;/&gt;
+			&lt;Name&gt;new&lt;/Name&gt;
+			&lt;AnimDict/&gt;
+			&lt;AnimName/&gt;
+			&lt;StartModel/&gt;
+			&lt;AnimatedModel/&gt;
+			&lt;EndModel/&gt;
+		&lt;/Item&gt;
+	&lt;/RayFires&gt;
+&lt;/CRayFireArray&gt;</code></pre><p>Rayfire is a <a href="https://www.youtube.com/watch?v=oVHeRiy_lFY" target="_blank" rel="noreferrer">realistic collision simulator</a>.</p><p>Although it&#x27;s called several known times in scripts, there&#x27;s an event at (x=&quot;-1234.810059&quot; y=&quot;-1105.000000&quot; z=&quot;10.370000&quot;), in Vespucci Beach, <a href="http://imgur.com/jyfvqpG" target="_blank" rel="noreferrer">right in front of Prawn Vivant</a> and a very short distance from the pier.</p><p>So the goal would be to figure out exactly what&#x27;s going on. What model is being called, what animation it plays, and when this whole thing is used.  There&#x27;s a number of Natives that have it in their name, but as far as I know, none of them take place at that location, and are associated with the storyline and its use of natives.  So is there some hidden or obfuscated event with large scale destruction?</p><p>Somebody said there&#x27;s a strange object in the code located above the nearby apartment building with the giant V on it, but that&#x27;s all the info I have on it right now.</p><p>Anybody who wants to help take a crack at this would be greatly appreciated.  We&#x27;ve done a lot of work on it on the Discord and kind of hit a wall.</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 33 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/4icdfk/rayfire/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

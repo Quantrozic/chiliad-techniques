@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Groomed/refactored Decompiled source files · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game Files</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Groomed/refactored Decompiled source files</h1>
+    <div class="post-meta"><span class="score">▲ 27 pts</span><span>u/LaMeraVergaLarga69</span><span>Oct 7, 2022</span><span>15 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/xyc797/groomedrefactored_decompiled_source_files/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x1-022.html" title="Weak match: this post may not actually demonstrate this method.">Binaural Directional Source Mapping ?</a><a class="badge weak-chip" href="../techniques/tq-x5-020.html" title="Weak match: this post may not actually demonstrate this method.">Harmonic-Percussive Source Separation ?</a><a class="badge" href="../techniques/tq-x1-021.html">Loop-Point Seam Forensics</a><a class="badge" href="../techniques/tq-x1-029.html">Modular Arithmetic Pattern Detection</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>Hello every body, I have been working with the decompiled files and I have seen this pattern of repetitive code that seems to be reused code (either inherited from an object oriented language or linked from modular) the point is, has any group been working on clean these scripts for example without generic functions the ufo script is very simple:</p><pre><code>int scriptState = 0;
+void __EntryFunction__() {
+	if (Global_111858_fSaveVersion.f_10190.f_3854 == 0){  // system state (flag can take mission)
+		finalize();
+	}
+	if (PLAYER::HAS_FORCE_CLEANUP_OCCURRED(18)) { // is game closing/ stopped
+		finalize();
+	}
+	while (true) {
+		SYSTEM::WAIT(0);
+		if (!BRAIN::IS_WORLD_POINT_WITHIN_BRAIN_ACTIVATION_RANGE()) {  /// ???
+			finalize();
+		}
+		switch (scriptState) {
+			case 0:
+				if (CLOCK::GET_CLOCK_HOURS() == 3 &amp;&amp; weatherValidation()) {
+					scriptState = 1;
+				}
+				break;
+			case 1:
+				RESOURCES.enableWorldObject(152, 1, 0, 1, 0); //ufo_eye
+				scriptState = 2;
+				if (!AUDIO::IS_AMBIENT_ZONE_ENABLED(&quot;AZ_SPECIAL_UFO_03&quot;)) {
+					AUDIO::SET_AMBIENT_ZONE_STATE(&quot;AZ_SPECIAL_UFO_03&quot;, true, true); // play in loop
+				}
+				break;
+			case 2:
+				if (CLOCK::GET_CLOCK_HOURS() != 3 || !weatherValidation()) {
+					finalize();
+				}
+				break;
+		}
+	}
+}
+
+int weatherValidation() {
+	return MISC::IS_NEXT_WEATHER_TYPE(&quot;RAIN&quot;) 
+		|| MISC::IS_NEXT_WEATHER_TYPE(&quot;THUNDER&quot;)
+		|| MISC::IS_PREV_WEATHER_TYPE(&quot;RAIN&quot;)
+		|| MISC::IS_PREV_WEATHER_TYPE(&quot;THUNDER&quot;);
+}
+
+void finalize() {
+	RESOURCES.enableWorldObject(152, 0, 1, 1, 0); // ufo_eye
+	if (AUDIO::IS_AMBIENT_ZONE_ENABLED(&quot;AZ_SPECIAL_UFO_03&quot;)) {
+		AUDIO::SET_AMBIENT_ZONE_STATE(&quot;AZ_SPECIAL_UFO_03&quot;, false, true); // enabled only once
+	}
+	SCRIPT::TERMINATE_THIS_THREAD();
+}</code></pre><p>So have any team been working on any project like this on github or something like that?</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 15 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/xyc797/groomedrefactored_decompiled_source_files/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

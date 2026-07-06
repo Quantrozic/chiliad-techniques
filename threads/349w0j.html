@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ATTN: A little advice for those of you who are noClipping · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">ATTN: A little advice for those of you who are noClipping</h1>
+    <div class="post-meta"><span class="score">▲ 67 pts</span><span>u/Gavavva</span><span>Apr 29, 2015</span><span>43 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/349w0j/attn_a_little_advice_for_those_of_you_who_are/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge" href="../techniques/tq-x6-027.html">Collision-Mesh Probing</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>Evening all, or morning, whatever the case may be.</p><p>I just wanted to drop a little bit of advice, might be common sense to some, about how occlusion culling works in GTAV. I&#x27;m a games designer, some have some insight into this.</p><p>noClip turns off collision detection, which allows you to pass through solid surfaces. That&#x27;s fine, all well and dandy. But it has its issues. The main issue being that a game such as GTAV relies heavily on occlusion culling via via portals. This means in laymans terms, that what you see, is all you can see, to a certain degree. If you can&#x27;t see it, don&#x27;t draw it. At least, as good as possible. This allows the game to reduce overdraw considerably, which is something relating to fillrate... In short, the more overdraw, the worse you&#x27;re performance will be.</p><p>Its simple really. However, it also comes at a cost.</p><p>Games have two forms of hinting/area portals/area culling. The first is that when you remove yourself from the game world, everything is drawn. It works, its simple. That&#x27;s because the engine is trying to decide what area volume you are in, and will tell the game what areas to render... You are no longer in a volume as such, so it will render everything. &quot;Areas&quot; are usually split via portals and hinting brushes. This is something we use per room, per area etc. This means that you can be in room A, place a portal on the doorway, and room B is now its own volume. So, if you turn a corner and can no longer see room B at all, the engine will tell the game to no longer render room B. Simple, effective stuff.</p><p>But...</p><p>This of course creates problems for the other method.</p><p>You see, you need to be in Room A for Room B to even have a chance of drawing at all. The other method, involves NOTHING being drawn other than what you can see from your original portal coordinates. This means that even if you noClip into the void, you will not be able to see anything other than what you could originally.</p><p>This is the issue with GTAV and noClipping... You can see the world, and it looks complete, sure... But certain locations will simply no render AT ALL, even if you noClip INTO THE VOLUME, until you pass the trigger point, the area portal brush.</p><p>To test this in GTAV, simply locate the hidden mines, and noClip through the terrain before going inside. The mines will show up as a short, simple structure, but wont display all the mine, You can visit the end of the tunnel outside, and even fly right into where the other sections of the tunnel should be, and theres simply nothing there at all. However, noClip into the tunnel, then move into those sections, and it suddenly becomes visible.</p><p>Its very simple, very effective, and very obvious. However it makes searching a pain in the arse, because you can no longer just &quot;go under the terrain and look... Or even fly about inside the mountain and hope to just stumble on...&quot; the secret.</p><p>So, there you have it... noClipping is smart, but has its problems, and you need to be aware of them. I myself have found a couple of new things doing this, mostly related to the sea. One of which is a location where there are three plants in a line, one orange, one green and one blue... Oddly. but I&#x27;m still searching for more.</p><p>Hope this helps all of us searching. Just remember... You need to pass a trigger point, a portal, before what you want to find will render.</p><p>Cheers all,</p><p>Gav</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 43 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/349w0j/attn_a_little_advice_for_those_of_you_who_are/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>

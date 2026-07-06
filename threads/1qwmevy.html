@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A deep dive into the UFO interiors and why they never actually get loaded anywhere in the game · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Debunked</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">A deep dive into the UFO interiors and why they never actually get loaded anywhere in the game</h1>
+    <div class="post-meta"><span class="score">▲ 42 pts</span><span>u/JizosKasa</span><span>Feb 5, 2026</span><span>67 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/1qwmevy/a_deep_dive_into_the_ufo_interiors_and_why_they/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge" href="../techniques/tq-x6-014.html">Audio Reverse-Engineering of Stingers</a><a class="badge weak-chip" href="../techniques/tq-x6-027.html" title="Weak match: this post may not actually demonstrate this method.">Collision-Mesh Probing ?</a><a class="badge" href="../techniques/tq-x4-035.html">Engine-Constant Threshold Extraction</a><a class="badge" href="../techniques/tq-x4-004.html">Memory-Scanning for Hidden State Flags</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>Hi! This is my first post here, I&#x27;m a software developer and I love GTA 5. Around 1 month ago, I stumbled across a <a href="https://www.youtube.com/watch?v=9AnI5jxL-us&amp;t=685s" target="_blank" rel="noreferrer">video</a> by the Youtuber &#x27;oddheader&#x27; explaining the depths of the Chiliad mystery and how intricate it is.</p><p>As a programmer myself, this got me into a huge rabbit hole on trying to at least solve a single mystery by actual code and not ifs or maybes. In this post, I will reference <a href="https://www.reddit.com/r/chiliadmystery/comments/34bzmj/breaking_down_the_ufo_script_reveals_a_roadblock/" target="_blank" rel="noreferrer">this</a> other old post about the interiors of some kind of UFO.</p><h2>0) What I actually did (quick overview)</h2><p>I tried to answer one very specific question:</p><blockquote></blockquote><p>To do that, I didn&#x27;t &quot;interpret the mystery&quot;. I did boring dev stuff:</p><ul><li>I traced the UFO map assets (where the UFO models are placed in the world) from Rockstar&#x27;s RPF files.</li><li>I read the SP script sources that control the 100% UFO event and the ambient UFO &quot;beam&quot; behavior.</li><li>I searched for the usual interior/teleport native calls inside the UFO scripts.</li><li>I also checked the one place where teleport actually exists in &quot;UFO logic&quot;: a GTA Online Halloween event.</li></ul><p>If you&#x27;re not into code: I&#x27;ll show the raw snippets, then I&#x27;ll explain in plain English what they mean and do.</p><h2>1) The 3 UFO &quot;types&quot; I found (assets + exact placements)</h2><p>Before scripts: the UFO has to exist as a world object somewhere.</p><p>In GTA V, world objects are placed by map files:</p><ul><li>YMAP = &quot;place this object at these coordinates&quot;</li><li>YTYP = &quot;define what this object is (model, textures, bounds)&quot;</li><li>YDR = the actual 3D model</li></ul><h2>1.1) &quot;FIB-style&quot; UFO (the hidden sky one)</h2><p>This one is placed by <code>ufo.ymap</code></p><p>File: <code>x64i.rpf\levels\gta5\_citye\downtown_01\dt1_tc_metadata.rpf\ufo.ymap</code></p><p>Entity snippet (trimmed):</p><pre><code>&lt;Item type=&quot;CEntityDef&quot;&gt;
+  &lt;archetypeName&gt;dt1_tc_ufocore&lt;/archetypeName&gt;
+  &lt;position x=&quot;2490&quot; y=&quot;3777&quot; z=&quot;2400&quot; /&gt;
+  &lt;lodDist value=&quot;200&quot; /&gt;
+&lt;/Item&gt;
+
+&lt;Item type=&quot;CEntityDef&quot;&gt;
+  &lt;archetypeName&gt;dt1_tc_ufocore_col&lt;/archetypeName&gt;
+  &lt;position x=&quot;2490&quot; y=&quot;3777&quot; z=&quot;2401.064&quot; /&gt;
+  &lt;lodDist value=&quot;200&quot; /&gt;
+&lt;/Item&gt;</code></pre><p>Plain English:</p><ul><li>dt1\_tc\_ufocore is &quot;the UFO model&quot;.</li><li>dt1\_tc\_ufocore\_col is basically &quot;its collision/physics shell&quot;.</li><li>Those coordinates are where the UFO is placed.</li></ul><h2>1.2) &quot;Military / different&quot; UFO (the one above Zancudo)</h2><p>Also from <code>ufo.ymap</code></p><p>Entity snippet (trimmed):</p><pre><code>&lt;Item type=&quot;CEntityDef&quot;&gt;
+  &lt;archetypeName&gt;dt1_tc_dufo_core&lt;/archetypeName&gt;
+  &lt;position x=&quot;-2052&quot; y=&quot;3237&quot; z=&quot;1448.87341&quot; /&gt;
+  &lt;lodDist value=&quot;150&quot; /&gt;
+&lt;/Item&gt;
+
+&lt;Item type=&quot;CEntityDef&quot;&gt;
+  &lt;archetypeName&gt;dt1_tc_dufo_lights&lt;/archetypeName&gt;
+  &lt;position x=&quot;-2052&quot; y=&quot;3237&quot; z=&quot;30&quot; /&gt;
+  &lt;lodDist value=&quot;150&quot; /&gt;
+&lt;/Item&gt;</code></pre><p>Plain English:</p><ul><li>dt1\_tc\_dufo\_core is another UFO variant model.</li><li>dt1\_tc\_dufo\_lights is the &quot;lights/effects&quot; piece.</li></ul><p>There&#x27;s also a LOD map for this one:</p><p>File: <code>ufo_lod.ymap</code></p><pre><code>&lt;Item type=&quot;CEntityDef&quot;&gt;
+  &lt;archetypeName&gt;dt1_tc_dufo_core_lod&lt;/archetypeName&gt;
+  &lt;position x=&quot;-2052&quot; y=&quot;3237&quot; z=&quot;1449.036&quot; /&gt;
+  &lt;lodDist value=&quot;180&quot; /&gt;
+  &lt;lodLevel&gt;LODTYPES_DEPTH_LOD&lt;/lodLevel&gt;
+&lt;/Item&gt;</code></pre><p>Plain English:</p><ul><li>LOD = &quot;cheap far-away model so performance don&#x27;t die&quot;.</li></ul><h2>1.3) The Chiliad &quot;100% UFO&quot; (the one you see at 3AM)</h2><p>This is the one confused me a bit because it&#x27;s tied to a different map file and a script-triggered swap.</p><p>File: <code>x64i.rpf\levels\gta5\_citye\downtown_01\dt1_tc_metadata.rpf\ufo_eye.ymap</code></p><p>Entity snippet (trimmed):</p><pre><code>&lt;CMapData&gt;
+ &lt;name&gt;ufo_eye&lt;/name&gt;
+ ...
+ &lt;entities&gt;
+  &lt;Item type=&quot;CEntityDef&quot;&gt;
+   &lt;archetypeName&gt;dt1_tc_ufo_pivot&lt;/archetypeName&gt;
+   &lt;position x=&quot;501.528748&quot; y=&quot;5593.86475&quot; z=&quot;796.2325&quot; /&gt;
+   &lt;lodDist value=&quot;20&quot; /&gt;
+   &lt;priorityLevel&gt;PRI_REQUIRED&lt;/priorityLevel&gt;
+  &lt;/Item&gt;
+ &lt;/entities&gt;
+&lt;/CMapData&gt;</code></pre><p>Plain English:</p><ul><li>This <code>dt1_tc_ufo_pivot</code> is basically the &quot;anchor&quot; for the Chiliad 100% UFO setup.</li><li><strong>The important thing is</strong>: this UFO is controlled by an IPL/building state swap, so it&#x27;s not &quot;always on&quot;.</li></ul><h2>2) What those archetype names actually are (YTYP)</h2><p>The YMAP says &quot;spawn archetype X&quot;. The archetype X is defined in a YTYP.</p><p>File: <code>dt1_tc_metadata_001_strm.ytyp</code></p><p>Relevant bits (trimmed):</p><pre><code>&lt;Item type=&quot;CBaseArchetypeDef&quot;&gt;
+  &lt;name&gt;dt1_tc_ufo_pivot&lt;/name&gt;
+  &lt;textureDictionary&gt;dt1_tc_ufo&lt;/textureDictionary&gt;
+  &lt;assetType&gt;ASSET_TYPE_DRAWABLE&lt;/assetType&gt;
+  &lt;assetName&gt;dt1_tc_ufo_pivot&lt;/assetName&gt;
+&lt;/Item&gt;
+
+&lt;Item type=&quot;CBaseArchetypeDef&quot;&gt;
+  &lt;name&gt;dt1_tc_ufocore&lt;/name&gt;
+  &lt;textureDictionary&gt;dt1_tc_ufo&lt;/textureDictionary&gt;
+  &lt;assetType&gt;ASSET_TYPE_DRAWABLE&lt;/assetType&gt;
+  &lt;assetName&gt;dt1_tc_ufocore&lt;/assetName&gt;
+&lt;/Item&gt;
+
+&lt;Item type=&quot;CBaseArchetypeDef&quot;&gt;
+  &lt;name&gt;dt1_tc_dufo_core&lt;/name&gt;
+  &lt;textureDictionary&gt;dt1_tc_dufo&lt;/textureDictionary&gt;
+  &lt;assetType&gt;ASSET_TYPE_DRAWABLE&lt;/assetType&gt;
+  &lt;assetName&gt;dt1_tc_dufo_core&lt;/assetName&gt;
+&lt;/Item&gt;</code></pre><p>Plain English:</p><ul><li><code>ASSET_TYPE_DRAWABLE</code> means &quot;a renderable 3D model&quot; (a YDR behind the scenes).</li><li>So yes: these names point to <strong>real UFO models</strong>.</li></ul><h2>3) What the SP scripts do</h2><p>Now the big question: is there any interior/teleport logic in SP UFO scripts?</p><p>There are two main SP scripts involved:</p><ul><li><a href="http://UFO.sc" target="_blank" rel="noreferrer"><code>UFO.sc</code></a> = the 100% Chiliad UFO conditions (3AM + storm) and enabling the UFO event.</li><li><code>Ambient_ufos.sc</code> = the &quot;ambient UFO beam&quot; behavior (engine cut, force down, sounds) when you get too close.</li></ul><h2>3.1) <a href="http://UFO.sc" target="_blank" rel="noreferrer">UFO.sc</a> - the 100% event gate</h2><p>Key behavior:</p><ul><li>Requires 100% completion</li><li>Only triggers at 3AM</li><li>Only triggers if weather is rain/thunder (prev/next)</li><li>Toggles <code>BUILDINGNAME_IPL_UFO_EYE</code> (a building/IPL state swap)</li><li>Turns on ambient audio zone <code>AZ_SPECIAL_UFO_03</code></li></ul><p>Snippet (trimmed):</p><pre><code>// Only activate UFO at 3AM in Rainy weather
+IF GET_CLOCK_HOURS() = 3
+AND IS_UFO_WEATHER_CORRECT()
+    eUFOState = UFO_STATE_SPAWNING_UFO
+ENDIF
+
+SET_BUILDING_STATE(BUILDINGNAME_IPL_UFO_EYE, BUILDINGSTATE_DESTROYED)
+
+IF NOT IS_AMBIENT_ZONE_ENABLED(&quot;AZ_SPECIAL_UFO_03&quot;)
+    SET_AMBIENT_ZONE_STATE(&quot;AZ_SPECIAL_UFO_03&quot;,TRUE,TRUE)
+ENDIF</code></pre><p>This script doesn&#x27;t do anything we didn&#x27;t already know. It just checks time + weather, then flips a switch so the UFO shows up.</p><h2>3.2) Ambient_ufos.sc - the beam / engine cut / force down script</h2><p>Key behavior:</p><ul><li>Requests IPL <code>&quot;ufo&quot;</code> (loads the map chunk that contains the UFO objects)</li><li>When you&#x27;re too close, it:</li><li>cuts vehicle engine</li><li>pushes/pulls with forces</li><li>plays stun/crackle/death ray sounds</li></ul><p>Snippet:</p><pre><code>IF NOT IS_IPL_ACTIVE(&quot;ufo&quot;)
+    REQUEST_IPL(&quot;ufo&quot;)
+ENDIF
+
+SET_VEHICLE_ENGINE_ON(viPlayerVeh, FALSE, FALSE)
+APPLY_FORCE_TO_ENTITY(viPlayerVeh, APPLY_TYPE_EXTERNAL_FORCE, &lt;&lt;0,0, -fDownForce&gt;&gt;, &lt;&lt;0,1,0&gt;&gt;, 0, FALSE, TRUE, true)</code></pre><p>This is literally &quot;UFO destroys your vehicle&quot; type logic. Still <strong>no interiors</strong>, still <strong>no teleport</strong>.</p><h2>4) The old claim: &quot;UFO scripts load interiors and you need warp points&quot;</h2><p>The old post I was talking about at the beginning (where the guy shows decompiled-looking code) claimed:</p><ul><li>the UFO script contains large INTERIOR loading logic</li><li>it checks a global like <code>g_19456</code> being -1 or 999</li><li>and then you need to find warp points to enter loaded interiors</li></ul><h2>4.1) In my SP source tree, that claim does not match reality</h2><p>I did the simplest developer sanity check possible:</p><p>I searched inside these exact SP scripts (and the whole code):</p><ul><li><code>script\dev_ng\singleplayer\scripts\Ambient\WorldPoint\UFO.sc</code></li><li><code>script\dev_ng\singleplayer\scripts\Ambient\WorldPoint\Ambient_ufos.sc</code></li></ul><p>For keywords like:</p><ul><li><code>INTERIOR:: / LOAD_INTERIOR / REFRESH_INTERIOR / ACTIVATE_INTERIOR_ENTITY_SET</code></li><li><code>START_PLAYER_TELEPORT / SET_ENTITY_COORDS / WARP / TELEPORT</code></li></ul><p>Result: <strong>zero hits</strong>. There are simply no interior/teleport primitives in these SP UFO scripts.</p><h2>4.2) The specific &quot;decompiled names&quot; don&#x27;t exist in the source tree</h2><p>The old post references things like:</p><ul><li><code>g_19456</code></li><li><code>sub_22F</code></li></ul><p>Those identifiers do not exist in this tree, as they look like decompiler-generated names, not source names, so I wasn&#x27;t able to trace back the exact functions he referenced or talked about.</p><p>So in short, that old post might be describing something, but it is not describing the SP <a href="http://ufo.sc/" target="_blank" rel="noreferrer">UFO.sc</a> / Ambient\_ufos.sc code I have here or found anywhere.</p><h2>5) The one place I did find teleport in &quot;UFO logic&quot;: GTA Online Halloween 2021</h2><p><strong>This is important</strong> because it&#x27;s a very easy way for people to get mixed up.</p><p>In Multiplayer, there is an event script (Halloween 2021 Sightseeing) that includes a warp chain:</p><ul><li>It can do a fade, play an animation, and then warp you to a predefined &quot;wake up&quot; spot.</li></ul><p>The relevant primitive in that MP script is:</p><ul><li><code>NET_WARP_TO_COORD(...)</code></li></ul><p>This is not teleporting you into an interior inside the UFO.<br>It&#x27;s more like: <em>UFO event happens -&gt; screen effects -&gt;you wake up somewhere else</em>.</p><p>And the wake-up locations are not freeform. They&#x27;re chosen from a fixed list (the script selects them). In practice, people commonly end up at locations like:</p><ul><li>the Mount Chiliad mural area</li><li>the Altruist camp</li><li>the hippie camp / hippie-related spots ...and other predefined points.</li></ul><p>So yes: there is UFO-related teleporting in the game, but it&#x27;s multiplayer event logic, not the SP Chiliad 100% UFO scripts. Also, the post was from <strong>11 YEARS ago</strong>, so this doesn&#x27;t really count.</p><h2>6) Well then... what was that old &quot;interior loading&quot; guy actually looking at?</h2><p>To be honest? <strong>I have no idea</strong>, but my theories are:</p><h2>A - Different build / compiled script decompilation</h2><p>He may have decompiled a compiled .ysc from a retail build or from a different branch/version. Decompiled code often has:</p><ul><li>fake names like <code>sub_XXXX</code></li><li>globals like <code>g_19456</code></li></ul><p>He didn&#x27;t say exactly what binary/script he decompiled, so I can&#x27;t reliably map it back to source names.</p><h2>B - He accidentally mixed in non-UFO generic interior logic</h2><p>A lot of scripts share helper routines for interior props/entity sets. If you decompile a big compiled blob, you might see interior functions and assume they&#x27;re &quot;UFO-specific&quot; when they&#x27;re just generic helpers bundled in.</p><h2>C - He was reading native header/tooling tables</h2><p>Sometimes you&#x27;ll see files like <code>natives.h</code> that contain a big catalog of engine functions (&quot;natives&quot;) and their IDs/hashes.</p><p><strong>Important</strong>: that file is basically a <em>dictionary / phonebook</em>:</p><ul><li>&quot;Here&#x27;s the function that can load an interior.&quot; </li><li>&quot;Here&#x27;s the function that enables/disables an interior prop.&quot; </li></ul><p><em>But a phonebook doesn&#x27;t mean you actually called anyone</em>.</p><p>So if someone finds interior related hashes in <code>natives.h</code>, that only proves the engine supports interiors (we already know that because we can go first person in cars). It does not prove the UFO script actually uses those calls. To prove it, you need to find those calls inside the actual UFO scripts (or in the compiled <code>.ysc</code> he was decompiling), not inside a global reference list.</p><h2>7) Finale</h2><p>From the SP scripts + map assets I checked we only get the confirm of what we already knew:</p><ul><li>The Chiliad 100% UFO is a time/weather gate + IPL/building swap + ambient audio, nothing more.</li><li>The ambient UFO (Zancudo/FIB) behavior is forces + engine cut + sounds + IPL request.</li><li>There is no SP teleport, and no SP interior loading in those UFO scripts.</li></ul><p>If someone still believes the &quot;UFO interior&quot; thing is real and wants to prove wrong <strong>I&#x27;m all here for it</strong>. But the only way to settle it properly is:</p><ul><li>show the exact compiled script/binary they decompiled</li><li>show the exact call sites and how they connect to UFO spawning logic</li></ul><p>Because in the actual SP sources I&#x27;m looking at, <em>that path simply isn&#x27;t there</em>.</p><h2>THANK YOU</h2><p><strong>Thank you all for reading</strong>, I know this was a long post but I hope I was of help, I&#x27;ve spent a lot of time working on this and would love to hear y&#x27;all&#x27;s opinion. Also, if you&#x27;ve already dug into the UFO/Chiliad scripts or the IPL/YMAP side of things and you know something I missed, please call it out (and feel free to link files/lines/hashes so I can verify).</p><p>If you want me to check anything specific next (a particular script, a suspicious native call, a certain RPF/asset, a compiled YSC, etc.), tell me exactly what to look at and where, and I&#x27;ll go straight for it.</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 67 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/1qwmevy/a_deep_dive_into_the_ufo_interiors_and_why_they/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · generated Jul 05, 2026 · community content from r/chiliadmystery</footer>
+</body>
+</html>
