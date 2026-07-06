@@ -1,6 +1,10 @@
 # Changelog
 
-All notable changes to the Chiliad Techniques Encyclopedia static site. Current version: v1.1.2.
+All notable changes to the Chiliad Techniques Encyclopedia static site. Current version: v1.1.3.
+
+## v1.1.3 - 2026-07-07
+
+- Rewrote the first-visit introduction to open with the story of the mural itself (the 2013 cable-car-station discovery, the community's real payoffs, and the still-uncashed answer) before explaining what this mirror contains. Copy change only.
 
 ## v1.1.2 - 2026-07-06
 

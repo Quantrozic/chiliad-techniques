@@ -1,6 +1,6 @@
 # Chiliad Techniques Encyclopedia - static mirror (lite edition, no comment sections)
 
-**v1.1.2**, built Jul 06, 2026. A fully self-contained, offline mirror of the
+**v1.1.3**, built Jul 06, 2026. A fully self-contained, offline mirror of the
 Chiliad Compendium **/techniques** page. Live at https://quantrozic.github.io/chiliad-techniques/
 
 - `index.html` - the techniques browser (search, category filters, sorting),
@@ -8,7 +8,7 @@ Chiliad Compendium **/techniques** page. Live at https://quantrozic.github.io/ch
 - `techniques/<id>.html` - one page per technique (298 total) with its
   complete metadata and **every** documented archive case.
 - `threads/<postId>.html` - one page per documented r/chiliadmystery thread
-  (4384 total) with the full post body (comment sections omitted in this edition; each page links to the discussion on Reddit).
+  (4,384 total) with the full post body (comment sections omitted in this edition; each page links to the discussion on Reddit).
 - `methodology.html` / [METHODOLOGY.md](METHODOLOGY.md) - full pipeline provenance:
   corpus, matching rules, audit criteria, AI/human division of labor.
 - `corrections.html` - public corrections policy (GitHub issues), thread-verification

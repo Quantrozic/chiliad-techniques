@@ -1,6 +1,6 @@
 # Methodology
 
-How the Chiliad Techniques Encyclopedia (v1.1.2, built Jul 06, 2026) was made: corpus provenance, matching rules, audit criteria, and the exact division of labor between human and AI. The rendered version of this document is published at https://quantrozic.github.io/chiliad-techniques/methodology.html.
+How the Chiliad Techniques Encyclopedia (v1.1.3, built Jul 06, 2026) was made: corpus provenance, matching rules, audit criteria, and the exact division of labor between human and AI. The rendered version of this document is published at https://quantrozic.github.io/chiliad-techniques/methodology.html.
 
 ## What this site is
 
@@ -26,8 +26,7 @@ live ingestion for the most recent posts:
 deleted/removed stubs included in the count but excluded from matching).
 
 Post scores, comment counts, flairs and author names are as of capture and are not updated live.
-Of the 24,953 posts searched, the 4,384 threads that matched at
-least one technique are bundled on this site as thread pages; the rest of the corpus is searched but not mirrored here.
+Of the 24,953 posts searched, the 4,384 threads that matched at least one technique are bundled on this site as thread pages; the rest of the corpus is searched but not mirrored here.
 
 ## The technique entries
 
@@ -64,7 +63,7 @@ never qualify as anchors.
 combined score ≥ 11.0, to be accepted at all.
 
 This produced 10,760 technique↔thread links across the 4,384
-bundled threads. Every accepted match is then tiered by confidence (next section). The full match list, with its
+matched threads. Every accepted match is then tiered by confidence (next section). The full match list, with its
 weak/strong labels, is in the published dataset, so the matching is auditable.
 
 ## Match tiers: what a case link actually claims
@@ -90,7 +89,7 @@ completeness and clearly labeled.
  | 5,644
 
 Tier thresholds were calibrated by hand-reviewing stratified samples of matches during the July 2026 audit.
-As of v1.1.2 (built Jul 06, 2026), no matches have been human-verified yet: the tier ships with this release and verification is starting with the public launch. Until verified badges appear, every case link on this site should be read as machine-suggested evidence, not a citation. Want to help? See the corrections page.
+As of v1.1.3 (built Jul 06, 2026), no matches have been human-verified yet: the tier ships with this release and verification is starting with the public launch. Until verified badges appear, every case link on this site should be read as machine-suggested evidence, not a citation. Want to help? See the corrections page.
 
 ## The corpus audit (the “No corpus evidence” and “Unverified” badges)
 
@@ -157,10 +156,10 @@ If you build something on this data, an attribution link back here is all the li
 
 ## Versioning & how to cite
 
-The site carries a version number (currently v1.1.2) in every footer; every change,
+The site carries a version number (currently v1.1.3) in every footer; every change,
 including corrections and who reported them, is listed in the changelog. Releases are
 tagged in the GitHub repository and snapshots are
 submitted to the Wayback
 Machine, so any cited state of the site stays retrievable.
 
-Suggested citation: Chiliad Techniques Encyclopedia v1.1.2 (Jul 06, 2026), https://quantrozic.github.io/chiliad-techniques/, CC BY 4.0.
+Suggested citation: Chiliad Techniques Encyclopedia v1.1.3 (Jul 06, 2026), https://quantrozic.github.io/chiliad-techniques/, CC BY 4.0.
