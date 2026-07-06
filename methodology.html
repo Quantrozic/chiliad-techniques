@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Methodology · Chiliad Techniques Encyclopedia</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <p class="eyebrow">Provenance</p>
+    <h1 class="page-title">Methodology</h1>
+    <p class="page-desc">Where every number on this site comes from: corpus provenance, matching rules, audit criteria, and what was machine-generated versus human-curated. Version 1.1.0, built Jul 06, 2026.</p>
+  </div>
+</div>
+<div class="wrap prose">
+
+<div class="panel"><h3 class="panel-h">What this site is</h3><div class="panel-c md">
+<p>A self-contained static mirror of the investigation-methods encyclopedia from the Chiliad Compendium,
+an archive project about the Grand Theft Auto V "Mount Chiliad Mystery" and the r/chiliadmystery community
+that has pursued it since 2013. The site catalogs 298 investigation techniques and links each to the
+real, archived subreddit threads where the community used it (the lite edition (published on GitHub Pages) omits comment sections; the full edition mirrors complete comment trees).</p>
+<p>This page documents where every number on the site comes from, how threads were matched to techniques,
+what the badges mean, and what was machine-generated versus human-curated. Reputable references show their
+pipeline; here is ours, verifiable against the <a href="data/">published dataset</a>.</p>
+</div></div>
+<div class="panel"><h3 class="panel-h">Source corpus</h3><div class="panel-c md">
+<p>The underlying corpus is a complete export of the r/chiliadmystery subreddit obtained via
+<a href="https://arctic-shift.photon-reddit.com/" target="_blank" rel="noreferrer">Arctic Shift</a>
+(a maintained Reddit archive of the historical Pushshift dumps plus ongoing ingestion), supplemented by
+live ingestion for the most recent posts:</p>
+<ul>
+<li><strong>24,953 posts</strong>, spanning September 24, 2013 to July 1, 2026;</li>
+<li><strong>343,182 comment records</strong> attached to those posts (raw archive lines;
+deleted/removed stubs included in the count but excluded from matching).</li>
+</ul>
+<p>Post scores, comment counts, flairs and author names are <em>as of capture</em> and are not updated live.
+Of the 24,953 posts searched, the <strong>4,384</strong> threads that matched at
+least one technique are bundled on this site as thread pages; the rest of the corpus is searched but not mirrored here.</p>
+</div></div>
+<div class="panel"><h3 class="panel-h">The technique entries</h3><div class="panel-c md">
+<p>The 298 entries come from two labeled tiers:</p>
+<ul>
+<li><strong>59 hand-curated methods</strong>, researched and written by the site maintainer.
+Sixteen of these were added in July 2026 after the corpus audit (below) surfaced heavily-used community
+methods the encyclopedia had missed (Snapmatic cataloguing, Director Mode testing, karma runs, tide watching, and others).</li>
+<li><strong>239 AI-generated entries</strong> (curation tier "community-index"): bulk-written by a large
+language model (Anthropic Claude, driven through Claude Code) to enumerate plausible method variants. They are
+uniquely worded but <em>not individually researched</em>, are badged "AI-generated" on every surface, and are
+<strong>hidden by default</strong> behind the toggle next to the search box.</li>
+</ul>
+<p>268 of the 298 entries have at least one archived case attached.</p>
+</div></div>
+<div class="panel" id="matching"><h3 class="panel-h">How threads were matched to techniques</h3><div class="panel-c md">
+<p>Matching is a deterministic keyword/IDF algorithm
+(<a href="https://github.com/Quantrozic/chiliad-techniques" target="_blank" rel="noreferrer">source</a>: <code>scripts/match-technique-cases.py</code>
+in the app repository); no AI model scores or selects matches. For every technique and every post:</p>
+<ul>
+<li>The searchable text is the post title, its selftext, and up to 4,000 characters of its comments.</li>
+<li>Candidate terms come from the technique's own title, a hand-maintained synonym list for methods whose titles
+undersell their community vocabulary, and the technique's tags. Terms are weighted by inverse document frequency
+(IDF) across the whole corpus, so distinctive words count far more than common ones.</li>
+<li>Every match must hit an <em>anchor</em>: a term derived from the technique's title or synonyms, or a tag
+distinctive enough in the corpus (IDF ≥ 3.0). Generic process words ("analysis", "tracking", "testing", &hellip;)
+never qualify as anchors.</li>
+<li>A candidate needs a minimum combined score of 7.0, and either a technique term in the post <em>title</em> or a
+combined score ≥ 11.0, to be accepted at all.</li>
+</ul>
+<p>This produced <strong>10,760 technique&harr;thread links</strong> across the 4,384
+bundled threads. Every accepted match is then tiered by confidence (next section). The full match list, with its
+weak/strong labels, is in the <a href="data/">published dataset</a>, so the matching is auditable.</p>
+</div></div>
+<div class="panel" id="tiers"><h3 class="panel-h">Match tiers: what a case link actually claims</h3><div class="panel-c md">
+<p>A keyword match proves <em>vocabulary co-occurrence</em>, not that the thread genuinely demonstrates the
+method. The site therefore labels every case link with one of three tiers, and the technique pages sort them
+in this order:</p>
+<table>
+<tr><th>Tier</th><th>Meaning</th><th>Count</th></tr>
+<tr><td><span class="verified-badge" style="margin-left:0">✓ verified</span></td>
+<td>A named person read the thread in full and confirmed it demonstrates the method. The badge carries the
+verifier's name and date. This is the only tier that should be treated as a citation.</td>
+<td>0</td></tr>
+<tr><td>(unlabeled)</td>
+<td>A <em>strong</em> keyword match: a specific technique term in the post title (IDF ≥ 3.8), a very distinctive
+term in the body corroborated by a second specific anchor (IDF ≥ 4.8), or a broad multi-term match (≥ 3 anchors,
+IDF ≥ 3.5, score ≥ 12). Good reading suggestions; still machine-selected.</td>
+<td>5,116</td></tr>
+<tr><td><span class="weak-badge" style="margin-left:0">weak match</span></td>
+<td>Only generic or uncorroborated vocabulary backs the match. Possibly a false positive; shown for
+completeness and clearly labeled.</td>
+<td>5,644</td></tr>
+</table>
+<p>Tier thresholds were calibrated by hand-reviewing stratified samples of matches during the July 2026 audit.
+As of v1.1.0 (built Jul 06, 2026), <strong>no matches have been human-verified yet</strong>: the tier ships with this release and verification is starting with the public launch. Until verified badges appear, every case link on this site should be read as machine-suggested evidence, not a citation. Want to help? See <a href="corrections.html">the corrections page</a>.</p>
+</div></div>
+<div class="panel" id="audit"><h3 class="panel-h">The corpus audit (the “No corpus evidence” and “Unverified” badges)</h3><div class="panel-c md">
+<p>In July 2026 every AI-generated entry was audited against the complete corpus
+(<code>audit_corpus.py</code>; one pass over all 24,953 posts and 343,182 comments). The audit computed
+token document-frequencies for each entry's distinctive method vocabulary, swept ~150 hand-picked candidate
+phrases, and mined method-suffix bigrams to catch phrasings the entries didn't use. The verdicts:</p>
+<ul>
+<li><strong>"No corpus evidence" (29 entries):</strong> the entry's distinctive vocabulary appears
+<em>nowhere</em> in thirteen years of community discussion under any tested phrasing. These entries are excluded
+from case matching entirely (attaching keyword matches to them would manufacture false evidence) and are hidden
+by default.</li>
+<li><strong>"Unverified" (4 entries):</strong> only weak keyword matches exist, and manual review of
+those matches found no genuine demonstration of the method. Hidden by default.</li>
+</ul>
+<p>The same audit ran in reverse: mining the corpus for heavily-used methods missing from the encyclopedia,
+which produced the sixteen archive-mined curated entries mentioned above.</p>
+</div></div>
+<div class="panel" id="ai"><h3 class="panel-h">What AI did, and what it did not do</h3><div class="panel-c md">
+<p>For transparency, the exact division of labor:</p>
+<ul>
+<li><strong>AI-generated (239 entries):</strong> the "community-index" encyclopedia entries were written by a
+large language model (Anthropic Claude, via Claude Code sessions in June&ndash;July 2026). Always badged, hidden by default.</li>
+<li><strong>AI-assisted:</strong> the build tooling (matcher, audit script, this site generator) was written with
+Claude Code, and the 59 curated entries were drafted with AI assistance against archive sources, then
+reviewed by the maintainer.</li>
+<li><strong>No AI at match time:</strong> thread&harr;technique matching, tiering, and the corpus audit are
+deterministic Python over the corpus. Two runs on the same corpus give the same output.</li>
+<li><strong>Human-only:</strong> the verified-citation tier. A verified badge is never assigned by a model.</li>
+</ul>
+</div></div>
+<div class="panel"><h3 class="panel-h">Known limitations</h3><div class="panel-c md">
+<ul>
+<li>Case links below the verified tier are co-occurrence evidence, and the 5,644 weak matches in
+particular may be false positives.</li>
+<li>Comment text beyond 4,000 characters per post is invisible to the matcher, so comment-driven demonstrations
+in very long threads can be missed.</li>
+<li>Scores, flairs and comment counts are frozen at capture (July 1, 2026 for the newest posts).</li>
+<li>The corpus is one subreddit; GTAForums, wikis and YouTube investigation work is referenced by some entries
+but not systematically mined.</li>
+<li>AI-generated entries, even corpus-supported ones, describe plausible method variants rather than
+individually-researched history.</li>
+</ul>
+</div></div>
+<div class="panel" id="dataset"><h3 class="panel-h">The dataset</h3><div class="panel-c md">
+<p>The data behind this site is published, versioned with it, and reusable under CC BY 4.0
+(<a href="data/">data/</a>):</p>
+<ul>
+<li><code>data/techniques.json</code>: every technique entry with its full metadata, case-ID lists,
+weak-match subsets, and human verifications.</li>
+<li><code>data/threads.csv</code>: one row per bundled thread (id, title, author, UTC date, score, comment count,
+flair, permalink) with the technique IDs it is documented under and its weak-match subset.</li>
+</ul>
+<p>If you build something on this data, an attribution link back here is all the license asks.</p>
+</div></div>
+<div class="panel" id="citation"><h3 class="panel-h">Versioning &amp; how to cite</h3><div class="panel-c md">
+<p>The site carries a version number (currently <strong>v1.1.0</strong>) in every footer; every change,
+including corrections and who reported them, is listed in the <a href="changelog.html">changelog</a>. Releases are
+tagged in the <a href="https://github.com/Quantrozic/chiliad-techniques/tags" target="_blank" rel="noreferrer">GitHub repository</a> and snapshots are
+submitted to the <a href="https://web.archive.org/web/*/https://quantrozic.github.io/chiliad-techniques/" target="_blank" rel="noreferrer">Wayback
+Machine</a>, so any cited state of the site stays retrievable.</p>
+<p>Suggested citation: <em>Chiliad Techniques Encyclopedia v1.1.0 (Jul 06, 2026), https://quantrozic.github.io/chiliad-techniques/, CC BY 4.0.</em></p>
+</div></div>
+
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · v1.1.0 · built Jul 06, 2026 · <a href="methodology.html">Methodology</a> · <a href="changelog.html">Changelog</a> · <a href="corrections.html">Corrections</a> · <a href="data/">Dataset</a> · <a href="https://github.com/Quantrozic/chiliad-techniques" target="_blank" rel="noreferrer">GitHub</a><br>
+Encyclopedia text and dataset <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>; archived posts are community content from r/chiliadmystery, quoted for preservation and owned by their authors.</footer>
+</body>
+</html>

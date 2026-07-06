@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corrections · Chiliad Techniques Encyclopedia</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <p class="eyebrow">Accountability</p>
+    <h1 class="page-title">Corrections &amp; contributions</h1>
+    <p class="page-desc">Errors are handled in public: report them on GitHub, watch them get fixed in a numbered release, and get credited in the changelog. Thread verifications and category reviewers wanted.</p>
+  </div>
+</div>
+<div class="wrap prose">
+
+<div class="panel"><h3 class="panel-h">Report an error</h3><div class="panel-c md">
+<p>All corrections run through a public, auditable process:
+<a href="https://github.com/Quantrozic/chiliad-techniques/issues" target="_blank" rel="noreferrer">open a GitHub issue</a> on the site repository
+(a free GitHub account is the only requirement). Private DMs are deliberately not the channel; public error
+handling is part of what makes a reference trustworthy.</p>
+<p>Worth reporting: factual errors in a technique entry; a case link whose thread does not actually demonstrate
+the method (false positive); a community method the encyclopedia is missing; wrong thread metadata
+(author/date/score/flair); broken pages or links; anything on the <a href="methodology.html">methodology page</a>
+that does not hold up.</p>
+<p>If you prefer, you can also submit the fix directly as a pull request against the
+<a href="https://github.com/Quantrozic/chiliad-techniques" target="_blank" rel="noreferrer">repository</a>; the published entry data lives
+in <code>data/techniques.json</code>.</p>
+</div></div>
+<div class="panel"><h3 class="panel-h">What happens to a report</h3><div class="panel-c md">
+<ol>
+<li>The issue is triaged publicly on GitHub; discussion happens on the issue thread.</li>
+<li>Accepted fixes land in the next site version.</li>
+<li>Every correction is listed in the <a href="changelog.html">changelog</a> <strong>credited to whoever reported
+it</strong> (GitHub or Reddit name, your choice; anonymity honored on request).</li>
+</ol>
+</div></div>
+<div class="panel" id="verify"><h3 class="panel-h">Verify a thread: become a citation verifier</h3><div class="panel-c md">
+<p>The strongest way to improve this resource is converting machine matches into
+<span class="verified-note-word">verified citations</span>. A verification means: <em>you read the full thread
+(on Reddit, including comments) and confirm it genuinely shows the community using that method</em>, not merely
+mentioning its vocabulary.</p>
+<p>To submit one, <a href="https://github.com/Quantrozic/chiliad-techniques/issues" target="_blank" rel="noreferrer">open an issue</a> titled
+<code>verify: &lt;technique id&gt; &lt;post id&gt;</code> with three things:</p>
+<ul>
+<li>your verdict (demonstrates the method / does not);</li>
+<li>one or two sentences of justification (what in the thread shows the method in use);</li>
+<li>the name you want credited.</li>
+</ul>
+<p>Accepted verifications appear on the technique page as a green <span class="verified-badge"
+style="margin-left:0">✓ verified</span> badge carrying <strong>your name</strong> and the date, sort ahead of
+all machine matches, and are recorded in the dataset. Rejections of bad matches are just as valuable: confirmed
+false positives get removed and credited in the changelog.</p>
+</div></div>
+<div class="panel" id="reviewers"><h3 class="panel-h">Named reviewers wanted</h3><div class="panel-c md">
+<p>This site wants two or three recognizable r/chiliadmystery veterans as standing category reviewers: people
+who each own a category (audio forensics, file archaeology, overlay mapping, &hellip;), review its entries and
+matches, and are credited here and on the site by name. If that could be you, or you can vouch for someone,
+<a href="https://github.com/Quantrozic/chiliad-techniques/issues" target="_blank" rel="noreferrer">open an issue</a> titled <code>reviewer: &lt;category&gt;</code>.</p>
+<p><strong>Current reviewers:</strong> none yet; the seat is open. Contributors of accepted corrections are the
+natural candidates.</p>
+</div></div>
+
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · v1.1.0 · built Jul 06, 2026 · <a href="methodology.html">Methodology</a> · <a href="changelog.html">Changelog</a> · <a href="corrections.html">Corrections</a> · <a href="data/">Dataset</a> · <a href="https://github.com/Quantrozic/chiliad-techniques" target="_blank" rel="noreferrer">GitHub</a><br>
+Encyclopedia text and dataset <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>; archived posts are community content from r/chiliadmystery, quoted for preservation and owned by their authors.</footer>
+</body>
+</html>
