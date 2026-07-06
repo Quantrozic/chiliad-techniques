@@ -4,7 +4,7 @@ How the Chiliad Techniques Encyclopedia (v1.1.3, built Jul 06, 2026) was made: c
 
 ## What this site is
 
-A self-contained static mirror of the investigation-methods encyclopedia from the Chiliad Compendium,
+A self-contained static mirror of the investigation-methods encyclopedia,
 an archive project about the Grand Theft Auto V "Mount Chiliad Mystery" and the r/chiliadmystery community
 that has pursued it since 2013. The site catalogs 298 investigation techniques and links each to the
 real, archived subreddit threads where the community used it (the lite edition (published on GitHub Pages) omits comment sections; the full edition mirrors complete comment trees).

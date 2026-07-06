@@ -1,7 +1,7 @@
 # Chiliad Techniques Encyclopedia - static mirror (lite edition, no comment sections)
 
 **v1.1.3**, built Jul 06, 2026. A fully self-contained, offline mirror of the
-Chiliad Compendium **/techniques** page. Live at https://quantrozic.github.io/chiliad-techniques/
+investigation-methods encyclopedia (the app's **/techniques** page). Live at https://quantrozic.github.io/chiliad-techniques/
 
 - `index.html` - the techniques browser (search, category filters, sorting),
   mirroring the in-app page.
@@ -25,7 +25,7 @@ Corrections: https://github.com/Quantrozic/chiliad-techniques/issues
 
 No server needed; open `index.html` in a browser.
 
-Regenerate with (from the Chiliad Compendium app repo):
+Regenerate with (from the app repo):
 
 ```
 node --import tsx scripts/export-techniques-full.ts <scratch>/techniques-full.json
