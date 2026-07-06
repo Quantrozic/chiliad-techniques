@@ -1,7 +1,7 @@
 {
  "meta": {
   "name": "Chiliad Techniques Encyclopedia dataset",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "generated": "Jul 06, 2026",
   "license": "CC-BY-4.0",
   "site": "https://quantrozic.github.io/chiliad-techniques/",
@@ -31,7 +31,6 @@
    "title": "Overlay Mapping",
    "description": "Places the Chiliad mural on top of the San Andreas map, mountain terrain, satellite-style imagery, or in-game screenshots. The mural is extracted, made transparent, then scaled and rotated to compare against map landmarks.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "mapping",
     "overlay",
@@ -285,7 +284,6 @@
    "title": "Glyph Correlation Analysis",
    "description": "Compares the glyphs found around Mount Chiliad against the mural boxes, UFO locations, and physical landmarks.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "glyphs",
     "mapping",
@@ -409,7 +407,6 @@
    "title": "Sacred Geometry",
    "description": "Connects mystery locations using triangles, pentagrams, hexagons, and golden ratios to look for intentional geometric relationships.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "geometry",
     "math",
@@ -477,7 +474,6 @@
    "title": "Golden Ratio / Fibonacci / Spiral Overlays",
    "description": "Applies mathematical proportions, the golden spiral and Fibonacci sequences, to the mural, the mountain silhouette, glyph placements, and map alignments.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "geometry",
     "golden-ratio",
@@ -614,7 +610,6 @@
    "title": "3D Pyramid / Volumetric Projection",
    "description": "Models Mount Chiliad as a 3D pyramid or volumetric shape to project glyph positions and mural alignments in three dimensions rather than on a flat plane.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "3d",
     "projection",
@@ -661,7 +656,6 @@
    "title": "Ley Line Analysis",
    "description": "Draws straight lines through UFO locations, glyphs, Epsilon locations, and the Altruist Camp, then searches for alignments among them.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "ley-line",
     "alignment",
@@ -772,7 +766,6 @@
    "title": "Archaeoastronomy",
    "description": "Compares mountain and glyph alignments against sun position, moon position, and stars, drawing on ancient astronomical practice.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "astronomy",
     "celestial",
@@ -859,7 +852,6 @@
    "title": "Shadow Tracking",
    "description": "Observes how shadows move across the mountain over the in-game day to test whether they point toward clues or whether structures align at specific times.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "shadows",
     "time",
@@ -946,7 +938,6 @@
    "title": "Geological / Topographical Realism Analysis",
    "description": "Compares the in-game mountain to real-world analogs (e.g. Mount Shasta UFO lore) and studies the terrain for hidden caves or entrances.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "topography",
     "terrain",
@@ -1014,7 +1005,6 @@
    "title": "RGB Channel Separation",
    "description": "Splits an image into its red, green, and blue channels, since hidden patterns sometimes become visible in only one channel.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "rgb",
     "channels",
@@ -1050,7 +1040,6 @@
    "title": "Color Theory & HSV Analysis",
    "description": "Examines dominant colors and hue/saturation/value relationships in murals, glyphs, textures, and UI elements, red Xs, eye symbolism, Epsilon purple and gold, for hidden patterns or thematic links.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "color",
     "hsv",
@@ -1180,7 +1169,6 @@
    "title": "UV Light Analysis",
    "description": "Ultraviolet illumination of the Collector's Edition map to reveal officially-hidden markings, a physical-media complement to the visual analysis toolkit.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "uv",
     "physical",
@@ -1405,7 +1393,6 @@
    "title": "Spectrogram Analysis",
    "description": "Converts audio into a visual image so researchers can search for hidden text, hidden symbols, embedded pictures, or Morse code.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "audio",
     "spectrogram",
@@ -1494,7 +1481,6 @@
    "title": "Frequency Isolation",
    "description": "Separates specific frequency bands from UFO sounds, radio sounds, and ambient noise.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "audio",
     "frequency",
@@ -1550,7 +1536,6 @@
    "title": "Morse Code Analysis",
    "description": "Interprets sounds as dots, dashes, and pulses to decode possible messages.",
    "category": "Audio Forensics",
-   "difficulty": "Beginner",
    "tags": [
     "audio",
     "morse",
@@ -1844,7 +1829,6 @@
    "title": "Cipher & Cryptographic Decoding",
    "description": "Applies ciphers, Caesar, binary, leetspeak, OutGuess, and others, to radio static, emails, Epsilon tracts, textures, and extracted strings.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "cipher",
     "cryptography",
@@ -2009,7 +1993,6 @@
    "title": "Anagram, Acronym & Linguistic Pattern Analysis",
    "description": "Breaks down names, mission titles, filenames, tract wording, and regional or “déjà vu” dialogue for hidden messages, including testing “Chiliad” itself as a potential anagram.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "anagram",
     "linguistics",
@@ -2087,7 +2070,6 @@
    "title": "Numerology & Symbolic Number Theory",
    "description": "Assigns significance to recurring numbers, the 5 Xs on the mural, 100% completion, 3 AM, 50 spaceship parts, triangle geometry, Roman numerals, and links them to occult or completion-category patterns.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "numerology",
     "numbers",
@@ -2179,7 +2161,6 @@
    "title": "Steganography",
    "description": "Image, audio, and asset files searched for hidden data payloads via channel analysis, bit-plane inspection, and extraction tools, the binary-data complement to cipher and RGB work.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "stegano",
     "assets",
@@ -2211,7 +2192,6 @@
    "title": "Semiotics",
    "description": "Studies symbols and their meaning, asking not “where is the clue?” but “what does this symbol mean?”, applied to the eye, egg, UFO, and pyramid.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "semiotics",
     "symbolism",
@@ -2309,7 +2289,6 @@
    "title": "Jungian / Archetypal Analysis",
    "description": "Interprets symbols through archetypal psychology, egg as rebirth, UFO as revelation, eye as awareness, jetpack as ascension.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "jungian",
     "archetypes",
@@ -2354,7 +2333,6 @@
    "title": "Hermeneutics",
    "description": "Applies formal interpretation of texts to Epsilon tracts, NPC dialogue, and mural wording.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "hermeneutics",
     "text",
@@ -2400,7 +2378,6 @@
    "title": "Epsilon Hermeneutics",
    "description": "A specialized form of text analysis that treats Epsilon Program writings as coded clues.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "epsilon",
     "hermeneutics",
@@ -2492,7 +2469,6 @@
    "title": "OpenIV Analysis",
    "description": "Extracts game assets, textures, models, and scripts, for direct inspection.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Intermediate",
    "tags": [
     "openiv",
     "datamining",
@@ -2539,7 +2515,6 @@
    "title": "CodeWalker Analysis",
    "description": "Inspects GTA V world data, entity placements, IPLs, interiors, and coordinates.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "codewalker",
     "datamining",
@@ -2598,7 +2573,6 @@
    "title": "Texture Archaeology",
    "description": "Inspects image files for hidden markings, development notes, or removed symbols.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Intermediate",
    "tags": [
     "textures",
     "assets",
@@ -2646,7 +2620,6 @@
    "title": "Filename & Asset Metadata Archaeology",
    "description": "Analyzes internal filenames, paths, prefixes (e.g. cs1_ for “Chiliad State”), and metadata of glyphs, textures, models, and scripts.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Intermediate",
    "tags": [
     "filenames",
     "metadata",
@@ -2689,7 +2662,6 @@
    "title": "Shader & Procedural Asset Analysis",
    "description": "Examines how specific shaders (e.g. the cable/web shader) render hidden or condition-dependent assets that do not appear in standard file dumps.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "shaders",
     "procedural",
@@ -2728,7 +2700,6 @@
    "title": "DLC / Cut Content Archaeology",
    "description": "Searches for evidence of cancelled single-player content, cut DLC, removed scripts, and unused assets.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "dlc",
     "cut-content",
@@ -2832,7 +2803,6 @@
    "title": "Beta & Pre-Release File Archaeology",
    "description": "Compares leaked beta builds, dev kits, and early versions against the final release to identify removed assets, changed scripts, or altered mystery elements.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "beta",
     "pre-release",
@@ -2897,7 +2867,6 @@
    "title": "Old-Gen vs. New-Gen Version Diff Analysis",
    "description": "Compares old-gen (PS3/X360), enhanced (PS4/XB1), and PC versions for differences in asset quality, lighting, entity behavior, or mystery-related triggers.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "version-diff",
     "old-gen",
@@ -3112,7 +3081,6 @@
    "title": "Narrative Archaeology",
    "description": "Treats GTA V’s story itself as the mystery, asking why three protagonists, why these symbols, why UFOs, and reads themes back into the clues.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "narrative",
     "story",
@@ -3156,7 +3124,6 @@
    "title": "Mission Order / Narrative Flow Analysis",
    "description": "Examines specific mission sequences, early-game choices, and story progression for hidden triggers or contextual clues.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "missions",
     "flow",
@@ -3283,7 +3250,6 @@
    "title": "Moral Choice & Playstyle Branching Analysis",
    "description": "Tests how protagonist focus (e.g. Trevor-heavy paths), endings A/B/C, and moral alignment affect environmental triggers, dialogue context, or mystery visibility.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "choices",
     "endings",
@@ -3409,7 +3375,6 @@
    "title": "In-Game Environmental & Meta Clue Mining",
    "description": "Catalogs subtle environmental storytelling, tabloids, in-universe social media, radio/TV, stock-market and Lester-mission interactions, regional references, and “déjà vu” dialogue.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "environment",
     "context",
@@ -3537,7 +3502,6 @@
    "title": "Developer Meta-Intent & Interview Archaeology",
    "description": "Cross-references dev interviews, tweets, trailers, and pre-release screenshots (e.g. the “swim out X miles” tease) with in-game elements.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "interviews",
     "dev-intent",
@@ -3691,7 +3655,6 @@
    "title": "Modding & In-Game Manipulation (Trainers / Script Hooks)",
    "description": "Uses mods to test conditions quickly, weather and time control, noclip, entity spawning, boundary removal, or to visualize hidden data.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "modding",
     "trainers",
@@ -3780,7 +3743,6 @@
    "title": "Hidden Map Art & Environmental Pattern Recognition",
    "description": "Hunts for subtle, low-detail, or condition-gated assets, spider webs, eye-like columns, manhole patterns, hidden map art, that contrast with polished assets and may “teach” players to spot clues.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "map-art",
     "patterns",
@@ -4087,7 +4049,6 @@
    "title": "Route Theory",
    "description": "Treats the mural’s lines as movement instructions, attempting to follow paths or visit locations in sequence.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Beginner",
    "tags": [
     "route",
     "path",
@@ -4195,7 +4156,6 @@
    "title": "State Machine Theory",
    "description": "Models the mural as a progression system, step 1 to step 2 to step 3 to reward.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Intermediate",
    "tags": [
     "state-machine",
     "systems",
@@ -4275,7 +4235,6 @@
    "title": "Graph Theory Analysis",
    "description": "Treats the mural as a network of nodes and edges rather than a map.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "graph",
     "network",
@@ -4367,7 +4326,6 @@
    "title": "Knowledge Graph Analysis",
    "description": "Connects symbols, theories, researchers, methods, and evidence into a single graph to surface hidden clusters and recurring patterns.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "knowledge-graph",
     "synthesis",
@@ -4439,7 +4397,6 @@
    "title": "Cross-Mystery & Inter-Game Correlation",
    "description": "Links Chiliad elements to other GTA V mysteries (Bigfoot/peyote, the Infinite 8 Killer, Altruist Camp graffiti, Epsilon tracts) and to other Rockstar titles such as RDR2, and potentially to GTA VI.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Intermediate",
    "tags": [
     "cross-game",
     "rdr2",
@@ -4493,7 +4450,6 @@
    "title": "Snapmatic Photography & Location-Data Cataloguing",
    "description": "Uses the in-game Snapmatic camera as an evidence instrument: photographing glyphs, UFOs, and anomalies for side-by-side comparison, and mining the Snapmatic gallery's embedded location data to map where the community was hunting.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Beginner",
    "tags": [
     "snapmatic",
     "photography",
@@ -4565,7 +4521,6 @@
    "title": "Director Mode Scene & Spawn Testing",
    "description": "Uses Director Mode to spawn otherwise-gated actors (including the Beast), replay scenes with controlled casts, and probe whether triggers and anomalies persist outside normal story play.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Beginner",
    "tags": [
     "director-mode",
     "spawning",
@@ -4732,7 +4687,6 @@
    "title": "Karma / Pacifist Playthrough Protocol",
    "description": "A full-playthrough ruleset, no civilian kills, “good” choices, gold medals, 100% completion, run in the belief that the game tracks moral conduct and gates the mystery's reward behind a clean hands playthrough.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "karma",
     "pacifist",
@@ -4906,7 +4860,6 @@
    "title": "In-Game Phone Dialing Sweeps",
    "description": "Systematically dials phone numbers found on textures, posters, and utility doors, and brute-dials number ranges, cataloguing which connect, which trigger effects, and which return scripted audio.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Beginner",
    "tags": [
     "phone",
     "dialing",
@@ -5126,7 +5079,6 @@
    "title": "SSTV (Slow-Scan TV) Signal Decoding",
    "description": "Runs suspicious in-game audio through slow-scan television decoders to test whether transmissions encode hidden images, the technique behind the famous Mount Chiliad SSTV image claims and their debunks.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "sstv",
     "audio",
@@ -5280,7 +5232,6 @@
    "title": "Alien Rune Alphabet Decoding",
    "description": "Treats the alien runes (the “Alien Runes Overlay”) as a substitution alphabet: cataloguing each glyph, testing mappings to Latin letters, and applying classical ciphers to candidate transliterations.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "runes",
     "alphabet",
@@ -5386,7 +5337,6 @@
    "title": "Mural & Map Mirroring",
    "description": "Flips the mural, the map, or the mountain silhouette horizontally or vertically and re-tests alignments, the simplest symmetry transform, testing whether the artwork was designed to be read in reflection.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "mirroring",
     "symmetry",
@@ -5787,7 +5737,6 @@
    "title": "Livestreamed Group Hunts",
    "description": "Coordinates hunts over live broadcast, Twitch streams and scheduled community sessions, so discoveries are witnessed, timestamped, and verifiable in real time rather than claimed after the fact.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Beginner",
    "tags": [
     "twitch",
     "livestream",
@@ -5896,7 +5845,6 @@
    "title": "Barcode & QR-Code Scanning",
    "description": "Photographs in-game barcodes and QR-like textures and runs them through real-world scanners, testing whether Rockstar encoded machine-readable payloads into world props.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Beginner",
    "tags": [
     "barcode",
     "qr-code",
@@ -5948,7 +5896,6 @@
    "title": "Braille Interpretation",
    "description": "Reads dot patterns on murals and textures as Braille cells, transliterating them letter by letter, applied most prominently to the Doomsday mural's red-panel dots.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "braille",
     "dots",
@@ -6118,7 +6065,6 @@
    "title": "AI-Assisted Theorizing",
    "description": "Feeds the mystery's murals, texts, and theory corpus to large language models and AI image tools, asking for interpretations, syntheses, and enhancement, the community's newest analytical instrument, emerging in 2023.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Beginner",
    "tags": [
     "ai",
     "chatgpt",
@@ -6168,7 +6114,6 @@
    "title": "Tide & Water-Level Observation",
    "description": "Watches the ocean tide cycle and inland water levels for scripted behavior (rising and falling tides, briefly exposed seabed, or water that responds to time and weather) that could gate an underwater trigger.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Beginner",
    "tags": [
     "tides",
     "water",
@@ -6387,7 +6332,6 @@
    "title": "Moon-Phase Condition Testing",
    "description": "Tracks the in-game lunar cycle night by night and tests whether events (UFO sightings, ghost appearances, the mountain hum) are gated by specific moon phases, the way other confirmed triggers are gated by time and weather.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "moon",
     "lunar-cycle",
@@ -6676,7 +6620,6 @@
    "title": "In-Game Internet & Website Crawling",
    "description": "Systematically browses the in-game web (Lifeinvader, Bleeter, psychic hotlines, cult and business sites), reading every page for hidden messages, ciphers, and hints the developers planted in fictional website copy.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "internet",
     "lifeinvader",
@@ -6790,7 +6733,6 @@
    "title": "Brightness & Gamma Manipulation",
    "description": "Cranks display brightness, contrast, and gamma, in-game or in an image editor, to reveal faint textures, shadow detail, and night-time markings that are invisible at default settings.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "brightness",
     "gamma",
@@ -6840,7 +6782,6 @@
    "title": "Community Polls & Heat-Map Aggregation",
    "description": "Aggregates the community's collective attention (polls, surveys, and heat maps of the most-searched locations) to see where hunters have and haven't looked, and to prioritize under-explored ground.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Beginner",
    "tags": [
     "polls",
     "crowdsourcing",
@@ -6894,7 +6835,6 @@
    "title": "Homography Perspective Correction of the Mural",
    "description": "Applies a four-point homography transform to rectify the angled Mount Chiliad mural photographs into a flat, head-on plane. This removes parallax distortion so glyph proportions and line lengths can be measured accurately against the in-game geometry.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "mural",
     "perspective",
@@ -6973,7 +6913,6 @@
    "title": "Edge-Detection Glyph Tracing",
    "description": "Runs Canny or Sobel edge detection over high-resolution mural captures to isolate the painted glyph outlines from the rock texture. The extracted vector traces are then overlaid on map features to test for shape correspondence.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "edge-detection",
     "canny",
@@ -7099,7 +7038,6 @@
    "title": "Histogram Equalization Pass on Dark Captures",
    "description": "Stretches the tonal range of underexposed night or interior screenshots so faint markings become visible. Equalization redistributes pixel intensities to reveal detail hidden in near-black regions of the frame.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "histogram",
     "equalization",
@@ -7155,7 +7093,6 @@
    "title": "Mural-to-Map Vector Overlay Alignment",
    "description": "Scales and rotates the rectified mural so its peaks and lines superimpose on a top-down satellite map of San Andreas. Investigators look for the mural's angled strokes pointing at real locations like the observatory or the ocean trench.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "overlay",
     "map",
@@ -7483,7 +7420,6 @@
    "title": "Glyph Angle Goniometry",
    "description": "Measures the precise angles between mural strokes and the painted eye using a digital protractor tool. Recorded angles are checked against compass bearings and in-game sun positions to test for directional encoding.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "angle",
     "goniometry",
@@ -7516,7 +7452,6 @@
    "title": "Photogrammetric Reconstruction of the Peak",
    "description": "Combines many in-game screenshots from different angles into a 3D point cloud of Mount Chiliad's summit using structure-from-motion. The reconstructed mesh lets investigators inspect geometry that is hard to read from a single viewpoint.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "photogrammetry",
     "3d",
@@ -7549,7 +7484,6 @@
    "title": "Sun-Shadow Azimuth Triangulation",
    "description": "Uses the length and direction of in-game shadows at a known time of day to compute the sun's azimuth and confirm a location's orientation. The technique cross-references the game clock with shadow geometry to validate alignment claims.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "shadow",
     "azimuth",
@@ -7689,7 +7623,6 @@
    "title": "Frame-Difference Motion Isolation",
    "description": "Subtracts consecutive video frames to highlight only the pixels that changed, isolating moving objects like distant UFOs or flickering lights against a static backdrop. The difference mask makes subtle motion far easier to spot.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "frame-difference",
     "motion",
@@ -7743,7 +7676,6 @@
    "title": "Sub-Pixel Star Pattern Mapping",
    "description": "Magnifies the in-game night sky to chart the fixed star sprites and compare their arrangement to real constellations or the mural's dot pattern. Coordinates of each star point are logged for pattern matching.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "stars",
     "sky",
@@ -7935,7 +7867,6 @@
    "title": "Contour-Line Topographic Slope Reading",
    "description": "Generates contour lines from height-map data of Mount Chiliad to study slope gradients and hidden flat ledges. Steepness and bench locations are compared against rumored secret-entrance coordinates.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "contour",
     "topography",
@@ -7981,7 +7912,6 @@
    "title": "Color-Channel Separation Glyph Reveal",
    "description": "Splits an image into its red, green, and blue channels individually to expose markings that blend into the composite. A symbol painted in a near-background hue often pops out in a single channel.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "color-channel",
     "rgb",
@@ -8056,7 +7986,6 @@
    "title": "Orthographic Map-Tile Mosaic Stitching",
    "description": "Captures the in-game map at maximum zoom across a grid and stitches the tiles into one seamless high-resolution orthographic image. The mosaic supports precise distance and bearing measurements between landmarks.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "mosaic",
     "stitching",
@@ -8103,7 +8032,6 @@
    "title": "Geodesic Bearing Line Plotting",
    "description": "Draws straight bearing lines between candidate sites such as the mural, the UFOs, and the FIB building to test for collinear arrangements. Intersections and crossing points are flagged as potential dig or trigger spots.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "bearing",
     "line",
@@ -8139,7 +8067,6 @@
    "title": "Fourier Transform Audio Spectral Analysis",
    "description": "Applies a Fast Fourier Transform to suspicious in-game audio to break it into its frequency components. Hidden tones, carriers, or non-random structure in the spectrum become measurable peaks.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "fourier",
     "fft",
@@ -8246,7 +8173,6 @@
    "title": "Spectrogram Pareidolia Cross-Check",
    "description": "Renders audio as a spectrogram and looks for image-like shapes or text drawn in the frequency plane, then verifies any apparent picture against the raw waveform. The cross-check guards against seeing patterns that are not really encoded.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "spectrogram",
     "pareidolia",
@@ -8348,7 +8274,6 @@
    "title": "Phase-Cancellation Vocal Isolation",
    "description": "Inverts the phase of one stereo channel and sums it with the other to cancel centered content and expose side-panned whispers or layers. This reveals quiet elements masked by louder centered audio.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "phase-cancellation",
     "vocal",
@@ -8386,7 +8311,6 @@
    "title": "Reverse-Playback Auditory Inspection",
    "description": "Plays suspect audio backwards to check for reversed speech or hidden phrases, a classic backmasking test. Any candidate phrase is then confirmed by independent listeners to reduce suggestion bias.",
    "category": "Audio Forensics",
-   "difficulty": "Beginner",
    "tags": [
     "reverse",
     "backmasking",
@@ -8435,7 +8359,6 @@
    "title": "Adaptive Spectral Noise Subtraction",
    "description": "Profiles a quiet section of an audio file to build a noise fingerprint, then subtracts that profile to clean up faint speech or tones. The denoised result makes buried content intelligible.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "denoise",
     "noise-profile",
@@ -8543,7 +8466,6 @@
    "title": "Pitch-Shift Tempo Decoupling",
    "description": "Slows audio playback without lowering pitch (or vice versa) to scrutinize fast or compressed sounds in detail. Decoupling tempo from pitch reveals structure hidden by speed.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "pitch-shift",
     "tempo",
@@ -8723,7 +8645,6 @@
    "title": "DTMF and Morse Tone Decoding",
    "description": "Scans audio for dual-tone multi-frequency or Morse-code patterns and decodes them to letters or digits. Detected tones are matched against standard frequency tables for verification.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "dtmf",
     "morse",
@@ -8867,7 +8788,6 @@
    "title": "Loop-Point Seam Forensics",
    "description": "Locates the exact loop boundary of an ambient sound file to detect content hidden at the splice or audible only once per cycle. Examining the seam can expose a non-looping injected sample.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "loop",
     "seam",
@@ -8946,7 +8866,6 @@
    "title": "Binaural Directional Source Mapping",
    "description": "Uses left-right level and timing differences to estimate the in-world direction and distance of a 3D positional sound. This locates the emitter of mystery audio like the hum or distant chime.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "binaural",
     "directional",
@@ -9012,7 +8931,6 @@
    "title": "Vigenère Cipher Brute-Force Testing",
    "description": "Tests suspected ciphertext from signs, graffiti, or files against Vigenère keys using thematic keywords and Kasiski examination. Promising decrypts are screened for readable English plaintext.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "vigenere",
     "cipher",
@@ -9107,7 +9025,6 @@
    "title": "Gematria / Isopsephy Numeric Mapping",
    "description": "Converts mystery-related words and names into numeric values via gematria schemes, then looks for matches with map coordinates or notable in-game numbers. Multiple cipher systems are tried for consistency.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "gematria",
     "isopsephy",
@@ -9173,7 +9090,6 @@
    "title": "Frequency Analysis Substitution Cracking",
    "description": "Counts letter and symbol frequencies in candidate ciphertext and compares them to expected English distributions to crack simple substitution ciphers. The frequency profile guides letter guesses.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "frequency-analysis",
     "substitution",
@@ -9305,7 +9221,6 @@
    "title": "Coordinate Pair Extraction and Geocoding",
    "description": "Scans numeric strings from files, plaques, and dialogue for plausible latitude-longitude or in-game XYZ coordinate pairs, then plots them on the map. Plotted points are checked for relevance to known sites.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "coordinates",
     "geocoding",
@@ -9441,7 +9356,6 @@
    "title": "Base-N and ASCII Re-encoding Sweeps",
    "description": "Reinterprets mystery numbers and strings across bases (binary, hex, octal) and as ASCII or Unicode to reveal hidden text. CyberChef recipes chain conversions to surface readable output.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "base-conversion",
     "ascii",
@@ -9539,7 +9453,6 @@
    "title": "Anagram and Constraint Word-Solving",
    "description": "Treats odd in-game phrases and names as anagrams, using constraint solvers to enumerate plausible rearrangements. Candidate solutions are filtered for thematic and grammatical sense.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "anagram",
     "wordplay",
@@ -9632,7 +9545,6 @@
    "title": "Modular Arithmetic Pattern Detection",
    "description": "Examines sequences of mystery numbers for modular relationships, common differences, or alignment with calendar and clock cycles. Detected patterns hint at trigger schedules or counting systems.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "modular",
     "arithmetic",
@@ -9693,7 +9605,6 @@
    "title": "Roman Numeral and Symbol Substitution Decoding",
    "description": "Interprets glyph clusters as Roman numerals, tally marks, or symbolic digits and converts them to values. The resulting numbers are tested against dates, counts, and coordinates.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "roman-numerals",
     "symbol",
@@ -9803,7 +9714,6 @@
    "title": "Epsilon Doctrine Allegorical Mapping",
    "description": "Maps phrases and numerology from the Epsilon Program's teachings onto mystery clues to test for intended symbolic links. Doctrinal motifs are catalogued and matched to in-world objects and events.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "epsilon",
     "allegory",
@@ -9901,7 +9811,6 @@
    "title": "Alchemical and Esoteric Symbol Matching",
    "description": "Compares mural and graffiti glyphs against catalogs of alchemical, zodiac, and occult symbols to find candidate meanings. Matches are weighed by visual fidelity and thematic plausibility.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "alchemy",
     "esoteric",
@@ -9999,7 +9908,6 @@
    "title": "Jungian Archetype Motif Coding",
    "description": "Classifies recurring images such as the egg, the eye, and the ascent into Jungian archetypes to model the mystery's intended narrative. Coded motifs reveal thematic clusters across clues.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "jungian",
     "archetype",
@@ -10043,7 +9951,6 @@
    "title": "Comparative Easter-Egg Pattern Templating",
    "description": "Builds templates from confirmed Rockstar easter eggs in prior titles to predict how the Chiliad mystery might be structured and triggered. Known solution shapes guide where to look next.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "easter-egg",
     "template",
@@ -10514,7 +10421,6 @@
    "title": "Mythological Tarot Correspondence Reading",
    "description": "Aligns mural elements and numbers with tarot cards and mythological figures to propose a symbolic storyline. Correspondences are tabulated and tested for internal consistency.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "tarot",
     "mythology",
@@ -10567,7 +10473,6 @@
    "title": "DDS Mipmap and Texture Atlas Inspection",
    "description": "Opens game DDS textures to inspect each mipmap level and atlas region for hidden artwork or text not visible at runtime. Lower mip levels sometimes contain different or developer-only content.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "dds",
     "mipmap",
@@ -10612,7 +10517,6 @@
    "title": "Bit-Plane Steganalysis of Game Assets",
    "description": "Separates each bit plane of an image asset to detect least-significant-bit steganography hiding data in the pixels. Structured patterns in low bit planes signal embedded payloads.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "steganography",
     "bit-plane",
@@ -10668,7 +10572,6 @@
    "title": "Script Decompilation and String Mining",
    "description": "Decompiles the game's mission scripts and dumps all embedded strings to search for references to secret triggers, conditions, or unused content. Found identifiers point investigators to relevant code paths.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "decompilation",
     "scripts",
@@ -10759,7 +10662,6 @@
    "title": "Archive Diff Across Game Patches",
    "description": "Compares extracted asset archives between consecutive game versions to detect added, removed, or altered files that might relate to the mystery. Diffs spotlight quietly changed content.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "diff",
     "patch",
@@ -10806,7 +10708,6 @@
    "title": "Audio Bank Wwise Event Tracing",
    "description": "Unpacks Wwise audio banks and traces event-to-sound mappings to find rare or unused sounds tied to specific locations or conditions. The event graph reveals what triggers each mystery sound.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "wwise",
     "audio-bank",
@@ -10839,7 +10740,6 @@
    "title": "Trainer-Based Weather Cycling",
    "description": "Uses a mod menu or trainer to lock and cycle through every weather state while observing the Mount Chiliad mural and surrounding terrain. Lets investigators check whether fog, rain, or thunder alter the visibility of glyphs, the UFO, or jetpack-related details.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "weather",
     "trainer",
@@ -10947,7 +10847,6 @@
    "title": "Noclip Boundary Mapping",
    "description": "Enables noclip movement to fly through and behind solid geometry, mapping the hollow interiors of Mount Chiliad and any hidden rooms or out-of-bounds assets. Reveals whether the mountain conceals undisclosed collision or model data.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "noclip",
     "boundary",
@@ -11024,7 +10923,6 @@
    "title": "Rockstar Editor Time-Lapse Capture",
    "description": "Records long, controlled time-lapse clips with the in-game Rockstar Editor to compress a full in-game day or week of summit activity into a short, scrubbable video. Helps spot periodic events, lighting changes, or rare visual phenomena.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Beginner",
    "tags": [
     "rockstar-editor",
     "time-lapse",
@@ -11098,7 +10996,6 @@
    "title": "Save-State A/B Trigger Testing",
    "description": "Maintains two near-identical save files differing by a single variable (completion percent, time, owned item) to isolate which factor enables a suspected trigger. Comparing outcomes pins down necessary conditions.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "save-state",
     "ab-testing",
@@ -11285,7 +11182,6 @@
    "title": "Mission-Replay Flag Diffing",
    "description": "Replays a story mission via the mission-replay menu while logging in-game flags and stats before and after, then diffs the values to find what the mission silently sets. Surfaces hidden progress markers relevant to the mystery.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "mission-replay",
     "flag",
@@ -11346,7 +11242,6 @@
    "title": "Coordinate Teleport Sweep",
    "description": "Systematically teleports the player to a dense grid of coordinates across the mountain and Blaine County to inspect each cell for anomalies, props, or hidden markers. Ensures full spatial coverage rather than ad-hoc exploration.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "teleport",
     "grid",
@@ -11439,7 +11334,6 @@
    "title": "Frame-Step Glyph Photography",
    "description": "Pauses the game and steps frame-by-frame while photographing the mural glyphs under controlled camera angles to eliminate motion blur and parallax. Produces clean reference images for symbol comparison.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Beginner",
    "tags": [
     "frame-step",
     "glyph",
@@ -11617,7 +11511,6 @@
    "title": "Audio Spectrogram Reverse-Search",
    "description": "Extracts ambient summit audio and renders spectrograms to look for hidden images, Morse, or backmasked content embedded in the soundscape. Visualizing audio exposes patterns the ear cannot detect.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "audio",
     "spectrogram",
@@ -11777,7 +11670,6 @@
    "title": "Memory-Address Trigger Watch",
    "description": "Attaches a memory scanner to the running game and watches specific addresses while performing suspected trigger actions, flagging any value that changes. Directly observes the game's internal response to player behavior.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "memory",
     "scanner",
@@ -11826,7 +11718,6 @@
    "title": "Peyote Spawn-Condition Logging",
    "description": "Repeatedly tests peyote-plant pickups under varied weather, time, and character states while logging which animal forms spawn. Builds an empirical table of conditions tied to the hippie-camp and mystery lore.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "peyote",
     "spawn",
@@ -12013,7 +11904,6 @@
    "title": "Texture-Atlas Dump Inspection",
    "description": "Extracts and decodes the game's texture archives to inspect every mural, sign, and prop texture at native resolution, searching for unused or hidden art. Reveals content not normally visible in-game.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "texture",
     "atlas",
@@ -12084,7 +11974,6 @@
    "title": "Script-Decompile Keyword Scan",
    "description": "Decompiles the game's mission scripts and greps the source for keywords like jetpack, UFO, or chiliad to locate any code paths referencing the mystery. Confirms whether triggers exist at the script level.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "script",
     "decompile",
@@ -12128,7 +12017,6 @@
    "title": "Graph-Centrality Clue Ranking",
    "description": "Builds a network graph linking clues, locations, and symbols, then computes centrality measures to rank which nodes are most structurally important to the mystery. Prioritizes investigative effort on high-leverage clues.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "graph",
     "centrality",
@@ -12163,7 +12051,6 @@
    "title": "Monte Carlo Alignment Significance Testing",
    "description": "Generates thousands of random point placements to estimate how often a claimed geographic or symbolic alignment would occur by chance. Distinguishes meaningful alignments from coincidence.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "monte-carlo",
     "alignment",
@@ -12245,7 +12132,6 @@
    "title": "Pathfinding-Cost Route Inference",
    "description": "Applies shortest-path algorithms over the in-game road and trail network to infer the intended or lowest-effort route between mystery sites. Tests whether clue locations form a deliberate traversal.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Intermediate",
    "tags": [
     "pathfinding",
     "route",
@@ -12290,7 +12176,6 @@
    "title": "Spatial Cluster Hotspot Detection",
    "description": "Runs density-based clustering on the coordinates of reported sightings and clues to detect statistically significant hotspots. Highlights where evidence concentrates beyond random spread.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Intermediate",
    "tags": [
     "spatial",
     "cluster",
@@ -12338,7 +12223,6 @@
    "title": "Citation-Network Source Tracing",
    "description": "Maps which forum posts, videos, and wikis cite which others to trace a claim back to its earliest origin and detect circular sourcing. Separates primary evidence from echoed repetition.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Intermediate",
    "tags": [
     "citation",
     "network",
@@ -12385,7 +12269,6 @@
    "title": "Dependency-Graph Prerequisite Mapping",
    "description": "Models each proposed mystery step as a node with prerequisite edges, then topologically sorts to reveal whether a claimed solution sequence is even logically possible. Exposes impossible or circular requirement chains.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "dependency",
     "graph",
@@ -12440,7 +12323,6 @@
    "title": "Markov-Chain Sighting Sequence Modeling",
    "description": "Treats ordered sequences of reported events as a Markov chain to test whether one type of sighting statistically predicts another. Detects hidden ordering in otherwise chaotic reports.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "markov",
     "sequence",
@@ -12514,7 +12396,6 @@
    "title": "Network Resilience Theory Stress-Testing",
    "description": "Removes individual clues from the evidence graph one at a time to see whether the overall theory still holds, identifying load-bearing versus redundant clues. Measures how fragile a theory is to a single debunk.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "resilience",
     "stress-test",
@@ -12676,7 +12557,6 @@
    "title": "Cross-Title Asset Hash Matching",
    "description": "Computes hashes of GTA V model and texture assets and compares them against Red Dead and earlier GTA archives to find reused or related content. Reveals shared lineage behind mystery props.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Advanced",
    "tags": [
     "cross-title",
     "asset",
@@ -12750,7 +12630,6 @@
    "title": "RDR2 Parallel-Motif Survey",
    "description": "Catalogs UFO, ghost, and mountain-mystery motifs in Red Dead Redemption 2 and compares their structure to the Chiliad mystery. Tests whether Rockstar reuses a consistent mystery template.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Intermediate",
    "tags": [
     "rdr2",
     "parallel",
@@ -12811,7 +12690,6 @@
    "title": "Manhunt-Universe Easter-Egg Cross-Reference",
    "description": "Cross-references mystery elements with Easter eggs in other Rockstar games such as Manhunt and Bully to detect shared symbols, names, or in-jokes. Places Chiliad within the wider Rockstar canon.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Intermediate",
    "tags": [
     "cross-game",
     "easter-egg",
@@ -13313,7 +13191,6 @@
    "title": "Developer-Credit Linkage Analysis",
    "description": "Cross-references credited artists and writers between GTA V and other titles to identify who likely authored mystery assets and what their prior work suggests. Connects content to its probable creators.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Intermediate",
    "tags": [
     "developer",
     "credits",
@@ -13381,7 +13258,6 @@
    "title": "Shared-Engine Behavior Comparison",
    "description": "Compares how the RAGE engine handles weather, lighting, and trigger systems across GTA V and RDR2 to predict what is technically possible for a Chiliad trigger. Grounds speculation in engine capability.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Advanced",
    "tags": [
     "engine",
     "rage",
@@ -13450,7 +13326,6 @@
    "title": "Cross-Game Soundbank Fingerprinting",
    "description": "Extracts and fingerprints audio cues from multiple Rockstar titles to find shared stingers or motifs reused in the Chiliad soundscape. Reveals audio lineage tying mysteries together.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Advanced",
    "tags": [
     "soundbank",
     "fingerprint",
@@ -13485,7 +13360,6 @@
    "title": "Franchise Timeline Continuity Mapping",
    "description": "Plots in-universe dates, characters, and events across the GTA timeline to test whether Chiliad lore is consistent with established franchise continuity. Anchors speculation to canonical chronology.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Intermediate",
    "tags": [
     "timeline",
     "continuity",
@@ -13566,7 +13440,6 @@
    "title": "GTA Online Update Diff Surveillance",
    "description": "Tracks each GTA Online update by diffing patched game files to catch any newly added mystery-related assets or scripts. Monitors whether Rockstar quietly extends the mystery over time.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Advanced",
    "tags": [
     "online",
     "update",
@@ -13630,7 +13503,6 @@
    "title": "Tarot-Arcana Symbol Mapping",
    "description": "Maps mural glyphs and mystery symbols onto Tarot arcana to test whether the set forms a coherent esoteric sequence. Explores whether an occult framework explains the symbols.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "tarot",
     "arcana",
@@ -13691,7 +13563,6 @@
    "title": "Alchemical Element Correspondence Analysis",
    "description": "Tests whether the mystery's recurring fire, water, air, and earth imagery maps onto classical alchemical correspondences. Evaluates an elemental framework as an organizing key.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "alchemy",
     "elements",
@@ -13752,7 +13623,6 @@
    "title": "Gematria Numeric Value Decoding",
    "description": "Converts mystery-related words and names into numeric values via gematria schemes to look for meaningful sums or matches. Tests a numerological reading of textual clues.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "gematria",
     "numeric",
@@ -13847,7 +13717,6 @@
    "title": "Jungian Archetype Frame Reading",
    "description": "Interprets mystery figures and the journey-to-the-summit structure through Jungian archetypes such as the hero, shadow, and self. Evaluates whether the mystery is a psychological narrative.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "jungian",
     "archetype",
@@ -13898,7 +13767,6 @@
    "title": "Astrological Alignment Overlay",
    "description": "Overlays constellation and planetary-alignment models onto the in-game sky and summit geometry to test for intended celestial correspondences. Probes whether stargazing reveals timing or direction clues.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "astrology",
     "alignment",
@@ -13968,7 +13836,6 @@
    "title": "Mythological Comparative Templating",
    "description": "Compares the mystery to world myths of sacred mountains, sky-gods, and ascension to test whether it follows a known mythic template. Provides interpretive scaffolding for ambiguous symbols.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "mythology",
     "comparative",
@@ -14011,7 +13878,6 @@
    "title": "Semiotic Sign-System Decomposition",
    "description": "Breaks each glyph into signifier and signified components using semiotic analysis to map possible meanings and relations between symbols. Builds a rigorous interpretive grammar for the mural.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "semiotics",
     "sign-system",
@@ -14078,7 +13944,6 @@
    "title": "Color-Theory Palette Significance Study",
    "description": "Analyzes the mural and key locations' color palettes against color-symbolism systems to test whether hues encode meaning or direction. Treats color as a potential clue channel.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "color-theory",
     "palette",
@@ -14241,7 +14106,6 @@
    "title": "Bayesian Theory-Confidence Updating",
    "description": "Assigns prior probabilities to competing mystery theories and updates them as each new piece of evidence arrives, producing transparent confidence scores. Keeps belief proportional to evidence.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "bayesian",
     "confidence",
@@ -14276,7 +14140,6 @@
    "title": "Developer-Interview Intent Synthesis",
    "description": "Aggregates and contextualizes Rockstar developer interviews and statements to weigh authorial claims about whether the mystery is solvable. Distinguishes confirmed intent from speculation.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "developer",
     "interview",
@@ -14329,7 +14192,6 @@
    "title": "Patch-Note Narrative Drift Tracking",
    "description": "Reads patch notes and update narratives over time to track how Rockstar's framing of the mystery shifts, inferring intent from what is added, removed, or pointedly ignored. Treats silence and change as signals.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "patch-note",
     "narrative",
@@ -14393,7 +14255,6 @@
    "title": "Counterfactual Choice-Branch Auditing",
    "description": "Replays story decision points down each branch to audit whether any player choice silently unlocks or blocks mystery content. Tests the narrative for hidden choice-gated paths.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "counterfactual",
     "choice",
@@ -14428,7 +14289,6 @@
    "title": "Lidar-Style Terrain Reconstruction",
    "description": "Reconstructs a point-cloud elevation model of the Mount Chiliad slopes by sampling in-game heightmap collision data and free-camera depth captures. The resulting mesh is inspected for engineered ridges that echo the mural's three lines.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "terrain",
     "point-cloud",
@@ -14461,7 +14321,6 @@
    "title": "Photogrammetry of the Mural",
    "description": "Captures dozens of overlapping screenshots of the mural at varying angles and lighting, then runs structure-from-motion to rebuild it as a flat orthorectified texture free of viewing distortion. Investigators measure true line spacing and symbol proportions on the corrected plane.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "mural",
     "structure-from-motion",
@@ -14493,7 +14352,6 @@
    "title": "Cross-Correlation Template Matching",
    "description": "Slides a known glyph template across map tiles and texture sheets computing normalized cross-correlation peaks to locate hidden repeats of the egg, jetpack, or UFO symbols. Strong correlation spikes flag candidate locations for manual review.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "correlation",
     "template",
@@ -14575,7 +14433,6 @@
    "title": "Viewshed Sightline Triangulation",
    "description": "Computes the visibility polygon from each glyph location to determine which peaks or landmarks are mutually visible, testing the theory that the glyphs form a line-of-sight network. Overlapping viewsheds are intersected to find convergence points.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "viewshed",
     "sightline",
@@ -14619,7 +14476,6 @@
    "title": "Vanishing-Point Perspective Recovery",
    "description": "Identifies converging architectural lines in murals and posters to recover the original camera intrinsics, revealing whether a scene was drawn with a deliberate hidden horizon. The reconstructed perspective is checked for alignment with real map bearings.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "perspective",
     "vanishing-point",
@@ -14698,7 +14554,6 @@
    "title": "Geodesic Bearing Chain Analysis",
    "description": "Treats each landmark as a node and computes great-circle-style bearings between them on the game's projected coordinate grid, searching for repeated angles or golden-ratio spacing. Consistent bearings suggest a designed alignment rather than coincidence.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "bearing",
     "alignment",
@@ -14780,7 +14635,6 @@
    "title": "Shadow-Length Solar Position Modeling",
    "description": "Measures cast shadow lengths and angles at glyph sites across the in-game day cycle to back-solve the engine's solar azimuth, testing whether a glyph is illuminated only at a specific time. The model predicts candidate trigger moments for field testing.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "shadow",
     "solar",
@@ -14918,7 +14772,6 @@
    "title": "Contour-Line Isobath Mapping",
    "description": "Generates evenly spaced elevation contours of the mountain and Alamo Sea basin, then overlays them against the mural's parallel strokes to test a topographic-map hypothesis. Contour density is compared to the mural's line weight.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "contour",
     "topography",
@@ -14991,7 +14844,6 @@
    "title": "Procrustes Shape Superimposition",
    "description": "Uses Procrustes analysis to optimally translate, rotate, and scale a candidate constellation of glyph points onto the mural outline, reporting residual error as a fit score. Low residuals indicate the layout genuinely matches the symbol.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "procrustes",
     "shape-fit",
@@ -15023,7 +14875,6 @@
    "title": "Fractal Dimension Coastline Analysis",
    "description": "Applies box-counting to the Alamo Sea and island coastlines to compute fractal dimension, checking whether any shoreline segment was hand-authored to a non-natural roughness that might encode meaning. Anomalous segments are flagged for closer study.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "fractal",
     "coastline",
@@ -15089,7 +14940,6 @@
    "title": "Wavelet Audio Denoising",
    "description": "Applies wavelet-thresholding denoising to noisy ambient and UFO-hum recordings to lift faint tonal layers out of background hiss without smearing transients. The cleaned track is re-examined for buried voices or tones.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "wavelet",
     "denoise",
@@ -15121,7 +14971,6 @@
    "title": "Frequency-to-Color Mapping",
    "description": "Maps audio frequency bands to a color palette and renders the hum as a scrolling chromatic strip, letting investigators visually spot rhythmic or symbolic patterns that are hard to hear. Recurring color bands are correlated against the mural palette.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "audio-visual",
     "color-mapping",
@@ -15206,7 +15055,6 @@
    "title": "Cepstral Pitch Extraction",
    "description": "Computes the cepstrum of suspected speech fragments in radio chatter and ambient loops to isolate fundamental pitch and detect time-stretched or pitch-shifted hidden messages. Extracted pitch contours are compared to known voice lines.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "cepstrum",
     "pitch",
@@ -15238,7 +15086,6 @@
    "title": "Phase-Inversion Center Channel Extraction",
    "description": "Inverts and sums stereo or quad channels to cancel common content and expose material panned out-of-phase, hunting for sounds deliberately hidden in the difference signal. The residual is then normalized and inspected.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "phase-inversion",
     "channel",
@@ -15339,7 +15186,6 @@
    "title": "Morse-on-Envelope Detection",
    "description": "Extracts the amplitude envelope of pulsing tones and thresholds it into dot-dash timing to test whether a hum or beacon encodes Morse code. Decoded sequences are checked against meaningful words and coordinates.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "morse",
     "envelope",
@@ -15402,7 +15248,6 @@
    "title": "Sample-Rate Aliasing Probe",
    "description": "Deliberately resamples assets at unusual rates to surface aliasing artifacts that can reveal content authored above the normal playback band, such as ultrasonic markers. Recovered bands are demodulated and analyzed.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "aliasing",
     "resample",
@@ -15448,7 +15293,6 @@
    "title": "Beat-Grid Tempo Forensics",
    "description": "Locks ambient loops to a beat grid to measure exact loop length and tempo, looking for musically meaningful intervals or counts that line up with in-game timers like the rain-and-altitude conditions. Tempo ratios are checked for symbolic numbers.",
    "category": "Audio Forensics",
-   "difficulty": "Beginner",
    "tags": [
     "tempo",
     "loop-length",
@@ -15529,7 +15373,6 @@
    "title": "Base64 and Hex Dump Scanning",
    "description": "Sweeps strings tables, texture metadata, and config blobs for valid Base64 and suspicious hex runs, decoding candidates to check for embedded text, coordinates, or URLs. Decoded payloads are validated for printable structure.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "base64",
     "hex-dump",
@@ -15587,7 +15430,6 @@
    "title": "Entropy Analysis of Assets",
    "description": "Computes Shannon entropy across asset files to distinguish compressed or encrypted regions from plain data, flagging unusually high-entropy blobs that might conceal a hidden payload. Outliers are carved out for deeper inspection.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "entropy",
     "shannon",
@@ -15638,7 +15480,6 @@
    "title": "Polybius Square Testing",
    "description": "Maps suspected numeric pairs and letter clusters onto Polybius square grids of varying sizes to test whether mural numbers or graffiti decode into readable words. Candidate plaintexts are scored for dictionary hits.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "polybius",
     "cipher",
@@ -15760,7 +15601,6 @@
    "title": "Frequency-Analysis Substitution Cracking",
    "description": "Counts symbol frequencies in graffiti and signage to compare against English letter distributions, attempting to break a monoalphabetic substitution behind the markings. Hill-climbing refines the candidate key.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "frequency-analysis",
     "substitution",
@@ -15869,7 +15709,6 @@
    "title": "Gematria Numerical Mapping",
    "description": "Converts in-game names, slogans, and street signs into numbers via several gematria schemes to search for recurring totals like 23 or 187. Matching totals are cross-referenced with coordinates and dates.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "gematria",
     "numerology",
@@ -15927,7 +15766,6 @@
    "title": "Coordinate Checksum Validation",
    "description": "Treats suspicious number strings as latitude-longitude or map coordinates and validates them with checksum and range tests before plotting, weeding out impossible values. Surviving candidates are mapped for site visits.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "coordinates",
     "checksum",
@@ -15959,7 +15797,6 @@
    "title": "Vigenere Key-Length Estimation",
    "description": "Applies the Kasiski examination and index-of-coincidence to repeated cipher-like text to estimate a Vigenere key length before attempting decryption. Likely key lengths guide a targeted key search.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "vigenere",
     "kasiski",
@@ -16027,7 +15864,6 @@
    "title": "Benford's Law Digit Auditing",
    "description": "Audits the leading-digit distribution of large number sets such as collected coordinates or in-game prices to spot data that was hand-fabricated rather than naturally generated. Deviations flag likely authored sequences.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "benford",
     "digit-distribution",
@@ -16059,7 +15895,6 @@
    "title": "Tarot Correspondence Mapping",
    "description": "Maps recurring imagery like the tower, star, and moon to Major Arcana cards and tests whether glyph order spells a meaningful tarot sequence. The proposed reading is checked for narrative coherence with the game's themes.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Beginner",
    "tags": [
     "tarot",
     "arcana",
@@ -16112,7 +15947,6 @@
    "title": "Alchemical Element Attribution",
    "description": "Assigns the four classical elements to the egg, jetpack, UFO, and thruster glyphs and tests whether their map placement forms a balanced elemental cross. The geometry of the proposed cross is measured for symmetry.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "alchemy",
     "elements",
@@ -16152,7 +15986,6 @@
    "title": "Zodiac Constellation Overlay",
    "description": "Overlays star-chart constellations onto the night sky and onto glyph site maps to test whether placements echo a zodiac figure visible at a specific in-game date. Star positions are matched against the engine's skybox.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "zodiac",
     "constellation",
@@ -16209,7 +16042,6 @@
    "title": "Mythological Motif Cross-Referencing",
    "description": "Catalogs recurring motifs such as the mountain, the eye, and ascent, then cross-references world mythologies for matching ascension narratives that might explain the mystery's structure. Strong parallels are scored by motif overlap.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Beginner",
    "tags": [
     "mythology",
     "motif",
@@ -16256,7 +16088,6 @@
    "title": "Sacred Geometry Proportion Testing",
    "description": "Measures distances and angles among glyph sites to test for golden ratio, vesica piscis, or pentagram proportions that would imply deliberate sacred-geometry design. Ratios are reported with tolerance bands.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "sacred-geometry",
     "golden-ratio",
@@ -16421,7 +16252,6 @@
    "title": "Narrative Theme Frequency Coding",
    "description": "Codes mission dialogue and in-world text for themes like surveillance, ascension, and aliens, then tallies frequencies to identify which motifs the writers emphasized most around Chiliad content. Theme clusters guide interpretation priorities.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Beginner",
    "tags": [
     "thematic-coding",
     "dialogue",
@@ -16476,7 +16306,6 @@
    "title": "Iconographic Database Matching",
    "description": "Submits glyph crops to iconography and heraldry databases to find historical symbols with matching forms, sourcing possible real-world references the artists drew on. Top matches are vetted for plausible developer access.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "iconography",
     "database-match",
@@ -16544,7 +16373,6 @@
    "title": "Perceptual Hash Image Dedup",
    "description": "Computes perceptual hashes for the entire texture set to cluster near-duplicate images and surface a unique outlier texture that might be a hidden clue. Low-population clusters are reviewed by hand.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Intermediate",
    "tags": [
     "phash",
     "dedup",
@@ -16576,7 +16404,6 @@
    "title": "Optical Flow Glyph Motion",
    "description": "Runs dense optical flow across animated textures and prop spins to detect subtle motion in glyphs that appear static at a glance, revealing hidden cyclic behavior. Flow fields are visualized to spot directional bias.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "optical-flow",
     "animation",
@@ -16646,7 +16473,6 @@
    "title": "RPF Archive Diffing Across Patches",
    "description": "Extracts and byte-diffs RPF archives between game updates to pinpoint which mystery-related assets were added, removed, or quietly altered over time. Changed files are timelined against community discoveries.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "rpf",
     "diff",
@@ -16686,7 +16512,6 @@
    "title": "Texture Alpha-Channel Excavation",
    "description": "Splits textures into their alpha and individual color channels to reveal markings hidden in low-visibility layers or in transparency masks. Suspicious channel content is contrast-stretched for legibility.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Intermediate",
    "tags": [
     "alpha-channel",
     "texture",
@@ -16757,7 +16582,6 @@
    "title": "Script Decompilation Trigger Tracing",
    "description": "Decompiles game script bytecode to trace the exact conditional checks behind the UFO and jetpack spawn logic, confirming or refuting rumored trigger conditions. Traced branches are mapped to in-game prerequisites.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "decompilation",
     "scripts",
@@ -16845,7 +16669,6 @@
    "title": "Model Vertex-Group Inspection",
    "description": "Opens 3D models to inspect named vertex groups, bones, and unused submeshes for hidden geometry such as concealed doors or removed props tied to the mystery. Orphaned mesh parts are flagged for context.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "3d-model",
     "vertex-group",
@@ -16918,7 +16741,6 @@
    "title": "Asset Timestamp Forensics",
    "description": "Reads embedded build timestamps and file ordering inside archives to establish when mystery assets were authored relative to release, separating launch content from later additions. Timelines are reconciled with public patch notes.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Intermediate",
    "tags": [
     "timestamp",
     "metadata",
@@ -16963,7 +16785,6 @@
    "title": "String Table Cross-Locale Diffing",
    "description": "Compares localized string tables across languages to find lines that exist in one locale but not others, exposing cut or hidden text that may reference the mystery. Orphaned entries are translated and contextualized.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Intermediate",
    "tags": [
     "localization",
     "string-table",
@@ -17006,7 +16827,6 @@
    "title": "Speedrun-Route Clue Correlation",
    "description": "Cross-reference optimized speedrun pathing against locations of mural-related landmarks to detect whether developers placed clues along intended traversal lines. Statistical overlap suggests intentional clue seeding rather than coincidence.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "speedrun",
     "route-analysis",
@@ -17126,7 +16946,6 @@
    "title": "NPC Pathfinding Observation Logging",
    "description": "Systematically record ambient NPC navmesh routes near the Chiliad summit to detect anomalous waypoints or scripted convergence points. Deviations from expected wandering may flag hidden trigger zones.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "npc-behavior",
     "navmesh",
@@ -17271,7 +17090,6 @@
    "title": "Collision-Mesh Boundary Probing",
    "description": "Use noclip and collision visualization to probe invisible walls and mesh seams around the mountain for hollow volumes or sealed rooms. Discrepancies between visual geometry and collision hulls can indicate cut content.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "collision-mesh",
     "noclip",
@@ -17347,7 +17165,6 @@
    "title": "Memory-Scanning for Hidden State Flags",
    "description": "Attach a memory scanner to the running process and isolate boolean flags that toggle near suspected mystery triggers. Pinpointing addresses that change under specific conditions reveals gated logic.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "memory-scan",
     "state-flags",
@@ -17458,7 +17275,6 @@
    "title": "Network Packet Inspection (Online Sessions)",
    "description": "Capture and decode GTA Online session traffic to spot server-authoritative events that never surface in single-player. Anomalous opcodes near Chiliad coordinates may indicate online-only mystery hooks.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "packet-capture",
     "online",
@@ -17517,7 +17333,6 @@
    "title": "Markov-Chain Dialogue Modeling",
    "description": "Train a Markov chain on extracted NPC dialogue lines to detect statistically improbable phrases that may encode mystery hints. Outlier transitions flag scripted Easter-egg dialogue versus filler.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "markov-chain",
     "dialogue",
@@ -17556,7 +17371,6 @@
    "title": "Citation-Network Mapping of Theories",
    "description": "Build a directed graph of which forum theories cite which sources and each other, then run centrality metrics to find foundational versus derivative claims. Highlights the original evidence behind viral theories.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Intermediate",
    "tags": [
     "citation-graph",
     "network-analysis",
@@ -17694,7 +17508,6 @@
    "title": "Inter-Title Timeline Correlation",
    "description": "Align dated in-universe events across GTA titles to test whether Chiliad lore is consistent with San Andreas-era references. Contradictions or precise echoes inform whether the mystery spans games.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Intermediate",
    "tags": [
     "timeline",
     "cross-game",
@@ -17762,7 +17575,6 @@
    "title": "Controlled Variable Trigger Isolation",
    "description": "Hold all environmental variables constant except one (time, weather, completion percent) to isolate the precise condition that activates a suspected event. Classic single-variable experimental design applied in-game.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "controlled-experiment",
     "variable-isolation",
@@ -17807,7 +17619,6 @@
    "title": "Crowdsourced Replication Protocol",
    "description": "Publish a standardized step list so dozens of players attempt the same ritual simultaneously and report binary outcomes. Aggregated success rates distinguish reproducible effects from one-off glitches.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Beginner",
    "tags": [
     "crowdsourcing",
     "replication",
@@ -17847,7 +17658,6 @@
    "title": "Bayesian Theory Scoring",
    "description": "Assign prior probabilities to competing mystery hypotheses and update them as evidence accumulates. Produces a ranked, transparent confidence score rather than binary belief.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "bayesian",
     "scoring",
@@ -17879,7 +17689,6 @@
    "title": "Audio Spectrogram Hidden-Signal Search",
    "description": "Render summit ambient audio and Altruist broadcasts as spectrograms to hunt for embedded imagery or Morse-like patterns. Visual inspection of frequency bands can reveal steganographic content.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "spectrogram",
     "audio-analysis",
@@ -18048,7 +17857,6 @@
    "title": "Frame-Step Visual FX Decomposition",
    "description": "Advance suspected event footage frame-by-frame to decompose particle and lighting effects into discrete states. Reveals whether an apparent apparition is a scripted entity or a transient rendering artifact.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "frame-step",
     "vfx",
@@ -18130,7 +17938,6 @@
    "title": "Asset-Name Lexical Clustering",
    "description": "Cluster datamined asset and texture filenames by lexical similarity to surface naming conventions that group mystery-related files. Outlier or thematically named assets become investigation leads.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Intermediate",
    "tags": [
     "asset-names",
     "clustering",
@@ -18168,7 +17975,6 @@
    "title": "Comparative Mural Iconography Cataloging",
    "description": "Catalog every symbol on the Chiliad mural and compare each against real-world iconographic databases for matches in alchemy, cartography, or aviation. Establishes the symbolic vocabulary the artists drew from.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Beginner",
    "tags": [
     "iconography",
     "mural",
@@ -18284,7 +18090,6 @@
    "title": "Save-State Differential Diffing",
    "description": "Diff binary save files before and after performing a suspected ritual to find which stored variables changed. Reveals whether an action actually mutates persistent game state.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "save-diff",
     "binary-analysis",
@@ -18393,7 +18198,6 @@
    "title": "Script-Decompilation Conditional Tracing",
    "description": "Decompile mission and ambient scripts to trace conditional branches that reference summit coordinates or mystery flags. Reading the logic directly settles whether an event is even programmed.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "decompilation",
     "script-analysis",
@@ -18475,7 +18279,6 @@
    "title": "Choice-Tree Ending Permutation Mapping",
    "description": "Enumerate every major story choice permutation and map how endings or world-state differ, checking for any branch that alters Chiliad. Determines if narrative decisions gate the mystery.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "choice-tree",
     "endings",
@@ -18615,7 +18418,6 @@
    "title": "Developer-Interview Discourse Mining",
    "description": "Mine the corpus of Rockstar interviews and patch notes for offhand remarks about the mystery, weighting statements by speaker authority and recency. Separates official hints from fan projection.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "discourse-mining",
     "interviews",
@@ -18676,7 +18478,6 @@
    "title": "Cross-Platform Build Comparison",
    "description": "Compare the same scenes and files across PS3, PS4, and PC builds to detect content that exists on one platform but not others. Platform-exclusive assets can expose late additions or removals.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Advanced",
    "tags": [
     "cross-platform",
     "build-diff",
@@ -18735,7 +18536,6 @@
    "title": "Procedural Weather-Cycle Triggering",
    "description": "Force the full weather and time cycle programmatically while parked at the summit, logging any environmental scripts that fire. Compresses days of waiting into automated condition sweeps.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "weather-cycle",
     "automation",
@@ -18836,7 +18636,6 @@
    "title": "Astronomical Alignment Modeling",
    "description": "Model the in-game sun, moon, and star positions over the calendar to test claims that celestial alignments gate summit events. Compares predicted alignment dates against reported sighting logs.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "astronomy",
     "alignment",
@@ -18903,7 +18702,6 @@
    "title": "Mission-Context Semantic Tagging",
    "description": "Tag each mission for thematic motifs (surveillance, conspiracy, ascension) and measure motif density near Chiliad-relevant content. Reveals whether the narrative thematically converges on the mystery.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "semantic-tagging",
     "motifs",
@@ -18943,7 +18741,6 @@
    "title": "Rockstar Easter-Egg Pattern Precedent Matching",
    "description": "Catalog how Rockstar resolved past Easter eggs across its titles and match the Chiliad mystery's traits against those precedents. Predicts the likely form and trigger style of any payoff.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Beginner",
    "tags": [
     "easter-egg",
     "precedent",
@@ -19447,7 +19244,6 @@
    "title": "Heatmap Aggregation of Sighting Reports",
    "description": "Geotag every community phenomenon report onto a map and render density heatmaps to identify hotspots. Concentrations may localize a real trigger or expose reporting bias near popular vantage points.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Beginner",
    "tags": [
     "heatmap",
     "geotagging",
@@ -19505,7 +19301,6 @@
    "title": "Symbol Grammar Generative Testing",
    "description": "Treat the mural symbols as a formal grammar and generate candidate readings, testing each against in-game geography for spatial validity. Filters arbitrary interpretations by geographic falsifiability.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "formal-grammar",
     "symbol-reading",
@@ -19586,7 +19381,6 @@
    "title": "Audio Voice-Line Hash Matching",
    "description": "Hash extracted voice files and match them against subtitle and script tables to find unsubtitled or orphaned lines. Unmatched audio may be cut hint dialogue tied to the mystery.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "audio-hash",
     "voice-lines",
@@ -19719,7 +19513,6 @@
    "title": "Player-Coordinate Telemetry Clustering",
    "description": "Aggregate opted-in player position logs near Chiliad and cluster dwell-time hotspots that correlate with reported events. High-dwell coordinates can pinpoint where players believe something happens.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "telemetry",
     "clustering",
@@ -19825,7 +19618,6 @@
    "title": "Counterfactual Patch-History Tracing",
    "description": "Track which patches modified Chiliad-area files and reason counterfactually about what each change implies the developers intended. Edits to mystery assets signal ongoing or abandoned plans.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Intermediate",
    "tags": [
     "patch-history",
     "counterfactual",
@@ -19857,7 +19649,6 @@
    "title": "Interrogative Prompting of NPC Trigger Conditions",
    "description": "Systematically vary player approach vectors, speeds, and vehicles toward an NPC or zone to map exactly which interaction conditions fire scripted responses. Reverse-engineers trigger geometry through behavioral probing.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "trigger-probing",
     "npc-interaction",
@@ -19961,7 +19752,6 @@
    "title": "Lore-Consistency Contradiction Auditing",
    "description": "Compile all in-universe statements about the mystery and audit them for logical contradictions that would falsify specific theories. Contradictions act as hard constraints narrowing the solution space.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "lore-audit",
     "contradiction",
@@ -20001,7 +19791,6 @@
    "title": "Texture-UV Hidden-Message Unwrapping",
    "description": "Unwrap the mural's UV layout to view the texture flat, exposing details distorted or hidden by the curved geometry. Flattening can reveal markings invisible at the in-game viewing angle.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "uv-unwrap",
     "texture-analysis",
@@ -20174,7 +19963,6 @@
    "title": "Multi-Save Parallel A/B Testing",
    "description": "Run two save files identical except for one prerequisite (e.g., a collectible set) and observe summit behavior in parallel. Direct A/B comparison isolates whether the prerequisite matters.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "ab-testing",
     "parallel-saves",
@@ -20270,7 +20058,6 @@
    "title": "Radio-Broadcast Subtext Concordance",
    "description": "Build a concordance of recurring phrases across all radio stations and talk shows, flagging terms that echo mural or summit themes. Repetition across writers may signal an intentional motif.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "concordance",
     "radio",
@@ -20334,7 +20121,6 @@
    "title": "Engine-Constant Threshold Extraction",
    "description": "Extract hardcoded numeric constants from scripts (radii, altitudes, timers) and map which govern summit-area logic. Knowing exact thresholds lets testers hit conditions precisely instead of guessing.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "constants",
     "thresholds",
@@ -20383,7 +20169,6 @@
    "title": "Shared-Universe Location Geometry Correlation",
    "description": "Overlay Chiliad's geometry against equivalent mountains in other Rockstar titles to detect reused meshes or deliberate callbacks. Shared geometry can indicate a continuing narrative thread.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Advanced",
    "tags": [
     "geometry-overlay",
     "cross-game",
@@ -20601,7 +20386,6 @@
    "title": "Sentiment-Weighted Theory Triage",
    "description": "Score community theories by evidence quality while discounting for upvote-driven sentiment, producing a triage list that surfaces under-discussed but well-supported ideas. Counters popularity bias in research focus.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "sentiment",
     "triage",
@@ -20641,7 +20425,6 @@
    "title": "Trigger-Volume Visualization Overlay",
    "description": "Render the game's invisible trigger volumes as colored boxes via debug tools to directly see where scripted zones sit around the summit. Eliminates guesswork about activation boundaries.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "trigger-volume",
     "debug-overlay",
@@ -20711,7 +20494,6 @@
    "title": "Hypothesis Pre-Registration Logging",
    "description": "Publicly record predicted outcomes before running any in-game test, timestamping the hypothesis to prevent post-hoc rationalization. Enforces scientific discipline on community experiments.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Beginner",
    "tags": [
     "pre-registration",
     "methodology",
@@ -20757,7 +20539,6 @@
    "title": "Cross-Title Symbol Lexicon Reconciliation",
    "description": "Compile recurring Rockstar symbols (eyes, jetpacks, UFOs) across multiple games into a shared lexicon and reconcile their meanings to interpret Chiliad's glyphs. Treats the studio's iconography as a coherent visual language.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Intermediate",
    "tags": [
     "symbol-lexicon",
     "cross-game",
@@ -20806,7 +20587,6 @@
    "title": "Multispectral Image Decomposition",
    "description": "Separates the Chiliad mural texture into per-channel spectral bands to expose paint layers invisible in standard RGB. Each band is contrast-stretched independently to reveal latent glyph strokes.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "spectral",
     "image-analysis",
@@ -20947,7 +20727,6 @@
    "title": "Difference-of-Gaussians Edge Mapping",
    "description": "Applies two Gaussian blurs at differing radii and subtracts them to map sharp boundaries in the mural and signage. The resulting edge field highlights inscribed lines against painted noise.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "edge-detection",
     "dog-filter",
@@ -20982,7 +20761,6 @@
    "title": "Vanishing-Point Reconstruction of Mural Geometry",
    "description": "Projects the mural's painted perspective lines to recover implied vanishing points and a hidden 3D layout. Convergence nodes are tested against in-game landmark bearings.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "perspective",
     "vanishing-point",
@@ -21068,7 +20846,6 @@
    "title": "Hough-Transform Line Accumulation",
    "description": "Runs a Hough transform over mural and map textures to detect dominant straight lines and their angles statistically. Peak bins in the accumulator suggest deliberately aligned features.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "hough",
     "line-detection",
@@ -21103,7 +20880,6 @@
    "title": "Voronoi Tessellation of Collectible Coordinates",
    "description": "Builds a Voronoi diagram from spaceship-part and letter-scrap coordinates to study spatial clustering and cell adjacency. Cell boundaries are checked for alignment with mural geometry.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "voronoi",
     "coordinates",
@@ -21157,7 +20933,6 @@
    "title": "Convex-Hull Boundary Analysis of Glyph Sites",
    "description": "Computes the convex hull around in-world glyph locations to characterize their overall footprint and extreme points. Hull vertices are compared to candidate vault entrances.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "convex-hull",
     "glyphs",
@@ -21282,7 +21057,6 @@
    "title": "Photogrammetric Shadow-Angle Triangulation",
    "description": "Measures cast-shadow angles in screenshots taken at known in-game times to triangulate sun position and infer object orientation. Cross-checks whether glyph mounts face a deliberate bearing.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "photogrammetry",
     "shadow",
@@ -21317,7 +21091,6 @@
    "title": "Fourier Texture Periodicity Detection",
    "description": "Transforms the mural texture into the frequency domain to detect repeating spatial periods that may encode a grid or rhythm. Strong periodic peaks are mapped back to pixel spacing.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "fourier",
     "texture",
@@ -21428,7 +21201,6 @@
    "title": "Color-Quantization Cluster Segmentation",
    "description": "Reduces the mural palette via k-means clustering to isolate discrete paint regions and count intended color zones. Each cluster mask is inspected for embedded shapes.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "color-quantization",
     "kmeans",
@@ -21495,7 +21267,6 @@
    "title": "Procrustes Shape Matching Against Map Outlines",
    "description": "Uses Procrustes superimposition to align glyph silhouettes with candidate landmass or road outlines after scaling and rotation. Residual fit error quantifies how well a shape maps to terrain.",
    "category": "Visual, Cartographic & Geometric Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "procrustes",
     "shape-matching",
@@ -21530,7 +21301,6 @@
    "title": "Mel-Frequency Cepstral Audio Profiling",
    "description": "Extracts MFCC vectors from suspicious in-game ambience and the UFO hum to fingerprint timbral content. Profiles are clustered to detect reused or layered source sounds.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "mfcc",
     "audio",
@@ -21565,7 +21335,6 @@
    "title": "Cross-Spectral Coherence Analysis",
    "description": "Computes coherence between two audio captures to find frequency bands where they share a common hidden signal. High-coherence bands flag possible synchronized or buried tones.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "coherence",
     "cross-spectral",
@@ -21668,7 +21437,6 @@
    "title": "Frequency-Domain Watermark Search",
    "description": "Scans audio spectra for narrowband or comb-pattern energy consistent with an intentionally embedded watermark or message. Candidate bands are demodulated and inspected.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "watermark",
     "frequency-domain",
@@ -21720,7 +21488,6 @@
    "title": "Spectrogram Reverse-Playback Imaging",
    "description": "Renders spectrograms of forward and time-reversed audio to expose images or text hidden as spectral art. Reversal often makes engineered patterns legible.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "spectrogram",
     "reverse",
@@ -21778,7 +21545,6 @@
    "title": "Pitch-Contour Morse Extraction",
    "description": "Tracks the fundamental pitch contour over time to test whether rises and falls encode Morse or rhythmic code. Detected on/off durations are mapped to dots and dashes.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "pitch",
     "morse",
@@ -21899,7 +21665,6 @@
    "title": "Phase-Inversion Stereo Residual Isolation",
    "description": "Inverts one stereo channel and sums to cancel common content, leaving only side-channel residue that may hide a buried voice or tone. The residual is amplified and examined.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "phase-inversion",
     "stereo",
@@ -21934,7 +21699,6 @@
    "title": "Onset-Interval Rhythmic Cryptanalysis",
    "description": "Detects audio onset times and analyzes the inter-onset interval sequence for numeric or coded structure. Interval ratios are tested against known cipher alphabets.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "onset",
     "rhythm",
@@ -21969,7 +21733,6 @@
    "title": "Formant-Tracking Hidden-Speech Detection",
    "description": "Tracks formant frequencies in ambiguous breathy ambience to judge whether vowel-like resonances indicate concealed speech. Formant trajectories are compared to real phonetics.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "formant",
     "speech",
@@ -22051,7 +21814,6 @@
    "title": "Dynamic Time Warping Audio Cue Matching",
    "description": "Aligns two variable-speed audio cues with dynamic time warping to test if they are the same underlying signal stretched or compressed. Low warp cost implies shared origin.",
    "category": "Audio Forensics",
-   "difficulty": "Advanced",
    "tags": [
     "dtw",
     "alignment",
@@ -22207,7 +21969,6 @@
    "title": "Harmonic-Percussive Source Separation",
    "description": "Splits ambience into harmonic and percussive components to isolate a steady hidden drone from transient clutter. The harmonic residue is then analyzed for tonal messages.",
    "category": "Audio Forensics",
-   "difficulty": "Intermediate",
    "tags": [
     "hpss",
     "separation",
@@ -22262,7 +22023,6 @@
    "title": "Caesar-Box Transposition Testing",
    "description": "Arranges candidate glyph text or collectible labels into rectangular grids of varying widths and reads columns to test for transposition ciphers. Each grid width is scored for emergent words.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "transposition",
     "caesar-box",
@@ -22395,7 +22155,6 @@
    "title": "Atbash Substitution Testing",
    "description": "Applies the Atbash mirror-alphabet substitution to suspected ciphertext from in-game signage and notes. Outputs are screened for meaningful Chiliad-related terms.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "atbash",
     "substitution",
@@ -22497,7 +22256,6 @@
    "title": "Zipf-Law Text Frequency Analysis",
    "description": "Compares the letter and token frequency distribution of compiled clue text against the Zipf and natural-language baselines. Deviations hint at ciphertext rather than plain English.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "zipf",
     "frequency",
@@ -22532,7 +22290,6 @@
    "title": "Vigenere Key-Length Kasiski Examination",
    "description": "Searches repeated substrings in candidate ciphertext and factors their separations to estimate a Vigenere key length. Likely key lengths guide frequency-based key recovery.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "vigenere",
     "kasiski",
@@ -22567,7 +22324,6 @@
    "title": "Gematria Numerical Value Mapping",
    "description": "Maps clue words to numeric sums via standard and ordinal gematria schemes, then searches for matching coordinates, dates, or counts. Matching totals are cross-referenced to in-game numbers.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "gematria",
     "numerology",
@@ -22628,7 +22384,6 @@
    "title": "Base-N Encoding Brute Sweep",
    "description": "Sweeps candidate strings through Base16, Base32, Base58, and Base64 decoders to catch encoded payloads disguised as text. Decoded bytes are checked for readable or structured content.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "base-n",
     "encoding",
@@ -22696,7 +22451,6 @@
    "title": "Index-of-Coincidence Cipher Screening",
    "description": "Calculates the index of coincidence for candidate strings to classify them as monoalphabetic, polyalphabetic, or random. The metric narrows which cipher attacks are worth running.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "index-of-coincidence",
     "cipher",
@@ -22770,7 +22524,6 @@
    "title": "Modular-Arithmetic Coordinate Reduction",
    "description": "Reduces compiled numeric clues under various moduli to test for wrap-around relationships pointing to map tiles or clock values. Consistent residues suggest a designed modular scheme.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "modular",
     "arithmetic",
@@ -22854,7 +22607,6 @@
    "title": "Polybius-Square Coordinate Decoding",
    "description": "Treats paired numbers from clues as row-column references into Polybius squares of several alphabets to extract letters. Resulting plaintext is screened for Chiliad relevance.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "polybius",
     "coordinate-cipher",
@@ -23022,7 +22774,6 @@
    "title": "N-Gram Anomaly Language Detection",
    "description": "Scores clue strings against an English n-gram model to flag improbable letter sequences that may signal encoding or a foreign alphabet. Low-probability segments are prioritized for deeper analysis.",
    "category": "Cryptographic, Linguistic & Numerical Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "n-gram",
     "language-model",
@@ -23075,7 +22826,6 @@
    "title": "Comparative Mythology Motif Cross-Indexing",
    "description": "Cross-indexes mural symbols against catalogued world-mythology motifs to test for deliberate iconographic borrowing. Matches are weighted by motif specificity rather than vague resemblance.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "mythology",
     "motif",
@@ -23123,7 +22873,6 @@
    "title": "Jungian Archetype Mapping of Glyphs",
    "description": "Maps the mystery's recurring figures to Jungian archetypes to model an intended narrative arc behind the glyphs. The framework predicts which symbols should pair or oppose.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "jungian",
     "archetype",
@@ -23192,7 +22941,6 @@
    "title": "Tarot-Correspondence Symbol Overlay",
    "description": "Overlays the mural's figures onto major-arcana tarot correspondences to test for a structured esoteric sequence. The ordering is checked for internal consistency before any conclusion.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Beginner",
    "tags": [
     "tarot",
     "correspondence",
@@ -23313,7 +23061,6 @@
    "title": "Alchemical Sigil Correspondence Analysis",
    "description": "Compares glyph shapes to classical alchemical sigils for elements and processes to test for encoded transmutation symbolism. Matches are validated against shape and stroke order, not just gist.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "alchemy",
     "sigil",
@@ -23376,7 +23123,6 @@
    "title": "Narrative Semiotic Deep Reading",
    "description": "Applies semiotic sign-signifier analysis to in-game text and imagery to surface layered authorial meaning around the mystery. Readings are constrained by recurring, corroborated signs only.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "semiotics",
     "narrative",
@@ -23439,7 +23185,6 @@
    "title": "Mesh-Topology Anomaly Scanning",
    "description": "Scans extracted 3D meshes for unusual topology such as orphan vertices, hidden submeshes, or non-manifold edges that may conceal interactive geometry. Anomalies are isolated and rendered.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "mesh",
     "topology",
@@ -23485,7 +23230,6 @@
    "title": "Script-Decompilation String Mining",
    "description": "Decompiles game script bytecode and mines string and label tables for unused mystery references or dead code paths. Found identifiers are traced to their triggering conditions.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "decompilation",
     "scripts",
@@ -23545,7 +23289,6 @@
    "title": "Archive Entropy Profiling for Hidden Payloads",
    "description": "Profiles byte entropy across packed game archives to locate high-entropy regions suggesting encrypted or compressed hidden payloads. Suspicious blocks are carved out for inspection.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Advanced",
    "tags": [
     "entropy",
     "archive",
@@ -23588,7 +23331,6 @@
    "title": "Cross-Version Asset Diffing",
    "description": "Diffs unpacked assets between consecutive game versions to reveal silently added, altered, or removed mystery files. Notable diffs are correlated with patch dates and community events.",
    "category": "File, Asset & Data Archaeology",
-   "difficulty": "Intermediate",
    "tags": [
     "diffing",
     "versioning",
@@ -23643,7 +23385,6 @@
    "title": "Frame-Step Cutscene Forensics",
    "description": "Capture key cutscenes at the highest possible frame rate and step through them frame by frame to isolate background details, hidden symbols, or single-frame flashes. Suspicious frames are exported as lossless stills for collaborative annotation.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "cutscene",
     "frame-analysis",
@@ -23750,7 +23491,6 @@
    "title": "Trigger-Volume Mapping via Mods",
    "description": "Use script mods to render and log invisible trigger volumes around the Mount Chiliad region, then catalog their bounds and activation conditions. The resulting map reveals where the game silently checks player state.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "trigger-volume",
     "mods",
@@ -23827,7 +23567,6 @@
    "title": "A/B Save Comparison Harness",
    "description": "Maintain two near-identical save files differing in a single variable and run them through the same actions to isolate what changes in world state. A diff harness flags any divergence in flags, objects, or events.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "save-files",
     "ab-testing",
@@ -23957,7 +23696,6 @@
    "title": "Determinism Testing of UFO Spawns",
    "description": "Repeatedly reload identical conditions to test whether UFO appearances are deterministic or probabilistic, recording every spawn outcome against a fixed checklist. Statistical patterns indicate the true trigger logic.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "ufo",
     "determinism",
@@ -24067,7 +23805,6 @@
    "title": "Social-Network Analysis of Theorists",
    "description": "Build a graph of contributors, citations, and threads to identify which theorists originated key claims and how ideas propagated. Centrality metrics highlight influential but possibly unverified sources.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Intermediate",
    "tags": [
     "social-network",
     "graph",
@@ -24143,7 +23880,6 @@
    "title": "Delphi-Method Expert Consensus",
    "description": "Run anonymous multi-round surveys among veteran researchers, feeding back aggregated responses each round until consensus stabilizes on which leads are credible. The process reduces bandwagon bias.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "delphi",
     "consensus",
@@ -24198,7 +23934,6 @@
    "title": "Cross-Title Soundtrack Correlation",
    "description": "Compare ambient and mission music cues between GTA V and other Rockstar titles to find shared motifs that may signal connected lore. Spectral matching highlights reused or referenced themes.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Intermediate",
    "tags": [
     "soundtrack",
     "cross-game",
@@ -24274,7 +24009,6 @@
    "title": "Lore Timeline Reconciliation",
    "description": "Assemble all dated in-game references and external Rockstar lore into a single timeline to spot contradictions or gaps that the mystery might fill. Conflicts flag areas needing deeper investigation.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Beginner",
    "tags": [
     "timeline",
     "lore",
@@ -24326,7 +24060,6 @@
    "title": "Replay-Buffer Anomaly Capture",
    "description": "Keep a rolling replay buffer recording during long play sessions so any unexpected event can be saved retroactively and reviewed. This preserves fleeting anomalies that would otherwise be lost.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Beginner",
    "tags": [
     "replay-buffer",
     "capture",
@@ -24379,7 +24112,6 @@
    "title": "Heatmap Aggregation of Sightings",
    "description": "Collect geotagged reports of anomalies and render them as a density heatmap over the game map to reveal clustering. Hot zones guide where to focus controlled testing.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Intermediate",
    "tags": [
     "heatmap",
     "sightings",
@@ -24440,7 +24172,6 @@
    "title": "Controlled Community Field Test",
    "description": "Coordinate many volunteers to perform an identical scripted ritual simultaneously under documented conditions, then aggregate outcomes. Standardized procedure removes individual technique variance.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "field-test",
     "community",
@@ -24513,7 +24244,6 @@
    "title": "Procedural Weather-State Sweep",
    "description": "Systematically force every weather and time-of-day combination near the summit while watching for mystery triggers. A matrix log records which states unlock any change.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "weather",
     "sweep",
@@ -24616,7 +24346,6 @@
    "title": "Mural Geometry Vectorization",
    "description": "Trace the chiliad mural into precise vector paths and measure angles, ratios, and alignments mathematically. Quantified geometry can be tested against real map bearings.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "mural",
     "geometry",
@@ -24662,7 +24391,6 @@
    "title": "Audio Reverse-Engineering of Stingers",
    "description": "Reverse, slow, and layer mysterious audio stingers to detect hidden speech or embedded tones. Spectral inspection reveals content masked at normal playback.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "audio",
     "reverse",
@@ -24717,7 +24445,6 @@
    "title": "Cross-Platform Hash Verification",
    "description": "Compare game asset hashes across PC, console, and patch versions to detect files that changed silently between releases. Altered assets may hint at adjusted mystery content.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "hashing",
     "cross-platform",
@@ -24765,7 +24492,6 @@
    "title": "Pathfinding Node Extraction",
    "description": "Extract the navmesh and pathfinding nodes around Mount Chiliad to study how NPCs and vehicles are intended to move through the area. Unusual node gaps can mark restricted or special zones.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "pathfinding",
     "navmesh",
@@ -24803,7 +24529,6 @@
    "title": "Symbolic Glyph Frequency Counting",
    "description": "Catalog every occurrence of recurring glyphs across signage, graffiti, and textures, then tally frequencies to find statistically over-represented symbols. Outliers may be intentional planted motifs.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Beginner",
    "tags": [
     "glyph",
     "frequency",
@@ -24882,7 +24607,6 @@
    "title": "Memory Scanning for Hidden Flags",
    "description": "Scan live game memory for boolean flags that flip when interacting with mystery objects, then watch their state during controlled actions. Identified flags expose the underlying event logic.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "memory-scan",
     "flags",
@@ -24943,7 +24667,6 @@
    "title": "Choice-Branch Outcome Tabulation",
    "description": "Document every player choice in the late-game missions and tabulate downstream world differences to see whether any branch alters mystery availability. A decision matrix exposes hidden dependencies.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "choices",
     "branching",
@@ -25022,7 +24745,6 @@
    "title": "Contextual Dialogue Mining",
    "description": "Extract and search the full dialogue corpus for any lines referencing the mountain, UFOs, or the mural, then read each in narrative context. Rare lines often carry deliberate hints.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Intermediate",
    "tags": [
     "dialogue",
     "mining",
@@ -25068,7 +24790,6 @@
    "title": "Cross-Game Map Overlay Alignment",
    "description": "Align the GTA V map against other Rockstar maps at matching scale to test claims of shared geography or reused landmarks. Overlay registration reveals genuine versus coincidental matches.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Intermediate",
    "tags": [
     "map-overlay",
     "cross-game",
@@ -25303,7 +25024,6 @@
    "title": "Easter-Egg Pattern Library Matching",
    "description": "Compile a library of confirmed Rockstar easter-egg trigger patterns and match unsolved leads against them to predict likely mechanics. Pattern reuse narrows the search space.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Beginner",
    "tags": [
     "easter-egg",
     "patterns",
@@ -25808,7 +25528,6 @@
    "title": "Bayesian Lead Prioritization",
    "description": "Assign prior probabilities to competing theories and update them as evidence arrives, producing a ranked list of leads worth pursuing. The model makes belief changes explicit and auditable.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "bayesian",
     "prioritization",
@@ -25843,7 +25562,6 @@
    "title": "Shader and LOD Inspection",
    "description": "Inspect the shaders and level-of-detail models of mystery objects to find hidden geometry or texture layers only visible at certain distances. Hidden LOD detail can betray developer intent.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "shader",
     "lod",
@@ -25895,7 +25613,6 @@
    "title": "Network Packet Inspection in Online",
    "description": "Capture and inspect network traffic during online sessions near the mountain to detect server-driven events that single-player tools cannot see. Unusual packets may flag scripted online content.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "network",
     "packets",
@@ -25944,7 +25661,6 @@
    "title": "Comparative Mythology Mapping",
    "description": "Map the mural and lore symbols against documented real-world mythologies to identify intentional references versus generic imagery. Strong parallels suggest a deliberate interpretive frame.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Beginner",
    "tags": [
     "mythology",
     "comparative",
@@ -26002,7 +25718,6 @@
    "title": "Collision-Mesh Probing",
    "description": "Use noclip and collision visualizers to probe for invisible walls, hollow spaces, or sealed rooms inside Mount Chiliad. Discrepancies between visual and collision meshes can reveal hidden interiors.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Intermediate",
    "tags": [
     "collision",
     "noclip",
@@ -26102,7 +25817,6 @@
    "title": "Longitudinal Patch Diffing",
    "description": "Track every patch over time and diff mystery-related files to build a history of developer changes. A trend of edits can indicate ongoing interest or an abandoned feature.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Intermediate",
    "tags": [
     "patches",
     "diffing",
@@ -26144,7 +25858,6 @@
    "title": "Eye-Tracking Attention Mapping",
    "description": "Record where experienced players naturally look during chiliad sequences using eye-tracking to find overlooked or visually emphasized regions. Attention gaps may hide planted clues.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Advanced",
    "tags": [
     "eye-tracking",
     "attention",
@@ -26223,7 +25936,6 @@
    "title": "Steganography Detection in Textures",
    "description": "Run statistical steganalysis on mystery textures to detect data hidden in pixel noise or alpha channels. Anomalous bit distributions can indicate embedded payloads.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Advanced",
    "tags": [
     "steganography",
     "textures",
@@ -26270,7 +25982,6 @@
    "title": "Time-Lapse Environmental Monitoring",
    "description": "Run unattended time-lapse captures of the summit across full in-game days to catch slow or scheduled environmental changes. Long observation surfaces events too rare for live watching.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Beginner",
    "tags": [
     "time-lapse",
     "monitoring",
@@ -26314,7 +26025,6 @@
    "title": "Script Decompilation Tracing",
    "description": "Decompile mission and ambient scripts to trace the exact logic governing chiliad-related events and follow conditional branches. Source-level reading removes guesswork about triggers.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Advanced",
    "tags": [
     "decompilation",
     "scripts",
@@ -26358,7 +26068,6 @@
    "title": "Crowd-Sourced Transcription Consensus",
    "description": "Have many volunteers independently transcribe garbled audio or faint text, then keep only consensus characters to reduce individual error. Agreement filtering yields a reliable transcript.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Beginner",
    "tags": [
     "transcription",
     "crowdsource",
@@ -26404,7 +26113,6 @@
    "title": "Vehicle Spawn-Table Auditing",
    "description": "Audit the spawn tables for rare or unused vehicles near the mountain to find assets that hint at intended events, such as a hidden jetpack or craft. Unused entries can expose cut or gated content.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Intermediate",
    "tags": [
     "spawn-table",
     "vehicles",
@@ -26468,7 +26176,6 @@
    "title": "Narrative Foreshadowing Audit",
    "description": "Systematically catalog every line, poster, or scene that could foreshadow a mystery payoff and rank each by specificity. Strong, specific foreshadowing points to intended content.",
    "category": "Narrative, Choice & Context Analysis",
-   "difficulty": "Beginner",
    "tags": [
     "foreshadowing",
     "narrative",
@@ -26511,7 +26218,6 @@
    "title": "Reused-Asset Lineage Tracing",
    "description": "Trace the origin of chiliad assets back through Rockstar's prior games to determine if symbols are bespoke or recycled. Bespoke assets carry far more interpretive weight.",
    "category": "Cross-Game & Rockstar Universe Correlation",
-   "difficulty": "Intermediate",
    "tags": [
     "asset-lineage",
     "reuse",
@@ -26555,7 +26261,6 @@
    "title": "Controlled Variable Ablation Testing",
    "description": "Remove one suspected prerequisite at a time while holding all others constant to isolate which single factor enables a mystery event. Ablation pinpoints causation rather than correlation.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "ablation",
     "controlled",
@@ -26613,7 +26318,6 @@
    "title": "Sentiment-Weighted Claim Filtering",
    "description": "Apply sentiment and confidence analysis to community claims, downweighting hype-driven or sarcastic posts to surface sober, evidence-backed assertions. The filter cleans noisy discussion data.",
    "category": "Route, Systems & Network Theory",
-   "difficulty": "Intermediate",
    "tags": [
     "sentiment",
     "filtering",
@@ -26648,7 +26352,6 @@
    "title": "Iconographic Color-Code Analysis",
    "description": "Analyze the precise color palette of mural elements and signage to test whether colors encode a key, sequence, or correspondence. Quantified palettes can be matched against proposed cipher systems.",
    "category": "Symbolic & Interpretive Frameworks",
-   "difficulty": "Intermediate",
    "tags": [
     "color",
     "iconography",
@@ -26793,7 +26496,6 @@
    "title": "Multi-Save Determinism Harness",
    "description": "Automate launching dozens of cloned saves through identical scripted inputs to measure how reproducible a mystery event is across runs. High-volume repetition exposes true probabilities.",
    "category": "In-Game Testing & Manipulation",
-   "difficulty": "Advanced",
    "tags": [
     "determinism",
     "automation",

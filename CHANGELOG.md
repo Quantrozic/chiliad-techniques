@@ -1,6 +1,10 @@
 # Changelog
 
-All notable changes to the Chiliad Techniques Encyclopedia static site. Current version: v1.1.0.
+All notable changes to the Chiliad Techniques Encyclopedia static site. Current version: v1.1.1.
+
+## v1.1.1 - 2026-07-06
+
+- Removed the beginner/intermediate/advanced difficulty labels from technique pages and the dataset: they were unsourced editorial judgments, not community data.
 
 ## v1.1.0 - 2026-07-06
 
