@@ -1,6 +1,14 @@
 # Changelog
 
-All notable changes to the Chiliad Techniques Encyclopedia static site. Current version: v1.1.3.
+All notable changes to the Chiliad Techniques Encyclopedia static site. Current version: v1.1.5.
+
+## v1.1.5 - 2026-07-07
+
+- Added a site-wide notice at the top of every page stating that the site is only a prototype.
+
+## v1.1.4 - 2026-07-07
+
+- Performance: long case-row listings were slow to load and scroll. Rows now render lazily (CSS content-visibility, so the browser skips layout work for off-screen rows) and reference a single shared external-link icon definition per page instead of repeating the SVG markup in every row, roughly halving the largest pages' size. No content changes.
 
 ## v1.1.3 - 2026-07-07
 

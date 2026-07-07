@@ -1,6 +1,6 @@
 # Methodology
 
-How the Chiliad Techniques Encyclopedia (v1.1.3, built Jul 06, 2026) was made: corpus provenance, matching rules, audit criteria, and the exact division of labor between human and AI. The rendered version of this document is published at https://quantrozic.github.io/chiliad-techniques/methodology.html.
+How the Chiliad Techniques Encyclopedia (v1.1.5, built Jul 07, 2026) was made: corpus provenance, matching rules, audit criteria, and the exact division of labor between human and AI. The rendered version of this document is published at https://quantrozic.github.io/chiliad-techniques/methodology.html.
 
 ## What this site is
 
@@ -89,7 +89,7 @@ completeness and clearly labeled.
  | 5,644
 
 Tier thresholds were calibrated by hand-reviewing stratified samples of matches during the July 2026 audit.
-As of v1.1.3 (built Jul 06, 2026), no matches have been human-verified yet: the tier ships with this release and verification is starting with the public launch. Until verified badges appear, every case link on this site should be read as machine-suggested evidence, not a citation. Want to help? See the corrections page.
+As of v1.1.5 (built Jul 07, 2026), no matches have been human-verified yet: the tier ships with this release and verification is starting with the public launch. Until verified badges appear, every case link on this site should be read as machine-suggested evidence, not a citation. Want to help? See the corrections page.
 
 ## The corpus audit (the “No corpus evidence” and “Unverified” badges)
 
@@ -156,10 +156,10 @@ If you build something on this data, an attribution link back here is all the li
 
 ## Versioning & how to cite
 
-The site carries a version number (currently v1.1.3) in every footer; every change,
+The site carries a version number (currently v1.1.5) in every footer; every change,
 including corrections and who reported them, is listed in the changelog. Releases are
 tagged in the GitHub repository and snapshots are
 submitted to the Wayback
 Machine, so any cited state of the site stays retrievable.
 
-Suggested citation: Chiliad Techniques Encyclopedia v1.1.3 (Jul 06, 2026), https://quantrozic.github.io/chiliad-techniques/, CC BY 4.0.
+Suggested citation: Chiliad Techniques Encyclopedia v1.1.5 (Jul 07, 2026), https://quantrozic.github.io/chiliad-techniques/, CC BY 4.0.
