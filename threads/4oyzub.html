@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>His quarry seemed familiar. · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol></svg>
+<div class="proto-banner" role="note"><strong>Prototype:</strong> this site is only a prototype. Content and features may change or contain errors.</div>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Discovery</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">His quarry seemed familiar.</h1>
+    <div class="post-meta"><span class="score">▲ 157 pts</span><span>u/Caffine1</span><span>Jun 20, 2016</span><span>182 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/4oyzub/his_quarry_seemed_familiar/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x7-034.html" title="Weak match: this post may not actually demonstrate this method.">Random-Map Apophenia Baselining ?</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>I was going through the code from the latest release (still waiting on Listener&#x27;s to come out, so used drp4lyf&#x27;s code (<a href="https://www.gta5-mods.com/tools/decompiled-scripts-b757" target="_blank" rel="noreferrer">GTA5-Mods Link</a>), so it&#x27;s a little different). I wanted to see how this version differed from the previous version, in particular, after <a href="https://www.reddit.com/u/NIC779" target="_blank" rel="noreferrer">/u/NIC779</a>&#x27;s <a href="https://www.reddit.com/r/chiliadmystery/comments/4oqion/sasquatch_hunter_is_dead_7_golden_peyotes/" target="_blank" rel="noreferrer">recent Discovery about the Sasquatch Hunter</a>, I wanted to see the famous &quot;He was wrong to start his hunt on Tuesday.&quot; code.</p><p>Much to my surprise, when I searched for the word Tuesday, nothing came up. Going through the animal_controller script, I could not find it.</p><p>Luckily, <a href="https://www.reddit.com/u/simpleavaster" target="_blank" rel="noreferrer">/u/simpleavaster</a> had made a discovery of his own yesterday using Listener&#x27;s code from the previous update.</p><p>He managed to find the code that corresponded to <a href="https://www.reddit.com/u/NIC779" target="_blank" rel="noreferrer">/u/NIC779</a>&#x27;s Discovery. I&#x27;ll let him post it himself later.  However, here is the famous Tuesday code.</p><pre><code>auto sub_63f25(auto a_0) {
+    v_3 = &quot;He was wrong to start his hunt on Tuesday.&quot;;
+    if (GAMEPLAY::IS_STRING_NULL_OR_EMPTY(v_3)) {}
+    if (g_18A70._f21EB._f90) {
+        v_4 = sub_23bf();
+        v_5 = v_4;
+        sub_226c(&amp;v_4, 5);
+        sub_22a6(&amp;v_4, 30);
+        sub_22e1(&amp;v_4, 0);
+        sub_226c(&amp;v_5, 8);
+        sub_22a6(&amp;v_5, 0);
+        sub_22e1(&amp;v_5, 0);
+        if (sub_6404d(v_4) &amp;&amp; (!sub_6404d(v_5))) {
+            if (sub_6401f(57)) {
+                if (TIME::GET_CLOCK_DAY_OF_WEEK() == a_0) {
+                    GAMEPLAY::_GET_WEATHER_TYPE_TRANSITION(&amp;v_6, &amp;v_7, &amp;v_8);
+                    if (((((v_6 == ${foggy}) &amp;&amp; (v_8 &lt;= 0.5)) || ((v_7 == ${foggy}) &amp;&amp; (v_8 &gt;= 0.5))) || ((v_6 == 0xaac9c895) &amp;&amp; (v_8 &lt;= 0.5))) || ((v_7 == 0xaac9c895) &amp;&amp; (v_8 &gt;= 0.5))) {
+                        return 1;
+                    }
+                }
+            }
+        }
+    }
+    return 0;
+}</code></pre><p>So, knowing what to search for, I managed to find where the &quot;He was wrong to start his hunt on Tuesday.&quot; code should have been, and found something else in its place.</p><pre><code>bool func_565(int iParam0)
+{
+	char* sVar0;
+	int iVar1;
+	int iVar2;
+	int iVar3;
+	int iVar4;
+	float fVar5;
+	
+	sVar0 = &quot;His quarry seemed familiar.&quot;;
+	if (is_string_null_or_empty(sVar0))
+	{
+	}
+	if (Global_101154.f_8739.f_144)
+	{
+		iVar1 = func_64();
+		iVar2 = iVar1;
+		func_60(&amp;iVar1, 5);
+		func_61(&amp;iVar1, 30);
+		func_62(&amp;iVar1, 0);
+		func_60(&amp;iVar2, 8);
+		func_61(&amp;iVar2, 0);
+		func_62(&amp;iVar2, 0);
+		if (func_567(iVar1) &amp;&amp; !func_567(iVar2))
+		{
+			if (func_566(57))
+			{
+				if (get_clock_day_of_week() == iParam0)
+				{
+					_get_weather_type_transition(&amp;iVar3, &amp;iVar4, &amp;fVar5);
+					if ((((iVar3 == -1368164796 &amp;&amp; fVar5 &lt;= 0.5f) || (iVar4 == -1368164796 &amp;&amp; fVar5 &gt;= 0.5f)) || (iVar3 == -1429616491 &amp;&amp; fVar5 &lt;= 0.5f)) || (iVar4 == -1429616491 &amp;&amp; fVar5 &gt;= 0.5f))
+					{
+						return true;
+					}
+				}
+			}
+		}
+	}
+	return false;
+}</code></pre><p>(Again, the formatting is different because this is drp4lyf&#x27;s code, not Listener&#x27;s.)</p><p>So, exactly where the Tuesday code should have been, was the following line:</p><pre><code>sVar0 = &quot;His quarry seemed familiar.&quot;;</code></pre><p>###&quot;His quarry seemed familiar.&quot;</p><p>Rockstar gave us a new clue.  To me, it further points to <a href="https://www.reddit.com/u/NIC779" target="_blank" rel="noreferrer">/u/NIC779</a>&#x27;s discovery, the quarry being Bigfoot Hunter. That said, it could mean something else entirely.</p><p>As a bonus, wanted to include the files and code for the Bigfoot Hunter.</p><ul><li>\x64e.rpf\models\cdimages\componentpeds_ig.rpf\ig_hunter.ydd</li><li>\x64e.rpf\models\cdimages\componentpeds_ig.rpf\ig_hunter.ytd</li><li>\x64g.rpf\levels\gta5\generic\cutspeds.rpf\cs_hunter</li><li>He&#x27;s referred to in some parts of the code as ig_hunter</li></ul><p>There&#x27;s a few more, but these are the ones we can open and actually have content in them.</p><p>This discovery was made by the Codewalkers team, and a special mention goes to <a href="https://www.reddit.com/u/simpleavaster" target="_blank" rel="noreferrer">/u/simpleavaster</a> for his code find yesterday, which led to this.</p><h4>TL;DR: &quot;He was wrong to start his hunt on Tuesday.&quot; has been replaced in the code by &quot;His quarry seemed familiar.&quot; Rockstar has given us another clue!</h4><p>Edit: Based on his comment, I realized I misunderstood something <a href="https://www.reddit.com/u/simpleavaster" target="_blank" rel="noreferrer">/u/simpleavaster</a> had said, so I edited the post to reflect that.</p><p>Edit2: Here&#x27;s the <a href="https://www.reddit.com/r/chiliadmystery/comments/3yvwa9/he_was_wrong_to_start_his_hunt_on_tuesday/" target="_blank" rel="noreferrer">original Tuesday post</a></p><p>Edit3: While I can&#x27;t stop any YouTuber from using this content for profit in their videos, I&#x27;d ask that they consider donating half their profits to the <a href="https://support.woundedwarriorproject.org/default.aspx?tsid=66&amp;campaignSource=WEBSITE&amp;source=ONLINE" target="_blank" rel="noreferrer">Wounded Warrior Project</a>.</p><p>Edit4: The code is from a week ago, per the gtamods page, while the <a href="https://www.reddit.com/r/chiliadmystery/comments/4oqion/sasquatch_hunter_is_dead_7_golden_peyotes/" target="_blank" rel="noreferrer">discovery</a> was made 3 days ago, so it looks like this is definitely from before. See <a href="https://www.reddit.com/r/chiliadmystery/comments/4oyzub/his_quarry_seemed_familiar/d4jeafm" target="_blank" rel="noreferrer">this</a> post for more detail.</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 182 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/4oyzub/his_quarry_seemed_familiar/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · v1.2.0 · built Jul 07, 2026 · <a href="../methodology.html">Methodology</a> · <a href="../changelog.html">Changelog</a> · <a href="../corrections.html">Corrections</a> · <a href="../data/">Dataset</a> · <a href="https://github.com/Quantrozic/chiliad-techniques" target="_blank" rel="noreferrer">GitHub</a><br>
+Encyclopedia text and dataset <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>; archived posts are community content from r/chiliadmystery, quoted for preservation and owned by their authors.</footer>
+</body>
+</html>

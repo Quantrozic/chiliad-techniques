@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UFO + UFO eye (map location revealed, but nothing there?) · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol></svg>
+<div class="proto-banner" role="note"><strong>Prototype:</strong> this site is only a prototype. Content and features may change or contain errors.</div>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Investigation</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">UFO + UFO eye (map location revealed, but nothing there?)</h1>
+    <div class="post-meta"><span class="score">▲ 1 pts</span><span>[deleted]</span><span>May 17, 2015</span><span>3 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/36a4z4/ufo_ufo_eye_map_location_revealed_but_nothing/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x2-006.html" title="Weak match: this post may not actually demonstrate this method.">Coordinate Teleport Sweep ?</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>Awhile back, someone pulled scripts that show where different models/textures can be toggled. These can be based on progress. One example would be the farm before it&#x27;s blown up, and after it&#x27;s blown up, thus toggling the damaged model after the trigger (mission) is complete.</p><p>Anyway, 2 objects that seem to be hidden are &quot;ufo_eye&quot; + &quot;ufo&quot;. Now these can represent the eye and UFO on the mountain that appear after 100%, but the location is pretty far off, so it&#x27; a little confusing.  It&#x27;s right by the sawmill next to a silo.</p><p><a href="http://i.imgur.com/mpWJ3fS.jpg" target="_blank" rel="noreferrer">Map location</a></p><p>CODE:</p><pre><code>    case 148:
+    wPtr(1, (A_0) + 12);
+    strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+    strcpy(&quot;ufo&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+    wPtr(0, (A_0) + 132);
+    setStruct(487.31f, 5588.386f, 793.0532f, 3, A_0);
+    break;
+case 149:
+    wPtr(1, (A_0) + 12);
+    strcpy(&quot;&quot;, getElemPtr(0, (A_0) + 32, 32), 32);
+    strcpy(&quot;ufo_eye&quot;, getElemPtr(1, (A_0) + 32, 32), 32);
+    wPtr(0, (A_0) + 132);
+    setStruct(487.31f, 5588.386f, 793.0532f, 3, A_0);
+    break;</code></pre><p>I just wanted to put this out there and revive the info that was posted in that old thread. Is there a way we can be 100% sure those 2 potions of code dont represent the UFO on the mountain?<br>[This is an older thread where I found the scripts] (http://www.reddit.com/r/chiliadmystery/comments/2le3qm/there_could_be_more_hidden_symbols_similar_to_the/)</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 3 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/36a4z4/ufo_ufo_eye_map_location_revealed_but_nothing/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · v1.2.0 · built Jul 07, 2026 · <a href="../methodology.html">Methodology</a> · <a href="../changelog.html">Changelog</a> · <a href="../corrections.html">Corrections</a> · <a href="../data/">Dataset</a> · <a href="https://github.com/Quantrozic/chiliad-techniques" target="_blank" rel="noreferrer">GitHub</a><br>
+Encyclopedia text and dataset <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>; archived posts are community content from r/chiliadmystery, quoted for preservation and owned by their authors.</footer>
+</body>
+</html>

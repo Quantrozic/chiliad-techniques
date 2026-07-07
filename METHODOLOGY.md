@@ -1,12 +1,12 @@
 # Methodology
 
-How the Chiliad Techniques Encyclopedia (v1.1.5, built Jul 07, 2026) was made: corpus provenance, matching rules, audit criteria, and the exact division of labor between human and AI. The rendered version of this document is published at https://quantrozic.github.io/chiliad-techniques/methodology.html.
+How the Chiliad Techniques Encyclopedia (v1.2.0, built Jul 07, 2026) was made: corpus provenance, matching rules, audit criteria, and the exact division of labor between human and AI. The rendered version of this document is published at https://quantrozic.github.io/chiliad-techniques/methodology.html.
 
 ## What this site is
 
 A self-contained static mirror of the investigation-methods encyclopedia,
 an archive project about the Grand Theft Auto V "Mount Chiliad Mystery" and the r/chiliadmystery community
-that has pursued it since 2013. The site catalogs 298 investigation techniques and links each to the
+that has pursued it since 2013. The site catalogs 343 investigation techniques and links each to the
 real, archived subreddit threads where the community used it (the lite edition (published on GitHub Pages) omits comment sections; the full edition mirrors complete comment trees).
 
 This page documents where every number on the site comes from, how threads were matched to techniques,
@@ -26,22 +26,22 @@ live ingestion for the most recent posts:
 deleted/removed stubs included in the count but excluded from matching).
 
 Post scores, comment counts, flairs and author names are as of capture and are not updated live.
-Of the 24,953 posts searched, the 4,384 threads that matched at least one technique are bundled on this site as thread pages; the rest of the corpus is searched but not mirrored here.
+Of the 24,953 posts searched, the 6,286 threads that matched at least one technique are bundled on this site as thread pages; the rest of the corpus is searched but not mirrored here.
 
 ## The technique entries
 
-The 298 entries come from two labeled tiers:
+The 343 entries come from two labeled tiers:
 
 - 59 hand-curated methods, researched and written by the site maintainer.
 Sixteen of these were added in July 2026 after the corpus audit (below) surfaced heavily-used community
 methods the encyclopedia had missed (Snapmatic cataloguing, Director Mode testing, karma runs, tide watching, and others).
 
-- 239 AI-generated entries (curation tier "community-index"): bulk-written by a large
+- 284 AI-generated entries (curation tier "community-index"): bulk-written by a large
 language model (Anthropic Claude, driven through Claude Code) to enumerate plausible method variants. They are
 uniquely worded but not individually researched, are badged "AI-generated" on every surface, and are
 hidden by default behind the toggle next to the search box.
 
-268 of the 298 entries have at least one archived case attached.
+312 of the 343 entries have at least one archived case attached.
 
 ## How threads were matched to techniques
 
@@ -62,7 +62,7 @@ never qualify as anchors.
 - A candidate needs a minimum combined score of 7.0, and either a technique term in the post title or a
 combined score ≥ 11.0, to be accepted at all.
 
-This produced 10,760 technique↔thread links across the 4,384
+This produced 15,670 technique↔thread links across the 6,286
 matched threads. Every accepted match is then tiered by confidence (next section). The full match list, with its
 weak/strong labels, is in the published dataset, so the matching is auditable.
 
@@ -81,15 +81,15 @@ verifier's name and date. This is the only tier that should be treated as a cita
  | A strong keyword match: a specific technique term in the post title (IDF ≥ 3.8), a very distinctive
 term in the body corroborated by a second specific anchor (IDF ≥ 4.8), or a broad multi-term match (≥ 3 anchors,
 IDF ≥ 3.5, score ≥ 12). Good reading suggestions; still machine-selected.
- | 5,116
+ | 9,236
 
  | weak match
  | Only generic or uncorroborated vocabulary backs the match. Possibly a false positive; shown for
 completeness and clearly labeled.
- | 5,644
+ | 6,434
 
 Tier thresholds were calibrated by hand-reviewing stratified samples of matches during the July 2026 audit.
-As of v1.1.5 (built Jul 07, 2026), no matches have been human-verified yet: the tier ships with this release and verification is starting with the public launch. Until verified badges appear, every case link on this site should be read as machine-suggested evidence, not a citation. Want to help? See the corrections page.
+As of v1.2.0 (built Jul 07, 2026), no matches have been human-verified yet: the tier ships with this release and verification is starting with the public launch. Until verified badges appear, every case link on this site should be read as machine-suggested evidence, not a citation. Want to help? See the corrections page.
 
 ## The corpus audit (the “No corpus evidence” and “Unverified” badges)
 
@@ -113,7 +113,7 @@ which produced the sixteen archive-mined curated entries mentioned above.
 
 For transparency, the exact division of labor:
 
-- AI-generated (239 entries): the "community-index" encyclopedia entries were written by a
+- AI-generated (284 entries): the "community-index" encyclopedia entries were written by a
 large language model (Anthropic Claude, via Claude Code sessions in June–July 2026). Always badged, hidden by default.
 
 - AI-assisted: the build tooling (matcher, audit script, this site generator) was written with
@@ -127,7 +127,7 @@ deterministic Python over the corpus. Two runs on the same corpus give the same 
 
 ## Known limitations
 
-- Case links below the verified tier are co-occurrence evidence, and the 5,644 weak matches in
+- Case links below the verified tier are co-occurrence evidence, and the 6,434 weak matches in
 particular may be false positives.
 
 - Comment text beyond 4,000 characters per post is invisible to the matcher, so comment-driven demonstrations
@@ -156,10 +156,10 @@ If you build something on this data, an attribution link back here is all the li
 
 ## Versioning & how to cite
 
-The site carries a version number (currently v1.1.5) in every footer; every change,
+The site carries a version number (currently v1.2.0) in every footer; every change,
 including corrections and who reported them, is listed in the changelog. Releases are
 tagged in the GitHub repository and snapshots are
 submitted to the Wayback
 Machine, so any cited state of the site stays retrievable.
 
-Suggested citation: Chiliad Techniques Encyclopedia v1.1.5 (Jul 07, 2026), https://quantrozic.github.io/chiliad-techniques/, CC BY 4.0.
+Suggested citation: Chiliad Techniques Encyclopedia v1.2.0 (Jul 07, 2026), https://quantrozic.github.io/chiliad-techniques/, CC BY 4.0.

@@ -15,7 +15,7 @@
     <a class="crumb" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
     <p class="eyebrow">Provenance</p>
     <h1 class="page-title">Methodology</h1>
-    <p class="page-desc">Where every number on this site comes from: corpus provenance, matching rules, audit criteria, and what was machine-generated versus human-curated. Version 1.1.5, built Jul 07, 2026.</p>
+    <p class="page-desc">Where every number on this site comes from: corpus provenance, matching rules, audit criteria, and what was machine-generated versus human-curated. Version 1.2.0, built Jul 07, 2026.</p>
   </div>
 </div>
 <div class="wrap prose">
@@ -23,7 +23,7 @@
 <div class="panel"><h3 class="panel-h">What this site is</h3><div class="panel-c md">
 <p>A self-contained static mirror of the investigation-methods encyclopedia,
 an archive project about the Grand Theft Auto V "Mount Chiliad Mystery" and the r/chiliadmystery community
-that has pursued it since 2013. The site catalogs 298 investigation techniques and links each to the
+that has pursued it since 2013. The site catalogs 343 investigation techniques and links each to the
 real, archived subreddit threads where the community used it (the lite edition (published on GitHub Pages) omits comment sections; the full edition mirrors complete comment trees).</p>
 <p>This page documents where every number on the site comes from, how threads were matched to techniques,
 what the badges mean, and what was machine-generated versus human-curated. Reputable references show their
@@ -40,21 +40,21 @@ live ingestion for the most recent posts:</p>
 deleted/removed stubs included in the count but excluded from matching).</li>
 </ul>
 <p>Post scores, comment counts, flairs and author names are <em>as of capture</em> and are not updated live.
-Of the 24,953 posts searched, the <strong>4,384</strong> threads that matched at least one technique are bundled on this site as thread pages; the rest of the corpus is searched but not mirrored here.</p>
+Of the 24,953 posts searched, the <strong>6,286</strong> threads that matched at least one technique are bundled on this site as thread pages; the rest of the corpus is searched but not mirrored here.</p>
 </div></div>
 
 <div class="panel"><h3 class="panel-h">The technique entries</h3><div class="panel-c md">
-<p>The 298 entries come from two labeled tiers:</p>
+<p>The 343 entries come from two labeled tiers:</p>
 <ul>
 <li><strong>59 hand-curated methods</strong>, researched and written by the site maintainer.
 Sixteen of these were added in July 2026 after the corpus audit (below) surfaced heavily-used community
 methods the encyclopedia had missed (Snapmatic cataloguing, Director Mode testing, karma runs, tide watching, and others).</li>
-<li><strong>239 AI-generated entries</strong> (curation tier "community-index"): bulk-written by a large
+<li><strong>284 AI-generated entries</strong> (curation tier "community-index"): bulk-written by a large
 language model (Anthropic Claude, driven through Claude Code) to enumerate plausible method variants. They are
 uniquely worded but <em>not individually researched</em>, are badged "AI-generated" on every surface, and are
 <strong>hidden by default</strong> behind the toggle next to the search box.</li>
 </ul>
-<p>268 of the 298 entries have at least one archived case attached.</p>
+<p>312 of the 343 entries have at least one archived case attached.</p>
 </div></div>
 <div class="panel" id="matching"><h3 class="panel-h">How threads were matched to techniques</h3><div class="panel-c md">
 <p>Matching is a deterministic keyword/IDF algorithm
@@ -71,7 +71,7 @@ never qualify as anchors.</li>
 <li>A candidate needs a minimum combined score of 7.0, and either a technique term in the post <em>title</em> or a
 combined score ≥ 11.0, to be accepted at all.</li>
 </ul>
-<p>This produced <strong>10,760 technique&harr;thread links</strong> across the 4,384
+<p>This produced <strong>15,670 technique&harr;thread links</strong> across the 6,286
 matched threads. Every accepted match is then tiered by confidence (next section). The full match list, with its
 weak/strong labels, is in the <a href="data/">published dataset</a>, so the matching is auditable.</p>
 </div></div>
@@ -89,14 +89,14 @@ verifier's name and date. This is the only tier that should be treated as a cita
 <td>A <em>strong</em> keyword match: a specific technique term in the post title (IDF ≥ 3.8), a very distinctive
 term in the body corroborated by a second specific anchor (IDF ≥ 4.8), or a broad multi-term match (≥ 3 anchors,
 IDF ≥ 3.5, score ≥ 12). Good reading suggestions; still machine-selected.</td>
-<td>5,116</td></tr>
+<td>9,236</td></tr>
 <tr><td><span class="weak-badge" style="margin-left:0">weak match</span></td>
 <td>Only generic or uncorroborated vocabulary backs the match. Possibly a false positive; shown for
 completeness and clearly labeled.</td>
-<td>5,644</td></tr>
+<td>6,434</td></tr>
 </table>
 <p>Tier thresholds were calibrated by hand-reviewing stratified samples of matches during the July 2026 audit.
-As of v1.1.5 (built Jul 07, 2026), <strong>no matches have been human-verified yet</strong>: the tier ships with this release and verification is starting with the public launch. Until verified badges appear, every case link on this site should be read as machine-suggested evidence, not a citation. Want to help? See <a href="corrections.html">the corrections page</a>.</p>
+As of v1.2.0 (built Jul 07, 2026), <strong>no matches have been human-verified yet</strong>: the tier ships with this release and verification is starting with the public launch. Until verified badges appear, every case link on this site should be read as machine-suggested evidence, not a citation. Want to help? See <a href="corrections.html">the corrections page</a>.</p>
 </div></div>
 <div class="panel" id="audit"><h3 class="panel-h">The corpus audit (the “No corpus evidence” and “Unverified” badges)</h3><div class="panel-c md">
 <p>In July 2026 every AI-generated entry was audited against the complete corpus
@@ -117,7 +117,7 @@ which produced the sixteen archive-mined curated entries mentioned above.</p>
 <div class="panel" id="ai"><h3 class="panel-h">What AI did, and what it did not do</h3><div class="panel-c md">
 <p>For transparency, the exact division of labor:</p>
 <ul>
-<li><strong>AI-generated (239 entries):</strong> the "community-index" encyclopedia entries were written by a
+<li><strong>AI-generated (284 entries):</strong> the "community-index" encyclopedia entries were written by a
 large language model (Anthropic Claude, via Claude Code sessions in June&ndash;July 2026). Always badged, hidden by default.</li>
 <li><strong>AI-assisted:</strong> the build tooling (matcher, audit script, this site generator) was written with
 Claude Code, and the 59 curated entries were drafted with AI assistance against archive sources, then
@@ -129,7 +129,7 @@ deterministic Python over the corpus. Two runs on the same corpus give the same 
 </div></div>
 <div class="panel"><h3 class="panel-h">Known limitations</h3><div class="panel-c md">
 <ul>
-<li>Case links below the verified tier are co-occurrence evidence, and the 5,644 weak matches in
+<li>Case links below the verified tier are co-occurrence evidence, and the 6,434 weak matches in
 particular may be false positives.</li>
 <li>Comment text beyond 4,000 characters per post is invisible to the matcher, so comment-driven demonstrations
 in very long threads can be missed.</li>
@@ -152,16 +152,16 @@ flair, permalink) with the technique IDs it is documented under and its weak-mat
 <p>If you build something on this data, an attribution link back here is all the license asks.</p>
 </div></div>
 <div class="panel" id="citation"><h3 class="panel-h">Versioning &amp; how to cite</h3><div class="panel-c md">
-<p>The site carries a version number (currently <strong>v1.1.5</strong>) in every footer; every change,
+<p>The site carries a version number (currently <strong>v1.2.0</strong>) in every footer; every change,
 including corrections and who reported them, is listed in the <a href="changelog.html">changelog</a>. Releases are
 tagged in the <a href="https://github.com/Quantrozic/chiliad-techniques/tags" target="_blank" rel="noreferrer">GitHub repository</a> and snapshots are
 submitted to the <a href="https://web.archive.org/web/*/https://quantrozic.github.io/chiliad-techniques/" target="_blank" rel="noreferrer">Wayback
 Machine</a>, so any cited state of the site stays retrievable.</p>
-<p>Suggested citation: <em>Chiliad Techniques Encyclopedia v1.1.5 (Jul 07, 2026), https://quantrozic.github.io/chiliad-techniques/, CC BY 4.0.</em></p>
+<p>Suggested citation: <em>Chiliad Techniques Encyclopedia v1.2.0 (Jul 07, 2026), https://quantrozic.github.io/chiliad-techniques/, CC BY 4.0.</em></p>
 </div></div>
 
 </div>
-<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · v1.1.5 · built Jul 07, 2026 · <a href="methodology.html">Methodology</a> · <a href="changelog.html">Changelog</a> · <a href="corrections.html">Corrections</a> · <a href="data/">Dataset</a> · <a href="https://github.com/Quantrozic/chiliad-techniques" target="_blank" rel="noreferrer">GitHub</a><br>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · v1.2.0 · built Jul 07, 2026 · <a href="methodology.html">Methodology</a> · <a href="changelog.html">Changelog</a> · <a href="corrections.html">Corrections</a> · <a href="data/">Dataset</a> · <a href="https://github.com/Quantrozic/chiliad-techniques" target="_blank" rel="noreferrer">GitHub</a><br>
 Encyclopedia text and dataset <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>; archived posts are community content from r/chiliadmystery, quoted for preservation and owned by their authors.</footer>
 </body>
 </html>

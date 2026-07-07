@@ -1,6 +1,12 @@
 # Changelog
 
-All notable changes to the Chiliad Techniques Encyclopedia static site. Current version: v1.1.5.
+All notable changes to the Chiliad Techniques Encyclopedia static site. Current version: v1.2.0.
+
+## v1.2.0 - 2026-07-07
+
+- Rewrote the technique&harr;post matching core to BM25F (Robertson & Zaragoza 2004), the ranking function behind most production search engines, instead of the previous ad-hoc IDF-sum formula. Title and body are length-normalized against their own field averages before being combined, so a long comment-heavy thread no longer scores higher purely for containing more distinct rare words - the old formula had no length normalization at all.
+- Fixed a real precision gap surfaced during that rewrite: a word from a technique's own title counted as a matching "anchor" even when it was a near-universal term in this corpus (e.g. "mural", "map" - the mural is the central artifact of the whole mystery, so those words alone matched almost anything). Anchors now require the same corpus-specificity floor regardless of whether they came from a title or a tag.
+- Added a "Best match" relevance sort to the technique browser's search box, computed client-side with the same BM25 ranking family, and switches to it automatically the moment you start typing a query.
 
 ## v1.1.5 - 2026-07-07
 
@@ -43,4 +49,4 @@ All notable changes to the Chiliad Techniques Encyclopedia static site. Current 
 
 ## v1.0.0 - 2026-07-05
 
-- Initial public release of the static mirror (lite edition): 298 technique entries, 4,384 mirrored r/chiliadmystery threads, keyword-matched archive cases with weak-match labeling, and corpus-audit badges on unsupported entries.
+- Initial public release of the static mirror (lite edition): 343 technique entries, 6,286 mirrored r/chiliadmystery threads, keyword-matched archive cases with weak-match labeling, and corpus-audit badges on unsupported entries.

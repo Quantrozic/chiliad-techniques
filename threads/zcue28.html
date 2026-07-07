@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Segregation rearranged · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol></svg>
+<div class="proto-banner" role="note"><strong>Prototype:</strong> this site is only a prototype. Content and features may change or contain errors.</div>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game Files</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Segregation rearranged</h1>
+    <div class="post-meta"><span class="score">▲ 20 pts</span><span>u/LaMeraVergaLarga69</span><span>Dec 5, 2022</span><span>8 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/zcue28/segregation_rearranged/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge" href="../techniques/tq-x7-015.html">Decompiler Output Cross-Validation</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>Segregation rearranged</p><p>Edit: Ok it was reprocessed including renaming function pointers references, I heve been navigating the code a little and even without all the noise of repetitive code, there is still a lot of code to review as it makes even the minimal security checks in all of its methods it has many ways of obfuscation and many hashes missing so I don&#x27;t expect any of us to find anything soon unless anyone knows what to search for or how basically the code works I&#x27;m pretty inneficient and linear I want to understand everything bottom up, so I&#x27;m starting with startup.c and see how the game ends up launching prologue.c and see if any easters there</p><p>Edit: if you clone from git copy the files to a separate folder or just kill the .git directory when I open the folder in VSCode it frozens my machine but is the git status what is hanging</p><p>This is the repo: <a href="https://github.com/lameravergalarga69scat/v-decompiled-scripts.git" target="_blank" rel="noreferrer">https://github.com/lameravergalarga69scat/v-decompiled-scripts.git</a> (V has come to (RIP Metal Gear))</p><p>I have written a java program to centralize all duplicated functions in the decompiled scripts</p><p>(root-cause version I got attached to them as it was the first version I saw of them)</p><p>so I decided to share them with you in order for you to review them without all the</p><p>noise that repetitive code brings when you try to trace calls as functions with the same body</p><p>have a different name in the other scripts and I also would like to have your</p><p>feedback to know if this worth the process then I would run it again</p><p>(it took 4 days to my machine and I think I shortened the lifespan of my ssd (a lot of improvements to be done))</p><p>but with some enhancements:</p><p>TODO: Check how to create functional lib file and import</p><pre><code>	Import directives (#include&lt;&quot;PATH&quot;&gt;)
+
+	namespace braces
+
+	replace \_\_LIB\_NNN\_\_.func with \_\_LIB\_NNN\_\_::func
+
+search for purefunctions(functions not depending on functions on this same script) with regex
+
+cumulate by level with separate counters
+
+cumulate changes and apply at the end of the loop with only surviving chunks</code></pre><p>TODO: Implement transaction mode for the process</p><pre><code>Librarize and updating the config maybe is doing the job
+
+	On librarization function body and hash is captured in the lib file so it is commited</code></pre><p>(NNN) increments every 1000 functions (MAX\_FUNCS\_PER\_LIB)</p><p>TODO: On librarization (function body hash repeated)</p><pre><code>libLevel = getMaxLibLevelConsumed
+
+if(libLevel &lt; 0)
+
+	if (consumes GTA\_V\_BIOS\_NNN
+
+		addToLibLevel(0)
+
+	if(consumes system == has ::func\_ but don&#x27;t starts with DIRECT\_GLOBAL\_ACCESS\_NNN OR ATOMICS\_NNN
+
+		GTA\_V\_BIOS\_NNN
+
+	else {
+
+		if Reads globals Or uses DIRECT\_GLOBAL\_ACCESS\_NNN</code></pre><p>DIRECT\_GLOBAL\_ACCESS\_NNN</p><pre><code>		else{</code></pre><p>ATOMICS\_NNN</p><pre><code>else {
+
+	LIB\_LIBLEVEL\_NNN (addToLibLevel(libLevel + 1))
+
+	
+
+libLevel = -1
+
+	max = gatMaxLibLevelFromCalls (consumes lib?)
+
+	if max &gt; libL
+
+		libLevel = max
+
+	else
+
+		consumes GTA\_V\_BIOS\_NNN</code></pre><p>liblevel = 0;</p><pre><code>return libLevel</code></pre><p>TODO: Iterate over same file segments until no replacements to avoid too much disk writings / deletings</p><p>But right now in this version there is not a single repeated function (except entry functions)</p><p>I will read your comments on next week as I got married yesterday while this was running</p><p>so I will not be available for a week or so but I will answer your feedback comments ASAP after that</p><p>See you on the other side, brothers!</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 8 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/zcue28/segregation_rearranged/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · v1.2.0 · built Jul 07, 2026 · <a href="../methodology.html">Methodology</a> · <a href="../changelog.html">Changelog</a> · <a href="../corrections.html">Corrections</a> · <a href="../data/">Dataset</a> · <a href="https://github.com/Quantrozic/chiliad-techniques" target="_blank" rel="noreferrer">GitHub</a><br>
+Encyclopedia text and dataset <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>; archived posts are community content from r/chiliadmystery, quoted for preservation and owned by their authors.</footer>
+</body>
+</html>

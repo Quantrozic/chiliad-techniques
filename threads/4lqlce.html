@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Murder mystery - Golf?! - Murder is female? - Mineshaft to Golf Underground? · r/chiliadmystery</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol></svg>
+<div class="proto-banner" role="note"><strong>Prototype:</strong> this site is only a prototype. Content and features may change or contain errors.</div>
+
+<div class="band">
+  <div class="wrap">
+    <a class="crumb" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Techniques encyclopedia</a>
+    <div class="chip-row"><span class="badge primary">Game Files</span><span class="badge">r/chiliadmystery</span></div>
+    <h1 class="detail-title">Murder mystery - Golf?! - Murder is female? - Mineshaft to Golf Underground?</h1>
+    <div class="post-meta"><span class="score">▲ 21 pts</span><span>u/COOLGAMETUBE</span><span>May 30, 2016</span><span>30 comments at capture</span><a href="https://www.reddit.com/r/chiliadmystery/comments/4lqlce/murder_mystery_golf_murder_is_female_mineshaft_to/" target="_blank" rel="noreferrer">Open original on Reddit ↗</a></div>
+    <div class="doc-under"><span>Documented under:</span><a class="badge weak-chip" href="../techniques/tq-x1-038.html" title="Weak match: this post may not actually demonstrate this method.">Script Decompilation and String Mining ?</a></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="panel"><div class="panel-c" style="padding-top:1.25rem">
+    <div class="md"><p>I took a look at the murdermystery.c4:</p><p>First off i found a string called &quot;missmurder&quot; and a clip called &quot;missmurder.ycd&quot; in &quot;x64c.rpf &gt; anim &gt; ingame &gt; clip_miss.rpf&quot; wich maybe want to tells you, that the murder is female?</p><p>I got some coords, that point to the golf field - a lot of these...<br>but then i saw a string called &quot;prop_mineshaft_door&quot; - i was exited! Got the position on the map (2 markers in city - right side from the golf) wich has to load by the script: &quot;ENTITY::CREATE_MODEL_HIDE(l_44, 200.0, ${prop_mineshaft_door}, 0);&quot;..</p><p>I know it gets weird!</p><p>Also that there over 6 markers in a distance of 1m from each other..</p><p>Also the script checks for the last vehicle:</p><p>if (VEHICLE::IS_VEHICLE_MODEL(v_15, ${taxi}))<br>if (VEHICLE::IS_THIS_MODEL_A_HELI(v_22))<br>if ((((v_22 == ${zentorno}) || (v_22 == ${btype})) || (v_22 == ${dubsta3})) || (v_22 == ${monster}))</p><p>My map:<br><a href="http://www.gtafivemap.com/s/2YpHe20/" target="_blank" rel="noreferrer">http://www.gtafivemap.com/s/2YpHe20/</a></p><p>Coords from Code:<br>l_33/<em>{3}</em>/ = {-1011.7365112304688, -480.2539978027344, 39.07339859 };<br>l_36/<em>{3}</em>/ = {-1003.077880859375, -477.962, 49.13740158081055 };<br>l_39/<em>{3}</em>/ = {-1018.3756103515625, -483.943603515625, 36.09640121459961 };<br>l_3D/<em>{3}</em>/ = {-1005.1911010742188, -478.21038818359375, 49.02619934082031 };<br>l_44/<em>{3}</em>/ = {-596.0499877929688, 2088.56, 130.59 };</p><p>TRIGGER-CORDS:<br>-580.891357421875, 2033.1201171875, 130.51126098632812, -578.4783325195312, 2035.0286865234375, 127.56145477294922 |||<br>-580.23046875, 2032.0540771484375, 130.29275512695312, -577.6668701171875, 2033.91748046875, 127.51573181152344 |||<br>-595.174560546875, 2085.767822265625, 136.8812713623047, -601.575439453125, 2106.16162109375, 125.46188354492188, 20.5, -602.8466186523438, 2115.51123046875, 126.4208984375, 128.07350158691406, |||<br>-580.23046875, 2032.0540771484375, 130.29275512695312, -577.6668701171875, 2033.91748046875, 127.51573181152344 |||<br>-594.9976196289062, 2089.004638671875, 130.34494018554688, -597.1124877929688, 2088.364501953125, 133.3035125732422</p><p>What do you think?</p></div>
+  </div></div>
+<div class="panel" style="margin-top:1.5rem"><div class="panel-c" style="padding-top:1rem"><p class="md-empty" style="margin:0">This edition of the mirror does not include comment sections; the original thread had 30 comments at capture. <a href="https://www.reddit.com/r/chiliadmystery/comments/4lqlce/murder_mystery_golf_murder_is_female_mineshaft_to/" target="_blank" rel="noreferrer" style="color:hsl(var(--primary))">Read the discussion on Reddit ↗</a></p></div></div>
+</div>
+<footer class="site-footer">Static mirror of the Chiliad Compendium techniques encyclopedia · v1.2.0 · built Jul 07, 2026 · <a href="../methodology.html">Methodology</a> · <a href="../changelog.html">Changelog</a> · <a href="../corrections.html">Corrections</a> · <a href="../data/">Dataset</a> · <a href="https://github.com/Quantrozic/chiliad-techniques" target="_blank" rel="noreferrer">GitHub</a><br>
+Encyclopedia text and dataset <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noreferrer">CC BY 4.0</a>; archived posts are community content from r/chiliadmystery, quoted for preservation and owned by their authors.</footer>
+</body>
+</html>
